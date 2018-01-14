@@ -6,7 +6,7 @@
 Il s'agira de trouver une mesure efficace pour associer une question d'utilisateur avec la réaction (réponse) adéquate. Plus exactement, cette mesure doit pouvoir trouver les meilleures réactions (réponse textuelle ou renvoi vers un humain à qui on indique le thème de la question).
  Votre système a le droit de répondre "je ne sais pas" (mais pas trop souvent) et de renvoyer la balle à un humain au hasard. Nous souhaitons un résultat plus efficace que la simple définition manuelle de mots-clés ou de règles.
 
- Plus formellement, votre chatbot devra prendre en entrée une question utilisateur et fournir en sortie une série de réactions ordonnées par pertinence. Il est à noter que nous ne nous intéresserons pas à la partie purement conversationnelle (Bonjour, comment allez vous, quelles est votre question ...".
+ Plus formellement, votre chatbot devra prendre en entrée une question utilisateur et fournir en sortie une série de réactions ordonnées par pertinence. Il est à noter que nous ne nous intéresserons pas à la partie purement conversationnelle (Bonjour, comment allez vous, quelle est votre question ...".
 
  Vous utiliserez les données détaillées ci-dessous pour entrainer votre système à identifier les termes importants (déclencheurs)et à trouver la réaction adaptée. Il vous faudra donc une mesure numérique permettant de mesurer l'adéquation entre une question utilisateur et une série de réactions possibles. Votre mesure d'adéquation pourra éventuellement prévoir une valeur limite en dessous de laquelle le système préférera répondre "Je ne sais pas" et passera la main à un humain chargé de répondre à sa place (en ayant si possible identifié le thème de la question, cf. description du cas d'utilisation 3).
 
@@ -20,7 +20,7 @@ NB : On ne vous demande pas de reformuler les réponses. Il vous est possible pa
 
 Votre code devra:
 - utiliser des ressources (FAQ et/ou questions réponses) pour apprendre les termes importants ou "déclencheurs" (mots, groupes de mots, chaînes de caractères...) pour un domaine donné. Vous pouvez utiliser des ressources externes (dictionnaires, corpus ...)
-- définir une mesure d'association (de 0 = 'aucun lien' à 1 = 'adéquation parfaite' utilisant ces déclencheurs pour évaluer l'adéquation entre une questions et une réponses
+- définir une mesure d'association (de 0 = 'aucun lien' à 1 = 'adéquation parfaite') utilisant ces déclencheurs pour évaluer l'adéquation entre une questions et une réponses
 - proposer une fonction prenant en entrée une question donnant en sortie une série ordonnée de réponse de la plus pertinente à la moins pertinente.
 
 Dans votre rendu vous donnerez également un fichier JSON qui à chaque question du fichier "3_questions_syp.json" associera une série de réactions (3 maximum, réponse textuelle ou renvoi à un humain) ordonnées par adéquation décroissante. Pour que le chatbot soit efficace, vous le paramétrez de telle manière qu'il ne réponde "je ne sais pas" dans moins de 15% des cas.
@@ -50,3 +50,4 @@ Cas d'utilisation 3
   anonymat: les noms de personnes ont été remplacés par XXX, les pseudos des utilisateurs par PSEUDO
 3_questions_syp.json
   liste de questions d'utilisateurs à associer avec une réponse adéquate
+  
