@@ -73,11 +73,13 @@ def appendWordTolist(myList, wordsList):
 # words = getDataFromTextFile("base_appr_fr")
 words = getDataFromTextFileJson()
 
-wordsList = ['Quels', 'Comme', 'est']
-appendWordTolist(words, wordsList)
+
 
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
+
+wordsList = ['Quels', 'Comme', 'est', 'Dans', 'Ma', 'quels']
+appendWordTolist(listSortedWords, wordsList)
 
 print listSortedWords
 
