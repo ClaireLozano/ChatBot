@@ -3,21 +3,8 @@ import os
 import json
 from pprint import pprint
 
-def readJson(data):
-	data = json.load(open(data))
-	reponseList = {} 
-	reponseList["1"] = []
-	reponseList["2"] = []
-	reponseList["3"] = []
-	reponseList["4"] = []
-	reponseList["5"] = []
-
-	return data, reponseList
-
-
 def getDataFromTextFile(folder):
 	data = []
-	# for loop
 	for filename in os.listdir(folder):
 		with open(folder+ "/" +filename) as inp:
 			for line in inp:
@@ -26,12 +13,26 @@ def getDataFromTextFile(folder):
 					data.append(w)
 	return data
 
+def getDataFromTextFileJson():
+	data = []
+	for file in os.listdir("."):
+		if file.endswith(".json") and file != "3_questions_syp.json":
+			print file
+			with open(file) as inp:
+				dict_test = json.load(inp)
+				for k, v in dict_test.iteritems():
+					words = splitByWord(v[0])
+					for w in words:
+						data.append(w)
+	return data
+
 
 def splitByWord(line):
 	wordsList = []
 	words = line.split()
 	for word in words:
 		wordsList.append(word)
+
 	return wordsList
 
 
@@ -45,17 +46,38 @@ def sortByWord(words, n):
 				dictionnary[w] = 1
 		else : 
 			dictionnary[w] = 1
-	l = sorted([[y, x] for x,y in dictionnary.items()], reverse=True)
-	return l[0:n]
+	l = sorted([x for x,y in dictionnary.items() if y > 8], reverse=True)
+	return l
 
+
+# def suppressionMot(path, l):
+# 	questions = {}
+# 	with open(path) as inp:
+# 		dict_test = json.load(inp)
+# 		for k, v in dict_test.iteritems():
+# 			questions[v[0]] = []
+# 			words = splitByWord(v[0])
+# 			for w in words:
+# 				if w not in l:
+# 					print questions[v[0]]
+# 					resToAppend = questions[v[0]]
+# 					print type(resToAppend)
+# 					test = resToAppend.append(w)
+# 					print test
+# 					print type(test)
+# 					questions[v[0]] = test
+# 				print "FIN"
 
 # get words
-words = getDataFromTextFile("base_appr_fr")
+# words = getDataFromTextFile("base_appr_fr")
+words = getDataFromTextFileJson()
+
 # Sort word - keep les X mots les plus utilises
-listSortedWords = sortByWord(words, int(20))
+listSortedWords = sortByWord(words, int(8))
 
 print listSortedWords
 
-# data, reponseList = readJson('1_faq_dmc.json')
-# pprint(data)
-# pprint(reponseList)
+
+# words = suppressionMot("1_faq_dmc.json", listSortedWords)
+# print words
+
