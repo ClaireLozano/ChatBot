@@ -2,12 +2,14 @@
 
 import os
 import json
+import codecs
 from pprint import pprint
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
+
 
 nltk.download('punkt')
 stemmer = FrenchStemmer()
@@ -50,7 +52,6 @@ def splitByWord(line):
 
 	return wordsList
 
-
 def sortByWord(words, n):
 	dictionnary = {}
 	for w in words:
@@ -64,7 +65,6 @@ def sortByWord(words, n):
 	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
 	return lemmatizationList(l)
 
-
 def suppressionMot(path, l):
 	questions = {}
 	with open(path) as inp:
@@ -76,7 +76,7 @@ def suppressionMot(path, l):
 			for w in words:
 				if w.lower() not in l:
 					array.append(w.lower())
-			questions[v[0]] = array
+			questions[v[0]] = {"reponse": v[1], "motCle": array}
 	return questions
 
 def appendWordTolist(myList, wordsList):
@@ -121,6 +121,7 @@ print listSortedWords
 
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
 pprint(words)
+
 
 print synonyme('acheter')
 
