@@ -63,12 +63,18 @@ def suppressionMot(path, l):
 			questions[v[0]] = array
 	return questions
 
-def appendWordTolist(l):
-	print "ajouter mots"
+def appendWordTolist(myList, wordsList):
+	for word in wordsList:
+		myList.append(word)
+
+
 
 # get words
 # words = getDataFromTextFile("base_appr_fr")
 words = getDataFromTextFileJson()
+
+wordsList = ['Quels', 'Comme', 'est']
+appendWordTolist(words, wordsList)
 
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
