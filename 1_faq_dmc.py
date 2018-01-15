@@ -118,11 +118,12 @@ def compareQuestions(newQuestWords, words):
 	for currentQuestion in allQuestions:
 		pourcent = 0
 		for w in newQuestWords:
-			if w in words[currentQuestion]: 
+			if w in words[currentQuestion]['motCle']: 
 				pourcent += 0.2
 		pourcentQuestion[currentQuestion] = pourcent 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	return pourcentQuestion, theQuestion
+	theAnswer = words[theQuestion]
+	return pourcentQuestion, theAnswer
 
 # =========== SYNONYME ===========
 
@@ -152,8 +153,7 @@ pprint(words)
 newQuestion = "Est ce que je peux changer l adresse de livraison ?"
 newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
 result, theQ = compareQuestions(newQuestWords, words)
-print theQ
-
+print "The answer is : ", theQ['reponse']
 
 print synonyme('acheter')
 
