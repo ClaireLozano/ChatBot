@@ -1,7 +1,16 @@
 # -*- coding: iso-8859-1 -*-
+
 import os
 import json
 from pprint import pprint
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.stem.snowball import FrenchStemmer
+nltk.download('punkt')
+stemmer = FrenchStemmer()
+
+
+# =========== GET DATA ===========
 
 def getDataFromTextFile(folder):
 	data = []
@@ -26,6 +35,7 @@ def getDataFromTextFileJson():
 						data.append(w)
 	return data
 
+# =========== SPLIT ===========
 
 def splitByWord(line):
 	wordsList = []
@@ -59,12 +69,26 @@ def suppressionMot(path, l):
 			array = []
 			for w in words:
 				if w not in l:
-					array.append(w)
+					array.append(lemmatizationWord(w))
 			questions[v[0]] = array
 	return questions
 
 def appendWordTolist(l):
 	print "ajouter mots"
+
+# =========== LEMMATIZE ===========
+
+def lemmatizationList(l):
+	newList = []
+	for w in l:
+		newList.append(stemmer.stem(w))
+	return newList
+
+
+def lemmatizationWord(w):
+	return stemmer.stem(w)
+
+# =================================
 
 # get words
 # words = getDataFromTextFile("base_appr_fr")
@@ -75,7 +99,7 @@ listSortedWords = sortByWord(words, int(8))
 
 print listSortedWords
 
-
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
 pprint(words)
+
 
