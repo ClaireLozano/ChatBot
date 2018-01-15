@@ -162,7 +162,7 @@ newQuestion = "Est ce que je peux changer l adresse de livraison ?"
 newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
 result, theQ = compareQuestions(newQuestWords, words)
 print "The answer is : ", theQ['reponse']
-print theQ
+print theQ['reponse']
 
 # Test de synonyme
 # print synonyme('acheter')
