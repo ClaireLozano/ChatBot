@@ -4,34 +4,26 @@ import os
 import operator
 import json
 import codecs
-from pprint import pprint
+import re
 import nltk
+
+from pprint import pprint
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
 
-
 nltk.download('punkt')
-stemmer = FrenchStemmer()
 nltk.download('wordnet')
 nltk.download('omw')
+stemmer = FrenchStemmer()
 
 
 # ================================
 # =========== GET DATA ===========
 # ================================
 
-def getDataFromTextFile(folder):
-	data = []
-	for filename in os.listdir(folder):
-		with open(folder+ "/" +filename) as inp:
-			for line in inp:
-				words = splitByWord(line)
-				for w in words:
-					data.append(w)
-	return data
-
+# Recupérer tous les mots des fichier json trouvé afin de définir une liste de mot les plus récurent avec un vocabulaire particulier
 def getDataFromTextFileJson():
 	data = []
 	for file in os.listdir("."):
@@ -48,14 +40,11 @@ def getDataFromTextFileJson():
 # =========== SPLIT ============
 # ==============================
 
-def splitByWord(line):
-	wordsList = []
-	words = line.split()
-	for word in words:
-		wordsList.append(word)
+# Split et enlève les mots dont la taille et plus petite que 3
+def splitByWord(text):
+	return re.findall(r"[\w']+", text)
 
-	return wordsList
-
+# Compte les mot et enlève les redondances
 def sortByWord(words, n):
 	dictionnary = {}
 	for w in words:
@@ -69,22 +58,34 @@ def sortByWord(words, n):
 	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
 	return lemmatizationList(l)
 
+# Création d'un dictionnaire :
+#
+#	"phrase" : {
+#		"reponse" : "phrase"
+#		"motCle" : liste de mot clé permettant de déterminer si la réponse correspondrait à la question posé
+# 	}
+#
 def suppressionMot(path, l):
 	questions = {}
 	with open(path) as inp:
 		dict_test = json.load(inp)
 		for k, v in dict_test.iteritems():
-			words = splitByWord(v[0])
-			words = lemmatizationList(words)
+			words = splitByWord(v[0].encode('utf-8'))
+			lemmaWords = lemmatizationList(words)
 			array = []
-			for w in words:
+			for idx, w in enumerate(lemmaWords):
 				if w.lower() not in l:
 					array.append(w.lower())
+					# print words[idx]
+					# print synonyme(words[idx])
+					# array.append(synonyme(words[idx]))
 			questions[v[0]] = {"reponse": v[1], "motCle": array}
 	return questions
 
+# Suppression des mots de la question qui ferait partie de la liste placé en paramètre
+# Cela permet de ne garder uniquement les mot "important"
 def suppressionMotOneQuestion(l, quest):
-	words = quest.split(" ")
+	words = splitByWord(quest)
 	words = lemmatizationList(words)
 	array = []
 	for w in words:
@@ -93,22 +94,18 @@ def suppressionMotOneQuestion(l, quest):
 	
 	return array
 
-def appendWordTolist(myList, wordsList):
-	for word in wordsList:
-		myList.append(word.lower())
-	return myList
-
 # =================================
 # =========== LEMMATIZE ===========
 # =================================
 
+# Lemmatiser une liste de mot
 def lemmatizationList(l):
 	newList = []
 	for w in l:
 		newList.append(stemmer.stem(w))
 	return newList
 
-
+# Lemmatiser un mot
 def lemmatizationWord(w):
 	return stemmer.stem(w)
 
@@ -116,10 +113,10 @@ def lemmatizationWord(w):
 # =========== COMPARE QUESTIONS ===========
 # =========================================
 
+# Trouve une réponse à la quesion posé en analysant les mots
 def compareQuestions(newQuestWords, words):
 	allQuestions = words.keys()
 	pourcentQuestion = {}
-	
 	for currentQuestion in allQuestions:
 		pourcent = 0
 		for w in newQuestWords:
@@ -127,13 +124,13 @@ def compareQuestions(newQuestWords, words):
 				pourcent += 0.2
 		pourcentQuestion[currentQuestion] = pourcent 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	# theAnswer = words[theQuestion]
 	return pourcentQuestion, theQuestion
 
 # ================================
 # =========== SYNONYME ===========
 # ================================
 
+# trouver des synonyme de mot
 def synonyme(w):
 	return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
 
@@ -141,7 +138,7 @@ def synonyme(w):
 # =================================
 
 
-
+# synonyme("pays")
 
 # Récupérer tous les mots des fichier json
 words = getDataFromTextFileJson()
@@ -151,19 +148,26 @@ listSortedWords = sortByWord(words, int(8))
 
 # Ajouter des mots à la list "listSortedWords"
 wordsList = lemmatizationList(['que', 'quels', 'quoi', 'comment', 'pourquoi', 'ou', 'qui', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'mes', 'moi', 'se', 'ce'])
-listSortedWords = appendWordTolist(listSortedWords, wordsList)
+listSortedWords = listSortedWords + wordsList
 
 # Supprimer les mots récurrent afin de ne garder que les mots clé
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
-#pprint(words)
+
+pprint(words)
+
 # questionsList = words.keys()
 
-newQuestion = "Est ce que je peux changer l adresse de livraison ?"
-newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
-result, theQuestion = compareQuestions(newQuestWords, words)
-theAnswer = words[theQuestion]
-print "The answer is : ", theAnswer['reponse']
-pprint(result)
+# print ""
+# print ""
+# print ""
+# print ""
+# newQuestion = "Est ce que je peux changer l adresse de livraison ?"
+# newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
+# result, theQuestion = compareQuestions(newQuestWords, words)
+# theAnswer = words[theQuestion]
+# print newQuestion
+# print "The answer is : ", theAnswer['reponse']
+# pprint(result)
 
 # Test de synonyme
 # print synonyme('acheter')
