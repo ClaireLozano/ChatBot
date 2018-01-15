@@ -6,8 +6,13 @@ from pprint import pprint
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
+from nltk.corpus import wordnet
+from nltk.corpus import wordnet as wn
+
 nltk.download('punkt')
 stemmer = FrenchStemmer()
+nltk.download('wordnet')
+nltk.download('omw')
 
 
 # =========== GET DATA ===========
@@ -80,7 +85,6 @@ def appendWordTolist(myList, wordsList):
 	return myList
 
 
-
 # =========== LEMMATIZE ===========
 
 def lemmatizationList(l):
@@ -93,6 +97,13 @@ def lemmatizationList(l):
 def lemmatizationWord(w):
 	return stemmer.stem(w)
 
+
+# =========== SYNONYME ===========
+
+def synonyme(w):
+	return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+
+
 # =================================
 
 # get words
@@ -103,12 +114,16 @@ words = getDataFromTextFileJson()
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
 
-wordsList = lemmatizationList(['que', 'quels', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'moi', 'se'])
+wordsList = lemmatizationList(['que', 'quels', 'quoi', 'comment', 'pourquoi', 'ou', 'qui', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'mes', 'moi', 'se', 'ce'])
 listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
 print listSortedWords
 
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
 pprint(words)
+
+print synonyme('acheter')
+
+# print wordnet.all_lemma_names(pos='n', lang='fra')
 
 
