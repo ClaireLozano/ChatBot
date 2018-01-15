@@ -50,23 +50,19 @@ def sortByWord(words, n):
 	return l
 
 
-# def suppressionMot(path, l):
-# 	questions = {}
-# 	with open(path) as inp:
-# 		dict_test = json.load(inp)
-# 		for k, v in dict_test.iteritems():
-# 			questions[v[0]] = []
-# 			words = splitByWord(v[0])
-# 			for w in words:
-# 				if w not in l:
-# 					print questions[v[0]]
-# 					resToAppend = questions[v[0]]
-# 					print type(resToAppend)
-# 					test = resToAppend.append(w)
-# 					print test
-# 					print type(test)
-# 					questions[v[0]] = test
-# 				print "FIN"
+def suppressionMot(path, l):
+	questions = {}
+	with open(path) as inp:
+		dict_test = json.load(inp)
+		for k, v in dict_test.iteritems():
+			words = splitByWord(v[0])
+			array = []
+			for w in words:
+				if w not in l:
+					array.append(w)
+			questions[v[0]] = array
+	return questions
+
 
 # get words
 # words = getDataFromTextFile("base_appr_fr")
@@ -78,6 +74,6 @@ listSortedWords = sortByWord(words, int(8))
 print listSortedWords
 
 
-# words = suppressionMot("1_faq_dmc.json", listSortedWords)
-# print words
+words = suppressionMot("1_faq_dmc.json", listSortedWords)
+pprint(words)
 
