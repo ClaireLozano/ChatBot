@@ -1,6 +1,7 @@
 # -*- coding: iso-8859-1 -*-
 
 import os
+import operator
 import json
 from pprint import pprint
 import nltk
@@ -74,6 +75,16 @@ def suppressionMot(path, l):
 			questions[v[0]] = array
 	return questions
 
+def suppressionMotOneQuestion(l, quest):
+	words = quest.split(" ")
+	words = lemmatizationList(words)
+	array = []
+	for w in words:
+		if w.lower() not in l:
+			array.append(w.lower())
+	
+	return array
+
 def appendWordTolist(myList, wordsList):
 	for word in wordsList:
 		myList.append(word.lower())
@@ -93,6 +104,24 @@ def lemmatizationList(l):
 def lemmatizationWord(w):
 	return stemmer.stem(w)
 
+
+# =========== COMPARE QUESTIONS ===========
+
+def compareQuestions(newQuestWords, words):
+	allQuestions = words.keys()
+	pourcentQuestion = {}
+	
+	for currentQuestion in allQuestions:
+		pourcent = 0
+		for w in newQuestWords:
+			if w in words[currentQuestion]: 
+				pourcent += 0.2
+		pourcentQuestion[currentQuestion] = pourcent 
+	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
+	return pourcentQuestion, theQuestion
+
+
+
 # =================================
 
 # get words
@@ -103,12 +132,18 @@ words = getDataFromTextFileJson()
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
 
-wordsList = lemmatizationList(['que', 'quels', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'moi', 'se'])
+wordsList = lemmatizationList(['que', 'quels', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'moi', 'se', 'ce'])
 listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
-print listSortedWords
+# print listSortedWords
 
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
 pprint(words)
+# questionsList = words.keys()
+
+newQuestion = "Est ce que je peux changer l adresse de livraison ?"
+newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
+result, theQ = compareQuestions(newQuestWords, words)
+print theQ
 
 
