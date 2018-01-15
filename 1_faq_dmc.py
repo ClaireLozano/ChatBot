@@ -58,14 +58,15 @@ def suppressionMot(path, l):
 			words = splitByWord(v[0])
 			array = []
 			for w in words:
-				if w not in l:
-					array.append(w)
+				if w.lower() not in l:
+					array.append(w.lower())
 			questions[v[0]] = array
 	return questions
 
 def appendWordTolist(myList, wordsList):
 	for word in wordsList:
-		myList.append(word)
+		myList.append(word.lower())
+	return myList
 
 
 
@@ -74,12 +75,11 @@ def appendWordTolist(myList, wordsList):
 words = getDataFromTextFileJson()
 
 
-
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
 
-wordsList = ['Quels', 'Comme', 'est', 'Dans', 'Ma', 'quels']
-appendWordTolist(listSortedWords, wordsList)
+wordsList = ['que', 'quels', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'moi', 'se']
+listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
 print listSortedWords
 
