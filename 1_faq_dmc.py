@@ -18,7 +18,9 @@ nltk.download('wordnet')
 nltk.download('omw')
 
 
+# ================================
 # =========== GET DATA ===========
+# ================================
 
 def getDataFromTextFile(folder):
 	data = []
@@ -34,7 +36,6 @@ def getDataFromTextFileJson():
 	data = []
 	for file in os.listdir("."):
 		if file.endswith(".json") and file != "3_questions_syp.json":
-			print file
 			with open(file) as inp:
 				dict_test = json.load(inp)
 				for k, v in dict_test.iteritems():
@@ -43,7 +44,9 @@ def getDataFromTextFileJson():
 						data.append(w)
 	return data
 
-# =========== SPLIT ===========
+# ==============================
+# =========== SPLIT ============
+# ==============================
 
 def splitByWord(line):
 	wordsList = []
@@ -95,8 +98,9 @@ def appendWordTolist(myList, wordsList):
 		myList.append(word.lower())
 	return myList
 
-
+# =================================
 # =========== LEMMATIZE ===========
+# =================================
 
 def lemmatizationList(l):
 	newList = []
@@ -108,8 +112,9 @@ def lemmatizationList(l):
 def lemmatizationWord(w):
 	return stemmer.stem(w)
 
-
+# =========================================
 # =========== COMPARE QUESTIONS ===========
+# =========================================
 
 def compareQuestions(newQuestWords, words):
 	allQuestions = words.keys()
@@ -124,7 +129,9 @@ def compareQuestions(newQuestWords, words):
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
+# ================================
 # =========== SYNONYME ===========
+# ================================
 
 def synonyme(w):
 	return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
@@ -132,21 +139,22 @@ def synonyme(w):
 
 # =================================
 
-# get words
-# words = getDataFromTextFile("base_appr_fr")
+
+
+
+# Récupérer tous les mots des fichier json
 words = getDataFromTextFileJson()
 
-
-# Sort word - keep les X mots les plus utilises
+# Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
 listSortedWords = sortByWord(words, int(8))
 
+# Ajouter des mots à la list "listSortedWords"
 wordsList = lemmatizationList(['que', 'quels', 'quoi', 'comment', 'pourquoi', 'ou', 'qui', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'mes', 'moi', 'se', 'ce'])
 listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
-# print listSortedWords
-
+# Supprimer les mots récurrent afin de ne garder que les mots clé
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
-pprint(words)
+#pprint(words)
 # questionsList = words.keys()
 
 newQuestion = "Est ce que je peux changer l adresse de livraison ?"
@@ -154,9 +162,8 @@ newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
 result, theQ = compareQuestions(newQuestWords, words)
 print theQ
 
+# Test de synonyme
+# print synonyme('acheter')
 
-print synonyme('acheter')
-
-# print wordnet.all_lemma_names(pos='n', lang='fra')
 
 
