@@ -127,8 +127,8 @@ def compareQuestions(newQuestWords, words):
 				pourcent += 0.2
 		pourcentQuestion[currentQuestion] = pourcent 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	theAnswer = words[theQuestion]
-	return pourcentQuestion, theAnswer
+	# theAnswer = words[theQuestion]
+	return pourcentQuestion, theQuestion
 
 # ================================
 # =========== SYNONYME ===========
@@ -160,9 +160,10 @@ words = suppressionMot("1_faq_dmc.json", listSortedWords)
 
 newQuestion = "Est ce que je peux changer l adresse de livraison ?"
 newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
-result, theQ = compareQuestions(newQuestWords, words)
-print "The answer is : ", theQ['reponse']
-print theQ['reponse']
+result, theQuestion = compareQuestions(newQuestWords, words)
+theAnswer = words[theQuestion]
+print "The answer is : ", theAnswer['reponse']
+pprint(result)
 
 # Test de synonyme
 # print synonyme('acheter')
