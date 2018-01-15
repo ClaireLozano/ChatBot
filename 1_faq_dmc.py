@@ -63,6 +63,8 @@ def suppressionMot(path, l):
 			questions[v[0]] = array
 	return questions
 
+def appendWordTolist(l):
+	print "ajouter mots"
 
 # get words
 # words = getDataFromTextFile("base_appr_fr")
