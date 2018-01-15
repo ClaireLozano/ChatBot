@@ -56,8 +56,8 @@ def sortByWord(words, n):
 				dictionnary[w] = 1
 		else : 
 			dictionnary[w] = 1
-	l = sorted([x for x,y in dictionnary.items() if y > 8], reverse=True)
-	return l
+	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
+	return lemmatizationList(l)
 
 
 def suppressionMot(path, l):
@@ -66,15 +66,20 @@ def suppressionMot(path, l):
 		dict_test = json.load(inp)
 		for k, v in dict_test.iteritems():
 			words = splitByWord(v[0])
+			words = lemmatizationList(words)
 			array = []
 			for w in words:
-				if w not in l:
-					array.append(lemmatizationWord(w))
+				if w.lower() not in l:
+					array.append(w.lower())
 			questions[v[0]] = array
 	return questions
 
-def appendWordTolist(l):
-	print "ajouter mots"
+def appendWordTolist(myList, wordsList):
+	for word in wordsList:
+		myList.append(word.lower())
+	return myList
+
+
 
 # =========== LEMMATIZE ===========
 
@@ -94,8 +99,12 @@ def lemmatizationWord(w):
 # words = getDataFromTextFile("base_appr_fr")
 words = getDataFromTextFileJson()
 
+
 # Sort word - keep les X mots les plus utilises
 listSortedWords = sortByWord(words, int(8))
+
+wordsList = lemmatizationList(['que', 'quels', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'moi', 'se'])
+listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
 print listSortedWords
 
