@@ -118,8 +118,8 @@ def compareQuestions(newQuestWords, words):
 		pourcent = 0
 		for w in newQuestWords:
 			if w in words[currentQuestion]['motCle']: 
-				pourcent += 0.2
-		pourcentQuestion[currentQuestion] = pourcent 
+				pourcent += 1
+		pourcentQuestion[currentQuestion] = pourcent / len(words[currentQuestion]['motCle']) 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
@@ -164,7 +164,7 @@ print "========= TEST ========="
 print "========================"
 print ""
 questionsList = words.keys()
-newQuestion = "Je ne comprends pas pourquoi c'est écrit \"en attente\" sur mon dossier dans e-candidat\u00a0 pour un avenir meilleur"
+newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
