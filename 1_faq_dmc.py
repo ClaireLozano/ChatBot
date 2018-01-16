@@ -37,24 +37,21 @@ pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 # Split et enlève les mots dont la taille et plus petite que 3
 def splitByWord(text):
-	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous", "vous", "ils", "elles"]
+	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous," ,"nous", "vous", "ils", "elles"]
 	listWord = []
 	for word in text.split():
 		# for pronom in listPronoms:
 		if "-" in word:
 			for mot in word.split("-"):
-				if mot in listPronoms:
-					print word.split("-") 
-				else:
-					print "**** pas de trait d\'union' : ",word
-			# 	print ""
-			# else:
-			# 	if "-" in word:
-			# 		print "\n****"
-			# 		print word
-			# 		print "*****\n"
-
-	return re.findall(r"[\w']+", text)
+				if len(mot) is 1:
+					listWord.append(word)
+				if mot not in listPronoms:
+					if word.split("-")[1] not in listPronoms:
+						listWord.append(word)
+						print word
+	print "listWord"
+	print listWord
+	return re.findall(r"[\w]+", text, re.UNICODE)
 
 # ===================================
 # =========== DICTIONNARY ===========
@@ -98,14 +95,16 @@ def createDictionnaryOneQuestion(l, quest):
 
 # Lemmatiser une liste de mot
 def lemmatizationList(l):
-	newList = []
-	for w in l:
-		newList.append(stemmer.stem(w))
-	return newList
+	# newList = []
+	# for w in l:
+	# 	newList.append(stemmer.stem(w))
+	return l
+	# return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	return stemmer.stem(w)
+	# return stemmer.stem(w)
+	return w
 
 # =========================================
 # =========== COMPARE QUESTIONS ===========
@@ -142,7 +141,7 @@ def synonyme(w):
 # Trouver tout les tags des mots présent dans une phrase sous la forme de tableau :
 # 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
 def getTag(s):
-	res = pos_tagger.tag(s.split())
+	res = pos_tagger.tag(splitByWord(s))
 	return res
 
 # =================================
@@ -158,7 +157,6 @@ print "======================"
 print ""
 
 pprint(words)
-
 
 print ""
 print "========================"
