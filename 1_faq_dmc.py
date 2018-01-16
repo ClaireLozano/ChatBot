@@ -31,23 +31,6 @@ os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 
-# ================================
-# =========== GET DATA ===========
-# ================================
-
-# Recupérer tous les mots des fichier json trouvé afin de définir une liste de mot les plus récurent avec un vocabulaire particulier
-def getDataFromTextFileJson():
-	data = []
-	for file in os.listdir("."):
-		if file.endswith(".json") and file != "3_questions_syp.json":
-			with open(file) as inp:
-				dict_test = json.load(inp)
-				for k, v in dict_test.iteritems():
-					words = splitByWord(v[0])
-					for w in words:
-						data.append(w)
-	return data
-
 # ==============================
 # =========== SPLIT ============
 # ==============================
@@ -73,19 +56,9 @@ def splitByWord(text):
 
 	return re.findall(r"[\w']+", text)
 
-# Compte les mots et enlève les redondances
-def sortByWord(words, n):
-	dictionnary = {}
-	for w in words:
-		if len(dictionnary):
-			if w in dictionnary.keys():
-				dictionnary[w] = dictionnary.get(w) + 1
-			else:
-				dictionnary[w] = 1
-		else : 
-			dictionnary[w] = 1
-	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
-	return lemmatizationList(l)
+# ===================================
+# =========== DICTIONNARY ===========
+# ===================================
 
 # Création d'un dictionnaire :
 #
@@ -94,8 +67,8 @@ def sortByWord(words, n):
 #		"motCle" : liste de mot clé permettant de déterminer si la réponse correspondrait à la question posé
 # 	}
 #
-def createDictionnary(path, l):
-	questions = {}
+def createDictionnary(path):
+	dictionnary = {}
 	with open(path) as inp:
 		dict_test = json.load(inp)
 		for k, v in dict_test.iteritems():
@@ -106,19 +79,17 @@ def createDictionnary(path, l):
 					array.append(lemmatizationWord(t[0].lower()))
 					array = array + lemmatizationList(synonyme(t[0]))
 					array = list(set(array))
-			questions[v[0]] = {"reponse": v[1], "motCle": array}
-	return questions
+			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
+	return dictionnary
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mot "important"
 def createDictionnaryOneQuestion(l, quest):
-	words = splitByWord(quest)
-	words = lemmatizationList(words)
+	words = lemmatizationList(splitByWord(quest))
 	array = []
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
-	
 	return array
 
 # =================================
@@ -178,35 +149,31 @@ def getTag(s):
 # =================================
 
 
-# Récupérer tous les mots des fichier json
-words = getDataFromTextFileJson()
+# Creation de dictionnaire avec les mots clé d'une question et sa réponse
+words = createDictionnary("1_faq_dmc.json")
 
-# Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
-listSortedWords = sortByWord(words, int(8))
-
-# Ajouter des mots à la list "listSortedWords"
-wordsList = lemmatizationList(['que', 'quels', 'quoi', 'comment', 'pourquoi', 'ou', 'qui', 'comme', 'est', 'sont', 'dans', 'ma', 'mon', 'mes', 'moi', 'se', 'ce'])
-listSortedWords = listSortedWords + wordsList
-
-# Supprimer les mots récurrent afin de ne garder que les mots clé
-words = createDictionnary("1_faq_dmc.json", listSortedWords)
+print ""
+print "======================"
+print "==== DICTIONNARY =====" 
+print "======================"
+print ""
 
 pprint(words)
 
+
+print ""
+print "========================"
+print "========= TEST =========" 
+print "========================"
+print ""
 questionsList = words.keys()
-
-
-# print ""
-# print ""
-# print ""
-# print ""
-# newQuestion = "Est ce que je peux changer l adresse de livraison selon les tarifs ?"
-# newQuestWords = createDictionnaryOneQuestion(listSortedWords, newQuestion)
-# result, theQuestion = compareQuestions(newQuestWords, words)
-# theAnswer = words[theQuestion]
-# print newQuestion
-# print "The answer is : ", theAnswer['reponse']
-# pprint(result)
+newQuestion = "Est ce que je peux changer l adresse de livraison selon les tarifs ?"
+newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+result, theQuestion = compareQuestions(newQuestWords, words)
+theAnswer = words[theQuestion]
+print newQuestion
+print "The answer is : ", theAnswer['reponse']
+pprint(result)
 
 
 # Marche pas - tokenization 
