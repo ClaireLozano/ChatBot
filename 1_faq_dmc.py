@@ -143,7 +143,6 @@ def synonyme(w):
 # 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
 def getTag(s):
 	res = pos_tagger.tag(s.split())
-	print res
 	return res
 
 # =================================
@@ -167,7 +166,7 @@ print "========= TEST ========="
 print "========================"
 print ""
 questionsList = words.keys()
-newQuestion = "Est ce que je peux changer l adresse de livraison selon les tarifs ?"
+newQuestion = "Je ne comprends pas pourquoi c'est écrit \"en attente\" sur mon dossier dans e-candidat\u00a0 pour un avenir meilleur"
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
