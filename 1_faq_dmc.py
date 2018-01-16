@@ -1,4 +1,5 @@
-# -*- coding: iso-8859-1 -*-
+ #!/usr/bin/python
+ # -*- coding: utf-8 -*-
 
 import os
 import operator
@@ -44,7 +45,7 @@ def getDataFromTextFileJson():
 def splitByWord(text):
 	return re.findall(r"[\w']+", text)
 
-# Compte les mot et enlève les redondances
+# Compte les mots et enlève les redondances
 def sortByWord(words, n):
 	dictionnary = {}
 	for w in words:
@@ -70,15 +71,14 @@ def suppressionMot(path, l):
 	with open(path) as inp:
 		dict_test = json.load(inp)
 		for k, v in dict_test.iteritems():
-			words = splitByWord(v[0].encode('utf-8'))
+			words = splitByWord(v[0])
 			lemmaWords = lemmatizationList(words)
 			array = []
 			for idx, w in enumerate(lemmaWords):
 				if w.lower() not in l:
 					array.append(w.lower())
-					# print words[idx]
-					# print synonyme(words[idx])
-					# array.append(synonyme(words[idx]))
+					array = array + lemmatizationList(synonyme(words[idx]))
+					array = list(set(array))
 			questions[v[0]] = {"reponse": v[1], "motCle": array}
 	return questions
 
@@ -132,13 +132,14 @@ def compareQuestions(newQuestWords, words):
 
 # trouver des synonyme de mot
 def synonyme(w):
-	return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+	try:
+		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+	except:
+		return []
 
 
 # =================================
 
-
-# synonyme("pays")
 
 # Récupérer tous les mots des fichier json
 words = getDataFromTextFileJson()
@@ -155,13 +156,13 @@ words = suppressionMot("1_faq_dmc.json", listSortedWords)
 
 pprint(words)
 
-# questionsList = words.keys()
+questionsList = words.keys()
 
 # print ""
 # print ""
 # print ""
 # print ""
-# newQuestion = "Est ce que je peux changer l adresse de livraison ?"
+# newQuestion = "Est ce que je peux changer l adresse de livraison selon les tarifs ?"
 # newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
 # result, theQuestion = compareQuestions(newQuestWords, words)
 # theAnswer = words[theQuestion]
