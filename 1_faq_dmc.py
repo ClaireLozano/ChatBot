@@ -120,7 +120,7 @@ def lemmatizationWord(w):
 # =========== COMPARE QUESTIONS ===========
 # =========================================
 
-# Trouve une réponse à la quesion posé en analysant les mots
+# Trouve une réponse à la quesion posée en analysant les mots
 def compareQuestions(newQuestWords, words):
 	allQuestions = words.keys()
 	pourcentQuestion = {}
@@ -137,7 +137,7 @@ def compareQuestions(newQuestWords, words):
 # =========== SYNONYME ===========
 # ================================
 
-# trouver des synonymes de mot
+# Trouver des synonymes de mot
 def synonyme(w):
 	try:
 		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
