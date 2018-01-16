@@ -20,11 +20,15 @@ from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
+from nltk.tag import StanfordPOSTagger
 
 t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
-
-
+jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
+model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+os.environ['JAVAHOME'] = java_path
+pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 
 # ================================
@@ -144,6 +148,16 @@ def synonyme(w):
 	except:
 		return []
 
+# ================================
+# ============= TAG ==============
+# ================================
+
+# Trouver tout les tags des mots présent dans une phrase sous la forme de tableau :
+# 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
+def getTag(s):
+	res = pos_tagger.tag(s.split())
+	print res
+	return res
 
 # =================================
 
@@ -182,4 +196,5 @@ questionsList = words.keys()
 # content_french = "j'aime les plate-formes"
 # print word_tokenize(content_french, language='french')
 # print d.detokenize(content_french, unescape=False)
+
 
