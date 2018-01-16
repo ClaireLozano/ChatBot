@@ -8,16 +8,23 @@ import codecs
 import re
 import nltk
 
+nltk.download('nonbreaking_prefixes')
+nltk.download('perluniprops')
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw')
+
 from pprint import pprint
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
+from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw')
+t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
+
+
 
 
 # ================================
@@ -130,7 +137,7 @@ def compareQuestions(newQuestWords, words):
 # =========== SYNONYME ===========
 # ================================
 
-# trouver des synonyme de mot
+# trouver des synonymes de mot
 def synonyme(w):
 	try:
 		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
@@ -170,8 +177,9 @@ questionsList = words.keys()
 # print "The answer is : ", theAnswer['reponse']
 # pprint(result)
 
-# Test de synonyme
-# print synonyme('acheter')
 
-
+# Marche pas - tokenization 
+# content_french = "j'aime les plate-formes"
+# print word_tokenize(content_french, language='french')
+# print d.detokenize(content_french, unescape=False)
 
