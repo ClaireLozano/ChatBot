@@ -94,25 +94,24 @@ def sortByWord(words, n):
 #		"motCle" : liste de mot clé permettant de déterminer si la réponse correspondrait à la question posé
 # 	}
 #
-def suppressionMot(path, l):
+def createDictionnary(path, l):
 	questions = {}
 	with open(path) as inp:
 		dict_test = json.load(inp)
 		for k, v in dict_test.iteritems():
-			words = splitByWord(v[0])
-			lemmaWords = lemmatizationList(words)
 			array = []
-			for idx, w in enumerate(lemmaWords):
-				if w.lower() not in l:
-					array.append(w.lower())
-					array = array + lemmatizationList(synonyme(words[idx]))
+			tags = getTag(v[0])
+			for t in tags:
+				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
+					array.append(lemmatizationWord(t[0].lower()))
+					array = array + lemmatizationList(synonyme(t[0]))
 					array = list(set(array))
 			questions[v[0]] = {"reponse": v[1], "motCle": array}
 	return questions
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mot "important"
-def suppressionMotOneQuestion(l, quest):
+def createDictionnaryOneQuestion(l, quest):
 	words = splitByWord(quest)
 	words = lemmatizationList(words)
 	array = []
@@ -190,18 +189,19 @@ wordsList = lemmatizationList(['que', 'quels', 'quoi', 'comment', 'pourquoi', 'o
 listSortedWords = listSortedWords + wordsList
 
 # Supprimer les mots récurrent afin de ne garder que les mots clé
-words = suppressionMot("1_faq_dmc.json", listSortedWords)
+words = createDictionnary("1_faq_dmc.json", listSortedWords)
 
 pprint(words)
 
 questionsList = words.keys()
+
 
 # print ""
 # print ""
 # print ""
 # print ""
 # newQuestion = "Est ce que je peux changer l adresse de livraison selon les tarifs ?"
-# newQuestWords = suppressionMotOneQuestion(listSortedWords, newQuestion)
+# newQuestWords = createDictionnaryOneQuestion(listSortedWords, newQuestion)
 # result, theQuestion = compareQuestions(newQuestWords, words)
 # theAnswer = words[theQuestion]
 # print newQuestion
