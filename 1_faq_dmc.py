@@ -1,24 +1,14 @@
 # -*- coding: iso-8859-1 -*-
 import os
 import json
+import codecs
 from pprint import pprint
-
-def getDataFromTextFile(folder):
-	data = []
-	for filename in os.listdir(folder):
-		with open(folder+ "/" +filename) as inp:
-			for line in inp:
-				words = splitByWord(line)
-				for w in words:
-					data.append(w)
-	return data
-
 def getDataFromTextFileJson():
 	data = []
 	for file in os.listdir("."):
 		if file.endswith(".json") and file != "3_questions_syp.json":
 			print file
-			with open(file) as inp:
+			with codecs.open(file,'r',"utf-8") as inp:
 				dict_test = json.load(inp)
 				for k, v in dict_test.iteritems():
 					words = splitByWord(v[0])
@@ -83,7 +73,14 @@ listSortedWords = appendWordTolist(listSortedWords, wordsList)
 
 print listSortedWords
 
-
 words = suppressionMot("1_faq_dmc.json", listSortedWords)
-pprint(words)
+
+dict_res = {}
+with codecs.open("1_faq_dmc.json") as file_test:
+    dict_test = json.load(file_test)
+for value in dict_test.values():
+    for key,valeur in words.items():
+        if key == value[0]:
+            dict_res[value[1]] = valeur
+pprint(dict_res)            
 
