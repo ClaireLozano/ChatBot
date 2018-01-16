@@ -26,7 +26,10 @@ t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Claire's Path 
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Wafaa's Path
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
@@ -35,23 +38,24 @@ pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 # =========== SPLIT ============
 # ==============================
 
-# Split et enlève les mots dont la taille et plus petite que 3
+# Split et ananlyse des mots composés
 def splitByWord(text):
 	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous," ,"nous", "vous", "ils", "elles"]
 	listWord = []
 	for word in text.split():
-		# for pronom in listPronoms:
-		if "-" in word:
+		if len(word.split("-")) is 1:
+			listWord.append(word)
+		else:
+			splitabale = False
 			for mot in word.split("-"):
-				if len(mot) is 1:
-					listWord.append(word)
-				if mot not in listPronoms:
-					if word.split("-")[1] not in listPronoms:
-						listWord.append(word)
-						print word
-	print "listWord"
-	print listWord
-	return re.findall(r"[\w]+", text, re.UNICODE)
+				if mot in listPronoms:
+					splitabale = True
+			if splitabale is True:
+				listWord = listWord + word.split("-")
+			else:
+				listWord.append(word)
+				
+	return listWord
 
 # ===================================
 # =========== DICTIONNARY ===========
