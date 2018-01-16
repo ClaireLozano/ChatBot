@@ -42,6 +42,23 @@ def getDataFromTextFileJson():
 
 # Split et enlève les mots dont la taille et plus petite que 3
 def splitByWord(text):
+	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous", "vous", "ils", "elles"]
+	listWord = []
+	for word in text.split():
+		# for pronom in listPronoms:
+		if "-" in word:
+			for mot in word.split("-"):
+				if mot in listPronoms:
+					print word.split("-") 
+				else:
+					print "**** pas de trait d\'union' : ",word
+			# 	print ""
+			# else:
+			# 	if "-" in word:
+			# 		print "\n****"
+			# 		print word
+			# 		print "*****\n"
+
 	return re.findall(r"[\w']+", text)
 
 # Compte les mot et enlève les redondances
