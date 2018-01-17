@@ -54,7 +54,7 @@ def splitByWord(text):
 				listWord = listWord + word.split("-")
 			else:
 				listWord.append(word)
-				
+
 	return listWord
 
 # ===================================
