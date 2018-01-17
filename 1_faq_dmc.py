@@ -19,6 +19,7 @@ from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
+from SynFranWord import dict_syns
 
 t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
@@ -112,7 +113,7 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + lemmatizationList(synonyme(t[0]))
+					#array = array + lemmatizationList(synonyme(t[0]))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
@@ -125,6 +126,7 @@ def createDictionnaryOneQuestion(l, quest):
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
+                array = array + lemmatizationList(synonyme(w.lower()))
 	return array
 
 # =================================
@@ -171,7 +173,7 @@ def compareQuestions(newQuestWords, words):
 # Trouver des synonymes de mot
 def synonyme(w):
 	try:
-		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+		return dict_syns[w]
 	except:
 		return []
 
@@ -216,7 +218,7 @@ print "========================"
 print ""
 questionsList = words.keys()
 
-newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
+newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs acheter?"
 
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
