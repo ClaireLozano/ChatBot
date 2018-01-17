@@ -64,7 +64,7 @@ Pour stocker les questions/réponses ainsi que leurs mots clés, nous avons déc
 
 ## Installation
 
-Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande "pip install LIBRARY_NAME" :
+Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME` :
 * os
 * operator
 * json
