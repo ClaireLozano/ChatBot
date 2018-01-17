@@ -15,9 +15,7 @@ nltk.download('wordnet')
 nltk.download('omw')
 
 from pprint import pprint
-from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
-from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
@@ -33,6 +31,26 @@ java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/ja
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
+
+
+# ================================
+# =========== GET DATA ===========
+# ================================
+
+# Recupérer tous les mots des fichier json trouvé afin de définir une liste de mot les plus récurent avec un vocabulaire particulier
+def getDataFromTextFileJson():
+	data = []
+	for file in os.listdir("."):
+		if file.endswith(".json") and file != "3_questions_syp.json":
+			print file
+			with codecs.open(file,'r',"utf-8") as inp:
+				dict_test = json.load(inp)
+				for k, v in dict_test.iteritems():
+					words = splitByWord(v[0])
+					for w in words:
+						data.append(w)
+
+	return data
 
 # ==============================
 # =========== SPLIT ============
@@ -57,9 +75,25 @@ def splitByWord(text):
 
 	return listWord
 
+
+# Compte les mots et enlève les redondances
+def sortByWord(words):
+	dictionnary = {}
+	for w in words:
+		if len(dictionnary):
+			if w in dictionnary.keys():
+				dictionnary[w] = dictionnary.get(w) + 1
+			else:
+				dictionnary[w] = 1
+		else : 
+			dictionnary[w] = 1
+	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
+	return lemmatizationList(l)
+
 # ===================================
 # =========== DICTIONNARY ===========
 # ===================================
+
 
 # Création d'un dictionnaire :
 #
@@ -158,8 +192,14 @@ print ""
 print ""
 dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
 
+# Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
+#listSortedWords = sortByWord(words)
+
+
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
+
 words = createDictionnary(dictionnary)
+
 
 print ""
 print "======================"
@@ -175,6 +215,22 @@ print "========= TEST ========="
 print "========================"
 print ""
 questionsList = words.keys()
+
+newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
+
+newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+result, theQuestion = compareQuestions(newQuestWords, words)
+theAnswer = words[theQuestion]
+print newQuestion
+print "The answer is : ", theAnswer['reponse']
+#pprint(result)
+
+
+# Marche pas - tokenization 
+# content_french = "j'aime les plate-formes"
+# print word_tokenize(content_french, language='french')
+# print d.detokenize(content_french, unescape=False)
+
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
