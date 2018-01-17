@@ -62,6 +62,19 @@ Pour stocker les questions/réponses ainsi que leurs mots clés, nous avons déc
 
 ### Etape 5 - Analyse d'une question
 
+Une fois la question posée, le programme va la récupérer, l'analyser, et comparer les mots de la question avec les mots clé des questions présentes dans le dictionnaire. Un pourcentage de mots clés trouvé sera alors calculé :
+
+```
+Détails de pourcentage de similarité : 
+{u'\n\nQue se passe-t-il si je ne suis pas chez moi pour r\xe9ceptionner ma commande ?': 0,
+ u'Dans quels pays livrez-vous et \xe0 quels tarifs ?\n': 0,
+ u'Mon adresse de livraison est incorrecte, comment la modifier ?': 0,
+ u'O\xf9 puis-je acheter les produits de Dans Ma Culotte\xa9 ?': 0,
+ u'Quels sont les moyens de paiement disponibles ?': 0.5}
+```
+
+La réponse donnée par le programme sera celle ayant le pourcentage le plus élevé.
+
 ## Installation et lancement
 
 Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME :
