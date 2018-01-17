@@ -64,3 +64,31 @@ Pour stocker les questions/réponses ainsi que leurs mots clés, nous avons déc
 
 ## Installation
 
+Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande "pip install LIBRARY_NAME" :
+* os
+* operator
+* json
+* codecs
+* re
+* nltk
+
+Dans le fichier `1_faq_dmc.json` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
+
+```
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+```
+
+Pour lancer le terminal, executez cette ligne de commande :
+
+```
+> python 1_faq_dmc.py
+```
+
+Suite à ça, il vous sera demandé de renseigner le fichier json de questions/réponses à analyser ainsi que une question utilisateur :
+
+```
+> *** Entrer le json de questions/réponses sous la forme ' *****.json ' : 1_faq_dmc.json
+...
+> *** Quelle est votre question : Comment modifier une adresse de livraison incorrecte ?
+... 
+```

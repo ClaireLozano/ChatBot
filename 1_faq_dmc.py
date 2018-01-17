@@ -123,7 +123,10 @@ def compareQuestions(newQuestWords, words):
 		for w in newQuestWords:
 			if w in words[currentQuestion]['motCle']: 
 				pourcent += 1
-		pourcentQuestion[currentQuestion] = pourcent / len(words[currentQuestion]['motCle']) 
+		if pourcent is 0:
+			pourcentQuestion[currentQuestion] = 0
+		else:
+			pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
@@ -150,9 +153,13 @@ def getTag(s):
 
 # =================================
 
+print ""
+print ""
+print ""
+dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
 
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
-words = createDictionnary("1_faq_dmc.json")
+words = createDictionnary(dictionnary)
 
 print ""
 print "======================"
@@ -168,18 +175,14 @@ print "========= TEST ========="
 print "========================"
 print ""
 questionsList = words.keys()
-newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
+newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
-print newQuestion
-print "The answer is : ", theAnswer['reponse']
+
+print "*** Voici la réponse à votre question : ", theAnswer['reponse']
+print ""
+print "Détails de pourcentage de similarité : "
 pprint(result)
-
-
-# Marche pas - tokenization 
-# content_french = "j'aime les plate-formes"
-# print word_tokenize(content_french, language='french')
-# print d.detokenize(content_french, unescape=False)
-
-
+print ""
+print ""
