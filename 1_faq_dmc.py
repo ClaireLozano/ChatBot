@@ -25,9 +25,9 @@ stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
 # Claire's Path 
-# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
 # Wafaa's Path
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
@@ -72,7 +72,7 @@ def splitByWord(text):
 				listWord = listWord + word.split("-")
 			else:
 				listWord.append(word)
-				
+
 	return listWord
 
 
@@ -157,7 +157,10 @@ def compareQuestions(newQuestWords, words):
 		for w in newQuestWords:
 			if w in words[currentQuestion]['motCle']: 
 				pourcent += 1
-		pourcentQuestion[currentQuestion] = pourcent / len(words[currentQuestion]['motCle']) 
+		if pourcent is 0:
+			pourcentQuestion[currentQuestion] = 0
+		else:
+			pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
@@ -184,13 +187,19 @@ def getTag(s):
 
 # =================================
 
+print ""
+print ""
+print ""
+dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
 
 # Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
 #listSortedWords = sortByWord(words)
 
 
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
-words = createDictionnary("2_questions_sorbonne.json")
+
+words = createDictionnary(dictionnary)
+
 
 print ""
 print "======================"
@@ -200,22 +209,15 @@ print ""
 
 pprint(words)
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0893a72d21c03e97140fa4d59527a7c2b48ee130
 print ""
 print "========================"
 print "========= TEST =========" 
 print "========================"
 print ""
 questionsList = words.keys()
-<<<<<<< HEAD
-newQuestion = "Mon admission par E-CandidatLa commission d\u2019E-Candidat examine au \"fil de l\u2019eau\" les dossiers qui lui sont transmis"
-=======
+
 newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
->>>>>>> 0893a72d21c03e97140fa4d59527a7c2b48ee130
+
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
@@ -229,3 +231,14 @@ print "The answer is : ", theAnswer['reponse']
 # print word_tokenize(content_french, language='french')
 # print d.detokenize(content_french, unescape=False)
 
+newQuestion = raw_input("*** Quelle est votre question : ")
+newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+result, theQuestion = compareQuestions(newQuestWords, words)
+theAnswer = words[theQuestion]
+
+print "*** Voici la réponse à votre question : ", theAnswer['reponse']
+print ""
+print "Détails de pourcentage de similarité : "
+pprint(result)
+print ""
+print ""
