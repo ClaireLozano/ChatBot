@@ -7,7 +7,7 @@ import json
 import codecs
 import nltk
 import treetaggerwrapper
-        
+
 nltk.download('nonbreaking_prefixes')
 nltk.download('perluniprops')
 nltk.download('punkt')
@@ -16,7 +16,7 @@ nltk.download('omw')
 
 from pprint import pprint
 from nltk.stem.snowball import FrenchStemmer
-from nltk.corpus import wordnet as wn
+#from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
 from SynFranWord import dict_syns
@@ -26,9 +26,9 @@ stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
 # Claire's Path 
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
 # Wafaa's Path
-# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 # Construction et configuration du wrapper
@@ -234,6 +234,19 @@ questionsList = words.keys()
 # content_french = "j'aime les plate-formes"
 # print word_tokenize(content_french, language='french')
 # print d.detokenize(content_french, unescape=False)
+
+print ""
+print "========================"
+print "====== LEMMATIZE =======" 
+print "========================"
+print ""
+
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+tags = tagger.TagText(u"Ceci est un tres court texte a etiqueter.")
+tags2 = treetaggerwrapper.make_tags(tags)
+pprint(tags2)
+print 'lemma : ' , tags2[0][2]
+
 
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
