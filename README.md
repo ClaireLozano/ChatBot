@@ -62,9 +62,9 @@ Pour stocker les questions/réponses ainsi que leurs mots clés, nous avons déc
 
 ### Etape 5 - Analyse d'une question
 
-## Installation
+## Installation et lancement
 
-Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME` :
+Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME :
 * os
 * operator
 * json
@@ -72,7 +72,7 @@ Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour e
 * re
 * nltk
 
-Dans le fichier `1_faq_dmc.json` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
+Dans le fichier `1_faq_dmc.py` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
 
 ```
 java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
