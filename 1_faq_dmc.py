@@ -5,9 +5,9 @@ import os
 import operator
 import json
 import codecs
-import re
 import nltk
-
+import treetaggerwrapper
+        
 nltk.download('nonbreaking_prefixes')
 nltk.download('perluniprops')
 nltk.download('punkt')
@@ -31,7 +31,8 @@ java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/ja
 # java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
-
+# Construction et configuration du wrapper
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Documents/projetTAL2018/projet_icone_2018/treetragger',TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 
 # ================================
@@ -135,16 +136,17 @@ def createDictionnaryOneQuestion(l, quest):
 
 # Lemmatiser une liste de mot
 def lemmatizationList(l):
-	# newList = []
-	# for w in l:
-	# 	newList.append(stemmer.stem(w))
-	return l
-	# return newList
+    newList = []
+    # Utilisation
+    for w in l:
+        newList.append(treetaggerwrapper.make_tags(tagger.TagText(w))[0].lemma)
+    return newList
+#return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
 	# return stemmer.stem(w)
-	return w
+	return treetaggerwrapper.make_tags(tagger.TagText(w))[0].lemma
 
 # =========================================
 # =========== COMPARE QUESTIONS ===========
@@ -218,13 +220,13 @@ print "========================"
 print ""
 questionsList = words.keys()
 
-newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs acheter?"
+#newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs acheter?"
 
-newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
-result, theQuestion = compareQuestions(newQuestWords, words)
-theAnswer = words[theQuestion]
-print newQuestion
-print "The answer is : ", theAnswer['reponse']
+#newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+#result, theQuestion = compareQuestions(newQuestWords, words)
+#theAnswer = words[theQuestion]
+#print newQuestion
+#print "The answer is : ", theAnswer['reponse']
 #pprint(result)
 
 
