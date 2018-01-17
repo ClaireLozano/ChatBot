@@ -24,7 +24,10 @@ t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Claire's Path 
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Wafaa's Path
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
@@ -53,26 +56,24 @@ def getDataFromTextFileJson():
 # =========== SPLIT ============
 # ==============================
 
-# Split et enlève les mots dont la taille et plus petite que 3
+# Split et ananlyse des mots composés
 def splitByWord(text):
-	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous", "vous", "ils", "elles"]
+	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous," ,"nous", "vous", "ils", "elles"]
 	listWord = []
 	for word in text.split():
-		# for pronom in listPronoms:
-		if "-" in word:
+		if len(word.split("-")) is 1:
+			listWord.append(word)
+		else:
+			splitabale = False
 			for mot in word.split("-"):
 				if mot in listPronoms:
-					print word.split("-") 
-				else:
-					print "**** pas de trait d\'union' : ",word
-			# 	print ""
-			# else:
-			# 	if "-" in word:
-			# 		print "\n****"
-			# 		print word
-			# 		print "*****\n"
-
-	return re.findall(r"[\w']+", text)
+					splitabale = True
+			if splitabale is True:
+				listWord = listWord + word.split("-")
+			else:
+				listWord.append(word)
+				
+	return listWord
 
 
 # Compte les mots et enlève les redondances
@@ -132,14 +133,16 @@ def createDictionnaryOneQuestion(l, quest):
 
 # Lemmatiser une liste de mot
 def lemmatizationList(l):
-	newList = []
-	for w in l:
-		newList.append(stemmer.stem(w))
-	return newList
+	# newList = []
+	# for w in l:
+	# 	newList.append(stemmer.stem(w))
+	return l
+	# return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	return stemmer.stem(w)
+	# return stemmer.stem(w)
+	return w
 
 # =========================================
 # =========== COMPARE QUESTIONS ===========
@@ -153,8 +156,8 @@ def compareQuestions(newQuestWords, words):
 		pourcent = 0
 		for w in newQuestWords:
 			if w in words[currentQuestion]['motCle']: 
-				pourcent += 0.2
-		pourcentQuestion[currentQuestion] = pourcent 
+				pourcent += 1
+		pourcentQuestion[currentQuestion] = pourcent / len(words[currentQuestion]['motCle']) 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
@@ -176,7 +179,7 @@ def synonyme(w):
 # Trouver tout les tags des mots présent dans une phrase sous la forme de tableau :
 # 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
 def getTag(s):
-	res = pos_tagger.tag(s.split())
+	res = pos_tagger.tag(splitByWord(s))
 	return res
 
 # =================================
@@ -197,15 +200,22 @@ print ""
 
 pprint(words)
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0893a72d21c03e97140fa4d59527a7c2b48ee130
 print ""
 print "========================"
 print "========= TEST =========" 
 print "========================"
 print ""
 questionsList = words.keys()
+<<<<<<< HEAD
 newQuestion = "Mon admission par E-CandidatLa commission d\u2019E-Candidat examine au \"fil de l\u2019eau\" les dossiers qui lui sont transmis"
+=======
+newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
+>>>>>>> 0893a72d21c03e97140fa4d59527a7c2b48ee130
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
