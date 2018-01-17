@@ -17,12 +17,11 @@ nltk.download('wordnet')
 nltk.download('omw')
 
 from pprint import pprint
-from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import FrenchStemmer
-from nltk.corpus import wordnet
 from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
+from SynFranWord import dict_syns
 
 t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
@@ -35,6 +34,26 @@ java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jr
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
+
+
+# ================================
+# =========== GET DATA ===========
+# ================================
+
+# Recupérer tous les mots des fichier json trouvé afin de définir une liste de mot les plus récurent avec un vocabulaire particulier
+def getDataFromTextFileJson():
+	data = []
+	for file in os.listdir("."):
+		if file.endswith(".json") and file != "3_questions_syp.json":
+			print file
+			with codecs.open(file,'r',"utf-8") as inp:
+				dict_test = json.load(inp)
+				for k, v in dict_test.iteritems():
+					words = splitByWord(v[0])
+					for w in words:
+						data.append(w)
+
+	return data
 
 # ==============================
 # =========== SPLIT ============
@@ -56,12 +75,28 @@ def splitByWord(text):
 				listWord = listWord + word.split("-")
 			else:
 				listWord.append(word)
-				
+
 	return listWord
+
+
+# Compte les mots et enlève les redondances
+def sortByWord(words):
+	dictionnary = {}
+	for w in words:
+		if len(dictionnary):
+			if w in dictionnary.keys():
+				dictionnary[w] = dictionnary.get(w) + 1
+			else:
+				dictionnary[w] = 1
+		else : 
+			dictionnary[w] = 1
+	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
+	return lemmatizationList(l)
 
 # ===================================
 # =========== DICTIONNARY ===========
 # ===================================
+
 
 # Création d'un dictionnaire :
 #
@@ -80,7 +115,7 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + lemmatizationList(synonyme(t[0]))
+					#array = array + lemmatizationList(synonyme(t[0]))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
@@ -93,6 +128,7 @@ def createDictionnaryOneQuestion(l, quest):
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
+                array = array + lemmatizationList(synonyme(w.lower()))
 	return array
 
 # =================================
@@ -125,7 +161,10 @@ def compareQuestions(newQuestWords, words):
 		for w in newQuestWords:
 			if w in words[currentQuestion]['motCle']: 
 				pourcent += 1
-		pourcentQuestion[currentQuestion] = pourcent / len(words[currentQuestion]['motCle']) 
+		if pourcent is 0:
+			pourcentQuestion[currentQuestion] = 0
+		else:
+			pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
@@ -136,7 +175,7 @@ def compareQuestions(newQuestWords, words):
 # Trouver des synonymes de mot
 def synonyme(w):
 	try:
-		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+		return dict_syns[w]
 	except:
 		return []
 
@@ -152,9 +191,19 @@ def getTag(s):
 
 # =================================
 
+print ""
+print ""
+print ""
+dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
+
+# Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
+#listSortedWords = sortByWord(words)
+
 
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
-words = createDictionnary("1_faq_dmc.json")
+
+words = createDictionnary(dictionnary)
+
 
 print ""
 print "======================"
@@ -170,13 +219,15 @@ print "========= TEST ========="
 print "========================"
 print ""
 questionsList = words.keys()
-newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
+
+newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs acheter?"
+
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 print newQuestion
 print "The answer is : ", theAnswer['reponse']
-pprint(result)
+#pprint(result)
 
 
 # Marche pas - tokenization 
@@ -195,3 +246,16 @@ tags = tagger.TagText(u"Ceci est un tres court texte a etiqueter.")
 tags2 = treetaggerwrapper.make_tags(tags)
 pprint(tags2)
 print 'lemma : ' , tags2[0][2]
+
+
+newQuestion = raw_input("*** Quelle est votre question : ")
+newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+result, theQuestion = compareQuestions(newQuestWords, words)
+theAnswer = words[theQuestion]
+
+print "*** Voici la réponse à votre question : ", theAnswer['reponse']
+print ""
+print "Détails de pourcentage de similarité : "
+pprint(result)
+print ""
+print ""
