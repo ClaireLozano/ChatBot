@@ -8,33 +8,17 @@ import codecs
 import nltk
 import treetaggerwrapper
 
-nltk.download('nonbreaking_prefixes')
-nltk.download('perluniprops')
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw')
-
 from pprint import pprint
-from nltk.stem.snowball import FrenchStemmer
-#from nltk.corpus import wordnet as wn
-from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
 from SynFranWord import dict_syns
 
-t, d = MosesTokenizer(), MosesDetokenizer()
-stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
-# Claire's Path 
-# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
-# Wafaa's Path
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
-os.environ['JAVAHOME'] = java_path
-pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
+
 # Construction et configuration du wrapper
+pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 # tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Documents/projetTAL2018/projet_icone_2018/treetragger',TAGINENC='utf-8',TAGOUTENC='utf-8')
 tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
-
 
 # ================================
 # =========== GET DATA ===========
@@ -51,7 +35,6 @@ def getDataFromTextFileJson():
 					words = splitByWord(v[0])
 					for w in words:
 						data.append(w)
-
 	return data
 
 # ==============================
@@ -157,17 +140,17 @@ def compareQuestions(newQuestWords, words):
 	pourcentQuestion = {}
 	
 	for currentQuestion in allQuestions:
-		pourcent = 0
+		nb = 0
 		newList = [x.encode('utf-8') for x in words[currentQuestion]['motCle']]
 		for w in newQuestWords:
 			if w in newList: 
-				pourcent += 1
-		if pourcent is 0:
+				nb += 1
+		if nb is 0:
 			pourcentQuestion[currentQuestion] = 0
 		else:
-			pourcentQuestion[currentQuestion] = float(pourcent) / len(newList) 	
-	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	return pourcentQuestion, theQuestion
+			pourcentQuestion[currentQuestion] = float(nb) / len(newList) 	
+	reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
+	return pourcentQuestion, reponse
 
 # ================================
 # =========== SYNONYME ===========
@@ -217,8 +200,8 @@ print ""
 questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(newQuestion)
-result, theQuestion = compareQuestions(newQuestWords, words)
-theAnswer = words[theQuestion]
+result, reponse = compareQuestions(newQuestWords, words)
+theAnswer = words[reponse]
 
 print "*** Voici la réponse à votre question : ", theAnswer['reponse']
 print ""
@@ -226,3 +209,7 @@ print "Détails de pourcentage de similarité : "
 pprint(result)
 print ""
 print ""
+
+
+
+
