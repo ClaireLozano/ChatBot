@@ -45,7 +45,6 @@ def getDataFromTextFileJson():
 	data = []
 	for file in os.listdir("."):
 		if file.endswith(".json") and file != "3_questions_syp.json":
-			print file
 			with codecs.open(file,'r',"utf-8") as inp:
 				dict_test = json.load(inp)
 				for k, v in dict_test.iteritems():
@@ -125,7 +124,6 @@ def createDictionnary(path):
 def createDictionnaryOneQuestion(l, quest):
 	words = lemmatizationList(splitByWord(quest))
 	array = []
-	print words
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
@@ -147,10 +145,10 @@ def lemmatizationList(l):
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	tags = tagger.TagText(w.decode('utf-8'))
-	tags = tags[0].split("\t")
-	# tags2 = treetaggerwrapper.make_tags(tags)
-	return tags[2]
+	tags = tagger.TagText(w)
+	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
+	return tags2
+
 
 # =========================================
 # =========== COMPARE QUESTIONS ===========
@@ -179,8 +177,7 @@ def compareQuestions(newQuestWords, words):
 # Trouver des synonymes de mot
 def synonyme(w):
 	try:
-		return dict_syns[w.encode('utf-8')]
-		# return dict_syns[w.encode("utf-8")]
+		return dict_syns[w]
 	except:
 		return []
 
