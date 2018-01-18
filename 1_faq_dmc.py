@@ -180,13 +180,14 @@ newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 
-"""
+
 print "*** Voici la réponse à votre question : ", theAnswer['reponse']
 print ""
 print "Détails de pourcentage de similarité : "
+result = sorted(result.iteritems(), key=lambda (k,v): (v,k), reverse=True)
 pprint(result)
 
-"""
+
 # Traitement des réponse du json 3
 s = theAnswer['reponse'].split(":")
 if s[0] ==  u">action_bdd":
@@ -196,7 +197,7 @@ elif s[0] ==  u">message":
 elif s[0] == u">conseiller":
 	print "Redirection vers le service : " + s[1]
 else: 
-     print "*** Voici la réponse à votre question : \n", theAnswer['reponse']
+     print theAnswer['reponse']
 
 # print ""
 # print "Détails de pourcentage de similarité : "
