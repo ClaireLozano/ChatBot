@@ -114,7 +114,7 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + lemmatizationList(synonyme(t[0].lower()))
+					array = array + synonyme(lemmatizationList(t[0].lower()))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
@@ -127,7 +127,7 @@ def createDictionnaryOneQuestion(l, quest):
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
-                array = array + lemmatizationList(w.lower())
+			array.append(lemmatizationWord(w.lower()))
 	return array
 
 # =================================
@@ -137,15 +137,13 @@ def createDictionnaryOneQuestion(l, quest):
 # Lemmatiser une liste de mot
 def lemmatizationList(l):
     newList = []
-    # Utilisation
     for w in l:
         newList.append(lemmatizationWord(w.decode('utf-8')))
     return newList
-#return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	tags = tagger.TagText(w.decode('latin-1'))
+	tags = tagger.TagText(w.decode('utf-8'))
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
 	return tags2
 
@@ -176,10 +174,14 @@ def compareQuestions(newQuestWords, words):
 
 # Trouver des synonymes de mot
 def synonyme(w):
-	try:
-		return dict_syns[w]
-	except:
-		return []
+	array = []
+	a = 1
+	for ww in w:
+		try:
+			array = array + dict_syns[ww]
+		except:
+			a = 1
+	return array
 
 # ================================
 # ============= TAG ==============
@@ -200,7 +202,6 @@ dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme
 
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
-
 
 print ""
 print "======================"
