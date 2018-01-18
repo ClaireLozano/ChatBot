@@ -112,7 +112,7 @@ def createDictionnary(path):
 			array = []
 			tags = getTag(v[0])
 			for t in tags:
-				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
+				if t[1] in ["VINF", "NC", "ADJ", "VPP", "V"]:
 					array.append(lemmatizationWord(t[0].lower()))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
@@ -124,6 +124,7 @@ def createDictionnaryOneQuestion(quest):
 	words = splitByWord(quest)
 	array = []
 	for w in words:
+		array.append(w.lower().decode('utf-8'))
 		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
 		array = array + listSynon
 	return array
@@ -141,7 +142,6 @@ def lemmatizationList(l):
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	print ("the word : ", w)
 	tags = tagger.TagText(w)
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
 	return tags2
@@ -155,15 +155,17 @@ def lemmatizationWord(w):
 def compareQuestions(newQuestWords, words):
 	allQuestions = words.keys()
 	pourcentQuestion = {}
+	
 	for currentQuestion in allQuestions:
 		pourcent = 0
+		newList = [x.encode('utf-8') for x in words[currentQuestion]['motCle']]
 		for w in newQuestWords:
-			if w in words[currentQuestion]['motCle']: 
+			if w in newList: 
 				pourcent += 1
 		if pourcent is 0:
 			pourcentQuestion[currentQuestion] = 0
 		else:
-			pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
+			pourcentQuestion[currentQuestion] = float(pourcent) / len(newList) 	
 	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
 	return pourcentQuestion, theQuestion
 
