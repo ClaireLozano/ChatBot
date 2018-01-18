@@ -157,7 +157,7 @@ print ""
 print ""
 print ""
 #dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
-dictionnary = "1_faq_dmc.json"
+dictionnary = "2_questions_sorbonne.json"
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
@@ -184,6 +184,7 @@ theAnswer = words[theQuestion]
 print "*** Voici la réponse à votre question : ", theAnswer['reponse']
 print ""
 print "Détails de pourcentage de similarité : "
-pprint(result)
+pprint(result[theQuestion])
+print theQuestion
 print ""
 print ""
