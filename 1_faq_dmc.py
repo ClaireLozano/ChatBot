@@ -114,7 +114,8 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + synonyme(lemmatizationList(t[0].lower()))
+					print t[0]
+					array = array + synonyme(lemmatizationWord(t[0].lower()))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
@@ -138,12 +139,12 @@ def createDictionnaryOneQuestion(l, quest):
 def lemmatizationList(l):
     newList = []
     for w in l:
-        newList.append(lemmatizationWord(w.decode('utf-8')))
+        newList.append(lemmatizationWord(w))
     return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	tags = tagger.TagText(w.decode('utf-8'))
+	tags = tagger.TagText(w)
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
 	return tags2
 
@@ -174,14 +175,10 @@ def compareQuestions(newQuestWords, words):
 
 # Trouver des synonymes de mot
 def synonyme(w):
-	array = []
-	a = 1
-	for ww in w:
-		try:
-			array = array + dict_syns[ww]
-		except:
-			a = 1
-	return array
+	try:
+		return dict_syns[ww.encode('utf-8')]
+	except:
+		return []
 
 # ================================
 # ============= TAG ==============
