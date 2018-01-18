@@ -216,21 +216,6 @@ print "========================"
 print ""
 questionsList = words.keys()
 
-newQuestion = "Dans quels pays livrez-vous et \xe0 quels tarifs ?"
-
-newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
-result, theQuestion = compareQuestions(newQuestWords, words)
-theAnswer = words[theQuestion]
-print newQuestion
-print "The answer is : ", theAnswer['reponse']
-#pprint(result)
-
-
-# Marche pas - tokenization 
-# content_french = "j'aime les plate-formes"
-# print word_tokenize(content_french, language='french')
-# print d.detokenize(content_french, unescape=False)
-
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
