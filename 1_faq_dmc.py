@@ -5,8 +5,8 @@ import os
 import operator
 import json
 import codecs
-import re
 import nltk
+import treetaggerwrapper
 
 nltk.download('nonbreaking_prefixes')
 nltk.download('perluniprops')
@@ -16,21 +16,24 @@ nltk.download('omw')
 
 from pprint import pprint
 from nltk.stem.snowball import FrenchStemmer
-from nltk.corpus import wordnet as wn
+#from nltk.corpus import wordnet as wn
 from nltk.tokenize.moses import MosesTokenizer, MosesDetokenizer
 from nltk.tag import StanfordPOSTagger
+from SynFranWord import dict_syns
 
 t, d = MosesTokenizer(), MosesDetokenizer()
 stemmer = FrenchStemmer()
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
 # Claire's Path 
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
 # Wafaa's Path
-# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
 os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
-
+# Construction et configuration du wrapper
+# tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Documents/projetTAL2018/projet_icone_2018/treetragger',TAGINENC='utf-8',TAGOUTENC='utf-8')
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 
 # ================================
@@ -112,7 +115,7 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + lemmatizationList(synonyme(t[0]))
+					array = array + lemmatizationList(synonyme(t[0].lower()))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
@@ -122,9 +125,11 @@ def createDictionnary(path):
 def createDictionnaryOneQuestion(l, quest):
 	words = lemmatizationList(splitByWord(quest))
 	array = []
+	print words
 	for w in words:
 		if w.lower() not in l:
 			array.append(w.lower())
+                array = array + lemmatizationList(w.lower())
 	return array
 
 # =================================
@@ -133,16 +138,19 @@ def createDictionnaryOneQuestion(l, quest):
 
 # Lemmatiser une liste de mot
 def lemmatizationList(l):
-	# newList = []
-	# for w in l:
-	# 	newList.append(stemmer.stem(w))
-	return l
-	# return newList
+    newList = []
+    # Utilisation
+    for w in l:
+        newList.append(lemmatizationWord(w))
+    return newList
+#return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	# return stemmer.stem(w)
-	return w
+	tags = tagger.TagText(w)
+	tags = tags[0].split("\t")
+	# tags2 = treetaggerwrapper.make_tags(tags)
+	return tags[2]
 
 # =========================================
 # =========== COMPARE QUESTIONS ===========
@@ -170,8 +178,15 @@ def compareQuestions(newQuestWords, words):
 
 # Trouver des synonymes de mot
 def synonyme(w):
+	print w.encode("utf-8")
+	print w.decode("utf-8")
+	print w.decode("utf-8").encode("windows-1252").decode("utf-8")
+	print w.decode("utf-8", "replace") 
+	print w.decode("utf-8", "ignore") 
 	try:
-		return [str(lemma.name()) for lemma in wn.synsets(w, lang="fra")[0].lemmas(lang='fra')]
+		return dict_syns[w.decode("utf-8")]
+		print "ici"
+		return dict_syns[w.encode("utf-8")]
 	except:
 		return []
 
@@ -192,12 +207,7 @@ print ""
 print ""
 dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
 
-# Garder les mots qui sont utilisé plus de 8 fois dans tous les fichiers json
-#listSortedWords = sortByWord(words)
-
-
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
-
 words = createDictionnary(dictionnary)
 
 
@@ -214,8 +224,8 @@ print "========================"
 print "========= TEST =========" 
 print "========================"
 print ""
-questionsList = words.keys()
 
+questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
