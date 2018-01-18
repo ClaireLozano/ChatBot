@@ -156,7 +156,7 @@ print ""
 print ""
 print ""
 #dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
-dictionnary = "3_syp.json"
+dictionnary = "1_faq_dmc.json"
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
@@ -180,14 +180,9 @@ newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 
-
-print "*** Voici la réponse à votre question : ", theAnswer['reponse']
 print ""
-print "Détails de pourcentage de similarité : "
-result = sorted(result.iteritems(), key=lambda (k,v): (v,k), reverse=True)
-pprint(result)
 
-
+print "*** Voici la réponse à votre question : \n"
 # Traitement des réponse du json 3
 s = theAnswer['reponse'].split(":")
 if s[0] ==  u">action_bdd":
@@ -198,6 +193,15 @@ elif s[0] == u">conseiller":
 	print "Redirection vers le service : " + s[1]
 else: 
      print theAnswer['reponse']
+     
+print ""
+
+print "Détails de pourcentage de similarité : "
+result = sorted(result.iteritems(), key=lambda (k,v): (v,k), reverse=True)
+pprint(result)
+
+
+
 
 # print ""
 # print "Détails de pourcentage de similarité : "
