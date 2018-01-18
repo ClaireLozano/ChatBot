@@ -67,23 +67,22 @@ def createDictionnary(path):
             array = []
             tags = getTag(v[0])
             for key,value in tags.items():
-                if value in ["VER:infi", "NOM", "ADJ", "VER:pres"]:
+                if value in ["VER", "NOM", "ADJ", "ADV"]:
                     array.append(lemmatizationWord(key.lower()))
                     array = list(set(array))
-            print v[0]
             dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
     return dictionnary
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mots "important"
 def createDictionnaryOneQuestion(quest):
-	words = splitByWord(quest)
-	array = []
-	for w in words:
-		array.append(lemmatizationWord(w.lower().decode('utf-8')))
-		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
-		array = array + listSynon
-	return array
+    words = splitByWord(quest)
+    array = []
+    for w in words:
+        array.append(lemmatizationWord(w.lower().decode('utf-8')))
+        listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
+        array = array + listSynon       
+    return array
 
 # =================================
 # =========== LEMMATIZE ===========
@@ -148,7 +147,7 @@ def getTag(s):
     s = splitByWord(s)
     for mot in s :
          tags = tagger.tag_text(mot)
-         dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos
+         dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos.split(":")[0]
     return dict_word
 
 # =================================
@@ -157,7 +156,7 @@ print ""
 print ""
 print ""
 #dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
-dictionnary = "2_questions_sorbonne.json"
+dictionnary = "3_syp.json"
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
@@ -170,9 +169,9 @@ print ""
 pprint(words)
 
 print ""
-print "========================"
-print "========= TEST =========" 
-print "========================"
+print "==========================="
+print "========= REPONSE =========" 
+print "==========================="
 print ""
 
 questionsList = words.keys()
@@ -181,10 +180,26 @@ newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 
+"""
 print "*** Voici la réponse à votre question : ", theAnswer['reponse']
 print ""
 print "Détails de pourcentage de similarité : "
-pprint(result[theQuestion])
-print theQuestion
+pprint(result)
+
+"""
+# Traitement des réponse du json 3
+s = theAnswer['reponse'].split(":")
+if s[0] ==  u">action_bdd":
+	print "Action de la base de donnée : " + s[1]
+elif s[0] ==  u">message":
+	print "Message générique "
+elif s[0] == u">conseiller":
+	print "Redirection vers le service : " + s[1]
+else: 
+     print "*** Voici la réponse à votre question : \n", theAnswer['reponse']
+
+# print ""
+# print "Détails de pourcentage de similarité : "
+# pprint(result)
 print ""
 print ""
