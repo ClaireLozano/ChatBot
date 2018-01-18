@@ -1,0 +1,13 @@
+[(u'Dans', u'P'), (u'quels', u'DET'), (u'pays', u'NC'), (u'livrez-vous', u'VPP'), (u'et', u'CC'), (u'\xe0', u'P'), (u'quels', u'DETWH'), (u'tarifs', u'NC'), (u'?', u'PUNC')]
+
+
+[(u'Mon', u'DET'), (u'adresse', u'NC'), (u'de', u'P'), (u'livraison', u'NC'), (u'est', u'V'), (u'incorrecte,', u'ADJ'), (u'comment', u'ADVWH'), (u'la', u'CLO'), (u'modifier', u'VINF'), (u'?', u'PUNC')]
+
+
+[(u'O\xf9', u'ADVWH'), (u'puis-je', u'CLO'), (u'acheter', u'VINF'), (u'les', u'DET'), (u'produits', u'NC'), (u'de', u'P'), (u'Dans', u'DET'), (u'Ma', u'DET'), (u'Culotte\xa9', u'DET'), (u'?', u'PUNC')]
+
+
+[(u'Que', u'PROWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
+
+
+[(u'Quels', u'ADJWH'), (u'sont', u'V'), (u'les', u'DET'), (u'moyens', u'NC'), (u'de', u'P'), (u'paiement', u'NC'), (u'disponibles', u'ADJ'), (u'?', u'PUNC')]
