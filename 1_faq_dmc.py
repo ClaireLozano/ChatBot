@@ -147,7 +147,7 @@ def lemmatizationList(l):
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	tags = tagger.TagText(w)
+	tags = tagger.TagText(w.decode('utf-8'))
 	tags = tags[0].split("\t")
 	# tags2 = treetaggerwrapper.make_tags(tags)
 	return tags[2]
@@ -178,15 +178,9 @@ def compareQuestions(newQuestWords, words):
 
 # Trouver des synonymes de mot
 def synonyme(w):
-	print w.encode("utf-8")
-	print w.decode("utf-8")
-	print w.decode("utf-8").encode("windows-1252").decode("utf-8")
-	print w.decode("utf-8", "replace") 
-	print w.decode("utf-8", "ignore") 
 	try:
-		return dict_syns[w.decode("utf-8")]
-		print "ici"
-		return dict_syns[w.encode("utf-8")]
+		return dict_syns[w.encode('utf-8')]
+		# return dict_syns[w.encode("utf-8")]
 	except:
 		return []
 
