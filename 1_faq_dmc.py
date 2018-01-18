@@ -139,13 +139,13 @@ def lemmatizationList(l):
     newList = []
     # Utilisation
     for w in l:
-        newList.append(lemmatizationWord(w))
+        newList.append(lemmatizationWord(w.decode('utf-8')))
     return newList
 #return newList
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
-	tags = tagger.TagText(w)
+	tags = tagger.TagText(w.decode('latin-1'))
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
 	return tags2
 
