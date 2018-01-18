@@ -33,7 +33,7 @@ os.environ['JAVAHOME'] = java_path
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 # Construction et configuration du wrapper
 # tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Documents/projetTAL2018/projet_icone_2018/treetragger',TAGINENC='utf-8',TAGOUTENC='utf-8')
-tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 
 # ================================
@@ -124,8 +124,9 @@ def createDictionnaryOneQuestion(quest):
 	words = splitByWord(quest)
 	array = []
 	for w in words:
-		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
-		array = array + listSynon
+         listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
+         array.append(lemmatizationWord(w.decode('utf-8')))		
+         array = array + listSynon
 	return array
 
 # =================================
@@ -152,19 +153,24 @@ def lemmatizationWord(w):
 
 # Trouve une réponse à la quesion posée en analysant les mots
 def compareQuestions(newQuestWords, words):
-	allQuestions = words.keys()
-	pourcentQuestion = {}
-	for currentQuestion in allQuestions:
-		pourcent = 0
-		for w in newQuestWords:
-			if w in words[currentQuestion]['motCle']: 
-				pourcent += 1
-		if pourcent is 0:
+    print words.keys()
+    print "////////////////////////////"
+    print newQuestWords
+    allQuestions = words.keys()    
+    pourcentQuestion = {}
+    for currentQuestion in allQuestions:
+        pourcent = 0
+        for w in newQuestWords:
+            print words[currentQuestion]['motCle']
+            if w in words[currentQuestion]['motCle']: 
+                
+                pourcent += 1
+        if pourcent is 0:
 			pourcentQuestion[currentQuestion] = 0
-		else:
-			pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
-	theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	return pourcentQuestion, theQuestion
+        else:
+            pourcentQuestion[currentQuestion] = float(pourcent) / len(words[currentQuestion]['motCle']) 
+    theQuestion = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
+    return pourcentQuestion, theQuestion
 
 # ================================
 # =========== SYNONYME ===========
@@ -192,8 +198,8 @@ def getTag(s):
 print ""
 print ""
 print ""
-dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
-
+#dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
+dictionnary = "1_faq_dmc.json"
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
