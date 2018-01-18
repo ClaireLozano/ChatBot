@@ -122,11 +122,7 @@ def createDictionnary(path):
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mots "important"
 def createDictionnaryOneQuestion(l, quest):
-<<<<<<< HEAD
-	words = lemmatizationList(splitByWord(quest.decode('utf-8')))
-=======
 	words = splitByWord(quest)
->>>>>>> 259855a8f47b3e80fe0eb6a19eae84be2771031a
 	array = []
 	for w in words:
 		w = lemmatizationWord(w.lower().decode('utf-8'))
