@@ -123,7 +123,7 @@ def createDictionnary(path):
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mot "important"
 def createDictionnaryOneQuestion(l, quest):
-	words = lemmatizationList(splitByWord(quest))
+	words = lemmatizationList(splitByWord(quest.decode('utf-8')))
 	array = []
 	for w in words:
 		if w.lower() not in l:
@@ -144,6 +144,7 @@ def lemmatizationList(l):
 
 # Lemmatiser un mot
 def lemmatizationWord(w):
+	print ("the word : ", w)
 	tags = tagger.TagText(w)
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
 	return tags2
