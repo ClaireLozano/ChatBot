@@ -3,39 +3,32 @@
 
 import os
 import operator
+import sys 
 import json
 import codecs
 import nltk
 import treetaggerwrapper
+import re
+
+sys.path.append(os.path.abspath('./dictionnaireSyns'))
 
 from pprint import pprint
 from nltk.tag import StanfordPOSTagger
-from SynFranWord import dict_syns
+from SynFranWord import syns
 
 jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
 model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
+# Claire's Path 
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Wafaa's Path
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
+os.environ['JAVAHOME'] = java_path
+pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 # Construction et configuration du wrapper
-pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
-# tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Documents/projetTAL2018/projet_icone_2018/treetragger',TAGINENC='utf-8',TAGOUTENC='utf-8')
+#MacOs's path
 tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
-
-# ================================
-# =========== GET DATA ===========
-# ================================
-
-# Recupérer tous les mots des fichier json trouvé afin de définir une liste de mot les plus récurent avec un vocabulaire particulier
-def getDataFromTextFileJson():
-	data = []
-	for file in os.listdir("."):
-		if file.endswith(".json") and file != "3_questions_syp.json":
-			with codecs.open(file,'r',"utf-8") as inp:
-				dict_test = json.load(inp)
-				for k, v in dict_test.iteritems():
-					words = splitByWord(v[0])
-					for w in words:
-						data.append(w)
-	return data
+# tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 # ==============================
 # =========== SPLIT ============
@@ -59,21 +52,6 @@ def splitByWord(text):
 				listWord.append(word)
 
 	return listWord
-
-
-# Compte les mots et enlève les redondances
-def sortByWord(words):
-	dictionnary = {}
-	for w in words:
-		if len(dictionnary):
-			if w in dictionnary.keys():
-				dictionnary[w] = dictionnary.get(w) + 1
-			else:
-				dictionnary[w] = 1
-		else : 
-			dictionnary[w] = 1
-	l = sorted([x.lower() for x,y in dictionnary.items() if y > 8], reverse=True)
-	return lemmatizationList(l)
 
 # ===================================
 # =========== DICTIONNARY ===========
@@ -107,7 +85,7 @@ def createDictionnaryOneQuestion(quest):
 	words = splitByWord(quest)
 	array = []
 	for w in words:
-		array.append(w.lower().decode('utf-8'))
+		array.append(lemmatizationWord(w.lower().decode('utf-8')))
 		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
 		array = array + listSynon
 	return array
@@ -127,7 +105,7 @@ def lemmatizationList(l):
 def lemmatizationWord(w):
 	tags = tagger.TagText(w)
 	tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
-	return tags2
+	return tags2.encode('utf-8')
 
 
 # =========================================
@@ -136,21 +114,28 @@ def lemmatizationWord(w):
 
 # Trouve une réponse à la quesion posée en analysant les mots
 def compareQuestions(newQuestWords, words):
+
 	allQuestions = words.keys()
 	pourcentQuestion = {}
 	
 	for currentQuestion in allQuestions:
 		nb = 0
-		newList = [x.encode('utf-8') for x in words[currentQuestion]['motCle']]
+		l = words[currentQuestion]['motCle']
 		for w in newQuestWords:
-			if w in newList: 
+			if w in l: 
 				nb += 1
 		if nb is 0:
 			pourcentQuestion[currentQuestion] = 0
 		else:
-			pourcentQuestion[currentQuestion] = float(nb) / len(newList) 	
+			pourcentQuestion[currentQuestion] = float(nb) / len(l) 	
 	reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	return pourcentQuestion, reponse
+	pourcent = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]
+	
+	if pourcent > float(0.5):
+		return pourcentQuestion, reponse
+	else:
+		print "Cette question ne ressemble à aucune autre question ..."
+		return '', ''
 
 # ================================
 # =========== SYNONYME ===========
@@ -159,7 +144,7 @@ def compareQuestions(newQuestWords, words):
 # Trouver des synonymes de mot
 def synonyme(w):
 	try:
-		return dict_syns[w.encode('utf-8')]
+          return syns()[w]
 	except:
 		return []
 
@@ -178,7 +163,17 @@ def getTag(s):
 print ""
 print ""
 print ""
-dictionnary = raw_input("*** Entrer le json de questions/réponses sous la forme ' *****.json ' : ")
+
+dictionnary =""
+nb = raw_input("*** Entrer 1, 2, 3 ou 4 pour lire le fichier 1_faq_dmc.json, 2_questions_sorbonne.json, 3_syp.json ou 3_faq_syp.json : ")
+if nb is '1':
+	dictionnary = "1_faq_dmc.json"
+elif nb is '2':
+	dictionnary = "2_questions_sorbonne.json"
+elif nb is '3':
+	dictionnary = "3_syp.json"
+elif nb is '4':
+	dictionnary = "3_faq_syp.json"
 
 # Creation de dictionnaire avec les mots clé d'une question et sa réponse
 words = createDictionnary(dictionnary)
@@ -192,21 +187,31 @@ print ""
 pprint(words)
 
 print ""
-print "========================"
-print "========= TEST =========" 
-print "========================"
+print "==========================="
+print "========= REPONSE =========" 
+print "==========================="
 print ""
 
 questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, reponse = compareQuestions(newQuestWords, words)
-theAnswer = words[reponse]
 
-print "*** Voici la réponse à votre question : ", theAnswer['reponse']
-print ""
-print "Détails de pourcentage de similarité : "
-pprint(result)
+if reponse != '':
+	theAnswer = words[reponse]
+	print "*** Voici la réponse à votre question : ", theAnswer['reponse']
+
+	# Traitement des réponse du json 3
+	s = theAnswer['reponse'].split(":")
+	if re.findall('(>)?action_bdd$', s[0]):
+		print "*** Un action sera effectué vers la base de donnée : " + str(s[1])
+	elif re.findall('(>)?message$', s[0]):
+		print "Un message générique sera envoyé"
+	elif re.findall('(>)?conseiller$', s[0]): 
+		print "Vous allez être redirigé vers un conseiller : " + str(s[1])
+else:
+	print "Je ne sais pas."
+
 print ""
 print ""
 

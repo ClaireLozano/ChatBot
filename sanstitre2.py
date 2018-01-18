@@ -11,5 +11,5 @@ tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR='/home/hchlih/Document
   TAGINENC='utf-8',TAGOUTENC='utf-8')
 # Utilisation
 tags = tagger.TagText(u"mangeait")
-tags2 = treetaggerwrapper.make_tags(tags)[0].lemma
+tags2 = treetaggerwrapper.make_tags(tags)
 print tags2
