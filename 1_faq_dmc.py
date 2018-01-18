@@ -16,15 +16,6 @@ from pprint import pprint
 from nltk.tag import StanfordPOSTagger
 from SynFranWord import syns
 
-jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
-model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
-# Claire's Path 
-java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
-# Wafaa's Path
-# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"
-os.environ['JAVAHOME'] = java_path
-pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
-
 # Construction et configuration du wrapper
 #MacOs's path
 tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
@@ -66,29 +57,29 @@ def splitByWord(text):
 # 	}
 #
 def createDictionnary(path):
-	dictionnary = {}
-	with open(path) as inp:
-		dict_test = json.load(inp)
-		for k, v in dict_test.iteritems():
-			array = []
-			tags = getTag(v[0])
-			for t in tags:
-				if t[1] in ["VINF", "NC", "ADJ", "VPP", "V"]:
-					array.append(lemmatizationWord(t[0].lower()))
-					array = list(set(array))
-			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
-	return dictionnary
+    dictionnary = {}
+    with open(path) as inp:
+        dict_test = json.load(inp)
+        for k, v in dict_test.iteritems():
+            array = []
+            tags = getTag(v[0])
+            for key,value in tags.items():
+                if value in ["VER", "NOM", "ADJ", "ADV"]:
+                    array.append(lemmatizationWord(key.lower()))
+                    array = list(set(array))
+            dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
+    return dictionnary
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mots "important"
 def createDictionnaryOneQuestion(quest):
-	words = splitByWord(quest)
-	array = []
-	for w in words:
-		array.append(lemmatizationWord(w.lower().decode('utf-8')))
-		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
-		array = array + listSynon
-	return array
+    words = splitByWord(quest)
+    array = []
+    for w in words:
+        array.append(lemmatizationWord(w.lower().decode('utf-8')))
+        listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
+        array = array + listSynon       
+    return array
 
 # =================================
 # =========== LEMMATIZE ===========
@@ -113,6 +104,7 @@ def lemmatizationWord(w):
 # =========================================
 
 # Trouve une réponse à la quesion posée en analysant les mots
+# Si le pourcentage de similarité le plus haut est inférieur à 0,5, on suppose que cette question ne ressemble à aucune des questions présente dans le dictionnaire 
 def compareQuestions(newQuestWords, words):
 
 	allQuestions = words.keys()
@@ -141,10 +133,10 @@ def compareQuestions(newQuestWords, words):
 # =========== SYNONYME ===========
 # ================================
 
-# Trouver des synonymes de mot
+# Trouver des synonymes d'un mot, return une list aucun synonyme n'est trouvé
 def synonyme(w):
 	try:
-          return syns()[w]
+		return syns()[w]
 	except:
 		return []
 
@@ -152,18 +144,26 @@ def synonyme(w):
 # ============= TAG ==============
 # ================================
 
-# Trouver tout les tags des mots présent dans une phrase sous la forme de tableau :
-# 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
+# Trouver tout les tags des mots présent dans une phrase sous la forme de dictionnaire :
+# 		{u'vous': u'PRO', u'\xe0': u'PRP', u'pays': u'NOM', u'Dans': u'NOM', u'quels': u'PRO', u'livrez': u'VER', u'tarifs': u'NOM', u'et': u'KON', u'?': u'SENT'}
 def getTag(s):
-	res = pos_tagger.tag(splitByWord(s))
-	return res
+	dict_word = {}
+	s = splitByWord(s)
+	for mot in s :
+		tags = tagger.tag_text(mot)
+		dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos.split(":")[0]
+	return dict_word
 
-# =================================
+
+
+
+
+
+
+
+# =====================================================================================
 
 print ""
-print ""
-print ""
-
 dictionnary =""
 nb = raw_input("*** Entrer 1, 2, 3 ou 4 pour lire le fichier 1_faq_dmc.json, 2_questions_sorbonne.json, 3_syp.json ou 3_faq_syp.json : ")
 if nb is '1':
@@ -184,6 +184,7 @@ print "==== DICTIONNARY ====="
 print "======================"
 print ""
 
+# Affichage du dictionnaire avec les mots clés
 pprint(words)
 
 print ""
@@ -192,11 +193,13 @@ print "========= REPONSE ========="
 print "==========================="
 print ""
 
+# Récupération de la question utilisateur
 questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, reponse = compareQuestions(newQuestWords, words)
 
+# Reponse à la question posé par l'utilisateur
 if reponse != '':
 	theAnswer = words[reponse]
 	print "*** Voici la réponse à votre question : ", theAnswer['reponse']
@@ -211,10 +214,7 @@ if reponse != '':
 		print "Vous allez être redirigé vers un conseiller : " + str(s[1])
 else:
 	print "Je ne sais pas."
-
 print ""
 print ""
-
-
 
 
