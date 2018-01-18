@@ -209,9 +209,9 @@ print ""
 pprint(words)
 
 print ""
-print "========================"
-print "========= TEST =========" 
-print "========================"
+print "==========================="
+print "========= REPONSE =========" 
+print "==========================="
 print ""
 
 questionsList = words.keys()
@@ -221,8 +221,18 @@ result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 
 print "*** Voici la réponse à votre question : ", theAnswer['reponse']
-print ""
-print "Détails de pourcentage de similarité : "
-pprint(result)
+
+# Traitement des réponse du json 3
+s = theAnswer['reponse'].split(":")
+if s[0] ==  u">action_bdd":
+	print "Action de la base de donnée : " + s[1]
+elif s[0] ==  u">message":
+	print "Message générique "
+elif s[0] == u">conseiller":
+	print "Redirection vers un service : " + s[1]
+
+# print ""
+# print "Détails de pourcentage de similarité : "
+# pprint(result)
 print ""
 print ""
