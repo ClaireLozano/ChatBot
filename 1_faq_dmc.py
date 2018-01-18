@@ -114,20 +114,18 @@ def createDictionnary(path):
 			for t in tags:
 				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
 					array.append(lemmatizationWord(t[0].lower()))
-					array = array + synonyme(lemmatizationWord(t[0].lower()))
 					array = list(set(array))
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mots "important"
-def createDictionnaryOneQuestion(l, quest):
+def createDictionnaryOneQuestion(quest):
 	words = splitByWord(quest)
 	array = []
 	for w in words:
-		w = lemmatizationWord(w.lower().decode('utf-8'))
-		if w not in l:
-			array.append(w)
+		listSynon = synonyme(lemmatizationWord(w.lower().decode('utf-8')))
+		array = array + listSynon
 	return array
 
 # =================================
@@ -176,7 +174,7 @@ def compareQuestions(newQuestWords, words):
 # Trouver des synonymes de mot
 def synonyme(w):
 	try:
-		return dict_syns[ww.encode('utf-8')]
+		return dict_syns[w.encode('utf-8')]
 	except:
 		return []
 
@@ -216,7 +214,7 @@ print ""
 
 questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
-newQuestWords = createDictionnaryOneQuestion(words, newQuestion)
+newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result, theQuestion = compareQuestions(newQuestWords, words)
 theAnswer = words[theQuestion]
 
