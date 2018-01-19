@@ -15,6 +15,7 @@ sys.path.append(os.path.abspath('./dictionnaireSyns'))
 from pprint import pprint
 from nltk.tag import StanfordPOSTagger
 from SynFranWord import syns
+from pathlib import Path
 
 # Construction et configuration du wrapper
 #MacOs's path
@@ -194,8 +195,27 @@ elif nb is '3':
 elif nb is '4':
 	dictionnary = "3_faq_syp.json"
 
-# Creation de dictionnaire avec les mots clés d'une question et sa réponse
-words = createDictionnary(dictionnary)
+
+words = {}
+
+# Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
+if jsonForce:
+	print "*** Enregistrement du dictionnaire dans un fichier json ... "
+	f = open('result_' + nb + ".json", 'w+')
+	f.write(json.dumps(words, indent=1))
+else:
+	print "*** Chargement du dictionnaire si il existe ..."
+	my_file = Path('result_' + nb + ".json")
+	if my_file.is_file():
+		f = open('result_' + nb + ".json", 'r')
+		words = json.load(f)
+		f.close()
+	else:
+		# Creation de dictionnaire avec les mots clés d'une question et sa réponse
+		words = createDictionnary(dictionnary)
+		f = open('result_' + nb + ".json", 'w+')
+		f.write(json.dumps(words, indent=1))
+		f.close()
 
 # Si l'option -v est présente, on affiche le dictionnaire
 if text:
@@ -210,12 +230,6 @@ if text:
 	print "========= REPONSE =========" 
 	print "==========================="
 	print ""
-
-# Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
-if jsonForce:
-	print "*** Enregistrement du dictionnaire dans un fichier json ... "
-else:
-	print "*** Chargement du dictionnaire si il existe ..."
 
 # Récupération de la question utilisateur
 questionsList = words.keys()
@@ -246,4 +260,9 @@ if text:
 	print "*** Liste des résultats : "
 	pprint(result)
 	print ""
+
+
+
+
+
 
