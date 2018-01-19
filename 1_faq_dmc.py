@@ -201,6 +201,7 @@ words = {}
 # Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
 if jsonForce:
 	print "*** Enregistrement du dictionnaire dans un fichier json ... "
+	words = createDictionnary(dictionnary)
 	f = open('result_' + nb + ".json", 'w+')
 	f.write(json.dumps(words, indent=1))
 else:
