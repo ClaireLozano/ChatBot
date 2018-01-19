@@ -14,31 +14,45 @@ Pour cela, nous avons en préalable analysé une série de questions et de leur 
 
 ### Etape 1 - Tokenisation
 
-Afin d'analyser la question, il nous faut dans un premier temps découper la question. Pour cela, nous allons utiliser la fonction `split(" ")` et séparer les mots par des espaces. Cependant, il existe des mots composés tel que `plate-forme` mais aussi des mots tel que `puis-je`. Dans le premier cas, `plate-forme` doit garder sa forme alors que dans le deuxième cas, on peut les séparer (dans le but d'une analyse de la phrase). Nous avons donc créé une fonction en plus du split qui, selon la composition du mot composé, va décider si oui ou non le découper :
+Afin d'analyser la question, il nous faut dans un premier temps découper la question. Pour cela, nous allons utiliser la fonction `split(" ")` et séparer les mots par des espaces. Cependant, il existe des mots composés tel que `plate-forme` mais aussi des mots tel que `puis-je`. Dans le premier cas, `plate-forme` doit garder sa forme alors que dans le deuxième cas, on peut les séparer car ils ne forme pas un seul et même mot. Nous avons donc créé une fonction en plus du split qui, selon la composition du mot composé, va décider si oui ou non le découper :
 
 ```
+# Split et ananlyse des mots composés
 def splitByWord(text):
 	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous," ,"nous", "vous", "ils", "elles"]
+	ponct = '[ ?.,!/;]'
 	listWord = []
 	for word in text.split():
 		if len(word.split("-")) is 1:
-			listWord.append(word)
+			word = re.sub(ponct, '', word)
+			if word != '':
+				listWord.append(word)
 		else:
 			splitabale = False
 			for mot in word.split("-"):
 				if mot in listPronoms:
 					splitabale = True
 			if splitabale is True:
-				listWord = listWord + word.split("-")
+				for w in word.split("-"):
+					w = w + ','
+					w = re.sub(ponct, '', w)
+					if w != '':
+						listWord.append(w)
 			else:
-				listWord.append(word)
-
+				word = re.sub(ponct, '', word)
+				if word != '':
+					listWord.append(word)
 	return listWord
 ```
+Nous supprimons aussi toutes ponctuations compris dans '[ ?.,!/;]'.
 
-### Etape 2 - Recherche de synonyme
+### Etape 2 - Recherche de synonymes
+
+Afin d'élargir notre champ de recherche, nous effectuons une recherche de synonymes sur les mots clés de la question posée par l'utilisateur. Si l'utilisateur utilise le mot `emplette`, celui-ci matchera avec le mot `acheter`.
 
 ### Etape 3 - Lemmatisation
+
+Dans le but de simplifier la recherche, nous lemmatisions les mots clés. Cela permet par exemple de passer outre le problème de conjugaison des verbes. `Achetais` deviendra alors `acheter`.
 
 ### Etape 4 - Création d'un dictionnaire
 
@@ -60,30 +74,26 @@ Pour stocker les questions/réponses ainsi que leurs mots clés, nous avons déc
                                                                   'reponse': u"\nLes produits de Dans Ma Culotte\xa9 sont disponibles sur notre site internet dansmaculotte.com\n\nVous pouvez \xe9galement les retrouver lors des rendez-vous Marie-No\xeblle. Ces r\xe9unions organis\xe9es \xe0 domicile vous permettent de d\xe9couvrir les produits, de les toucher, et de b\xe9n\xe9ficier de nombreux conseils personnalis\xe9s de la part de nos conseill\xe8res bien-\xeatre. Si vous souhaitez participer \xe0 l'une de ces r\xe9unions en tant qu'invit\xe9(e) ou en organiser une \xe0 votre domicile entour\xe9(e) des personnes de votre choix, contactez-nous par t\xe9l\xe9phone au 02 52 86 00 83 de 10:00 \xe0 17:00  ou par email \xe0 l'adresse suivante: bonjour@lesrdvmarienoelle.fr .\n"},
 ```
 
+Le dictionnaire sera stocké dans le dossier `dictionnaire` sous le format json.
+
 ### Etape 5 - Analyse d'une question
 
-Une fois la question posée, le programme va la récupérer, l'analyser, et comparer les mots de la question avec les mots clé des questions présentes dans le dictionnaire. Un pourcentage de mots clés trouvé sera alors calculé :
+Une fois la question posée, le programme va la récupérer, chercher les synonymes, et comparer les mots clé (ainsi que les synonymes) de la question avec les mots clés des questions présentes dans le dictionnaire. Un pourcentage de mots clés trouvé sera alors calculé :
 
-```
-Détails de pourcentage de similarité : 
-{u'\n\nQue se passe-t-il si je ne suis pas chez moi pour r\xe9ceptionner ma commande ?': 0,
- u'Dans quels pays livrez-vous et \xe0 quels tarifs ?\n': 0,
- u'Mon adresse de livraison est incorrecte, comment la modifier ?': 0,
- u'O\xf9 puis-je acheter les produits de Dans Ma Culotte\xa9 ?': 0,
- u'Quels sont les moyens de paiement disponibles ?': 0.5}
-```
 
-La réponse donnée par le programme sera celle ayant le pourcentage le plus élevé.
 
 ## Installation et lancement
 
-Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME :
+Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME` :
 * os
 * operator
 * json
+* sys
 * codecs
 * re
 * nltk
+* treetaggerwrapper
+
 
 Dans le fichier `1_faq_dmc.py` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
 
@@ -94,13 +104,17 @@ java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/ja
 Pour lancer le terminal, executez cette ligne de commande :
 
 ```
-> python 1_faq_dmc.py
+> python 1_faq_dmc.py [-v] [-f]
 ```
+
+* `-v` permet d'avoir tout les détails du processus 
+* `-f` permet d'écraser le fichier dictionnaire enregistrer lors des précédents traitement
+
 
 Suite à ça, il vous sera demandé de renseigner le fichier json de questions/réponses à analyser ainsi que une question utilisateur :
 
 ```
-> *** Entrer le json de questions/réponses sous la forme ' *****.json ' : 1_faq_dmc.json
+> *** Entrer 1, 2, 3 ou 4 pour lire le fichier 1_faq_dmc.json, 2_questions_sorbonne.json, 3_syp.json ou 3_faq_syp.json : 2
 ...
 > *** Quelle est votre question : Comment modifier une adresse de livraison incorrecte ?
 ... 
