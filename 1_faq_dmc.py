@@ -28,20 +28,28 @@ tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.d
 # Split et ananlyse des mots composés
 def splitByWord(text):
 	listPronoms = ["je", "tu", "il", "t", "elle", "on", "nous," ,"nous", "vous", "ils", "elles"]
+	ponct = '[ ?.,!/;]'
 	listWord = []
 	for word in text.split():
 		if len(word.split("-")) is 1:
-			listWord.append(word)
+			word = re.sub(ponct, '', word)
+			if word != '':
+				listWord.append(word)
 		else:
 			splitabale = False
 			for mot in word.split("-"):
 				if mot in listPronoms:
 					splitabale = True
 			if splitabale is True:
-				listWord = listWord + word.split("-")
+				for w in word.split("-"):
+					w = w + ','
+					w = re.sub(ponct, '', w)
+					if w != '':
+						listWord.append(w)
 			else:
-				listWord.append(word)
-
+				word = re.sub(ponct, '', word)
+				if word != '':
+					listWord.append(word)
 	return listWord
 
 # ===================================
@@ -149,6 +157,7 @@ def synonyme(w):
 def getTag(s):
 	dict_word = {}
 	s = splitByWord(s)
+	print s
 	for mot in s :
 		tags = tagger.tag_text(mot)
 		dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos.split(":")[0]
