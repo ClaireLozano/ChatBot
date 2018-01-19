@@ -135,21 +135,11 @@ def compareQuestions(newQuestWords, words):
             pourcentQuestion[currentQuestion] = {"pourcentage" : float(nb) / len(newQuestWords), "reponse" : words[currentQuestion]['reponse']} 
     if pourcentQuestion:         
         reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]['reponse']
-        #pourcentQuestion = {key: value for key, value in pourcentQuestion.items() if value['reponse'] is not reponse}
     else : 
         reponse = ""
     return pourcentQuestion,reponse
 
-"""            
-            reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-            pourcent = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]
 
-    if pourcent > float(0.00):
-        return pourcentQuestion, reponse
-    else:
-        print "Cette question ne ressemble à aucune autre question ..."
-        return pourcentQuestion, ''
-"""
 # ================================
 # =========== SYNONYME ===========
 # ================================
