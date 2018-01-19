@@ -52,7 +52,8 @@ Afin d'élargir notre champ de recherche, nous effectuons une recherche de synon
 
 ### Etape 3 - Lemmatisation
 
-Dans le but de simplifier la recherche, nous lemmatisions les mots clés. Cela permet par exemple de passer outre le problème de conjugaison des verbes. `Achetais` deviendra alors `acheter`.
+Dans le but de simplifier la recherche, nous lemmatisions les mots clés. Cela permet par exemple de passer outre le problème de conjugaison des verbes. `Achetais` deviendra alors `acheter`. 
+Nous avons utilisé TreeTagger qui est un outil d'annotation et de tag de texte qui permet de retourner des informations sur la partie du discours et le lemme.
 
 ### Etape 4 - Création d'un dictionnaire
 
