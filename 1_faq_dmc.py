@@ -133,7 +133,7 @@ def compareQuestions(newQuestWords, words):
 		return pourcentQuestion, reponse
 	else:
 		print "Cette question ne ressemble à aucune autre question ..."
-		return '', ''
+		return pourcentQuestion, ''
 
 # ================================
 # =========== SYNONYME ===========
@@ -155,7 +155,6 @@ def synonyme(w):
 def getTag(s):
 	dict_word = {}
 	s = splitByWord(s)
-	print s
 	for mot in s :
 		tags = tagger.tag_text(mot)
 		dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos.split(":")[0]
@@ -170,6 +169,17 @@ def getTag(s):
 
 # =====================================================================================
 
+# Recupération d'arguments
+text = False
+jsonForce = False
+
+for arg in sys.argv:
+	if arg == '-v':
+		text = True
+	elif arg == '-f':
+		jsonForce = True
+
+# Resource à utiliser ? 
 print ""
 dictionnary =""
 nb = raw_input("*** Entrer 1, 2, 3 ou 4 pour lire le fichier 1_faq_dmc.json, 2_questions_sorbonne.json, 3_syp.json ou 3_faq_syp.json : ")
@@ -182,23 +192,28 @@ elif nb is '3':
 elif nb is '4':
 	dictionnary = "3_faq_syp.json"
 
-# Creation de dictionnaire avec les mots clé d'une question et sa réponse
+# Creation de dictionnaire avec les mots clés d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
-print ""
-print "======================"
-print "==== DICTIONNARY =====" 
-print "======================"
-print ""
+# Si l'option -v est présente, on affiche le dictionnaire
+if text:
+	print ""
+	print "*** Dictionnaire "
 
-# Affichage du dictionnaire avec les mots clés
-pprint(words)
+	# Affichage du dictionnaire avec les mots clés
+	pprint(words)
 
-print ""
-print "==========================="
-print "========= REPONSE =========" 
-print "==========================="
-print ""
+	print ""
+	print "==========================="
+	print "========= REPONSE =========" 
+	print "==========================="
+	print ""
+
+# Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
+if jsonForce:
+	print "*** Enregistrement du dictionnaire dans un fichier json ... "
+else:
+	print "*** Chargement du dictionnaire si il existe ..."
 
 # Récupération de la question utilisateur
 questionsList = words.keys()
@@ -224,4 +239,9 @@ else:
 print ""
 print ""
 
+# Si l'option -v est présente, on affiche la totalité des questions enregistrer ainsi que le pourcentage
+if text:
+	print "*** Liste des résultats : "
+	pprint(result)
+	print ""
 
