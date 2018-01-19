@@ -15,6 +15,15 @@ sys.path.append(os.path.abspath('./dictionnaireSyns'))
 from pprint import pprint
 from nltk.tag import StanfordPOSTagger
 from SynFranWord import syns
+from pathlib import Path
+
+jar = 'stanford-postagger-full-2017-06-09/stanford-postagger-3.8.0.jar'
+model = 'stanford-postagger-full-2017-06-09/models/french.tagger'
+# Claire's Path 
+java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
+# Wafaa's Path
+# java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/bin/java"os.environ['JAVAHOME'] = java_path
+pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 # Construction et configuration du wrapper
 #MacOs's path
@@ -65,18 +74,17 @@ def splitByWord(text):
 # 	}
 #
 def createDictionnary(path):
-    dictionnary = {}
-    with open(path) as inp:
-        dict_test = json.load(inp)
-        for k, v in dict_test.iteritems():
-            array = []
-            tags = getTag(v[0])
-            for key,value in tags.items():
-                if value in ["VER", "NOM", "ADJ", "ADV"]:
-                    array.append(lemmatizationWord(key.lower()))
-                    array = list(set(array))
-            dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
-    return dictionnary
+	dictionnary = {}
+	with open(path) as inp:
+		dict_test = json.load(inp)
+		for k, v in dict_test.iteritems():
+			array = []
+			tags = getTag(v[0])
+			for t in tags:
+				if t[1] in ["VINF", "NC", "ADJ", "VPP"]:
+					array.append(lemmatizationWord(t[0].lower()))
+			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
+	return dictionnary
 
 # Suppression des mots de la question qui ferait partie de la liste placé en paramètre
 # Cela permet de ne garder uniquement les mots "important"
@@ -158,16 +166,10 @@ def synonyme(w):
 # ================================
 
 # Trouver tout les tags des mots présent dans une phrase sous la forme de dictionnaire :
-# 		{u'vous': u'PRO', u'\xe0': u'PRP', u'pays': u'NOM', u'Dans': u'NOM', u'quels': u'PRO', u'livrez': u'VER', u'tarifs': u'NOM', u'et': u'KON', u'?': u'SENT'}
+# 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
 def getTag(s):
-	dict_word = {}
-	s = splitByWord(s)
-	for mot in s :
-		tags = tagger.tag_text(mot)
-		dict_word[mot] = treetaggerwrapper.make_tags(tags)[0].pos.split(":")[0]
-	return dict_word
-
-
+	res = pos_tagger.tag(splitByWord(s))
+	return res
 
 
 
@@ -199,8 +201,28 @@ elif nb is '3':
 elif nb is '4':
 	dictionnary = "3_faq_syp.json"
 
-# Creation de dictionnaire avec les mots clés d'une question et sa réponse
-words = createDictionnary(dictionnary)
+
+words = {}
+
+# Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
+if jsonForce:
+	print "*** Enregistrement du dictionnaire dans un fichier json ... "
+	words = createDictionnary(dictionnary)
+	f = open('dictionnaire/result_' + nb + ".json", 'w+')
+	f.write(json.dumps(words, indent=1))
+else:
+	print "*** Chargement du dictionnaire si il existe ..."
+	my_file = Path('dictionnaire/result_' + nb + ".json")
+	if my_file.is_file():
+		f = open('dictionnaire/result_' + nb + ".json", 'r')
+		words = json.load(f)
+		f.close()
+	else:
+		# Creation de dictionnaire avec les mots clés d'une question et sa réponse
+		words = createDictionnary(dictionnary)
+		f = open('dictionnaire/result_' + nb + ".json", 'w+')
+		f.write(json.dumps(words, indent=1))
+		f.close()
 
 # Si l'option -v est présente, on affiche le dictionnaire
 if text:
@@ -215,12 +237,6 @@ if text:
 	print "========= REPONSE =========" 
 	print "==========================="
 	print ""
-
-# Si l'option -f est présente, on enregistre le dictionnaire dans un fichier json
-if jsonForce:
-	print "*** Enregistrement du dictionnaire dans un fichier json ... "
-else:
-	print "*** Chargement du dictionnaire si il existe ..."
 
 # Récupération de la question utilisateur
 questionsList = words.keys()

@@ -1,0 +1,738 @@
+{
+ "J ai une personne qui serait int\u00e9ress\u00e9 mais je ne sais pas comment faire pour le parrainage\n": {
+  "motCle": [
+   "j", 
+   "personne", 
+   "int\u00e9resser", 
+   "faire", 
+   "parrainage"
+  ], 
+  "reponse": "Il suffit qu'elle indique votre pseudo dans la case \"parrain\" lorsqu'elle s'inscrit\n"
+ }, 
+ "bonjour\nj'ai un pti souci. jai decoller la pub avant votre sms , comment je fais pour la photo? il reste des residu sur mon pare brise et jai encore la pub en \"boule\" mais du coup ????\nD\u00e9soler.  C une fois re\u00e7u votre sms que j'ai r\u00e9aliser ma b\u00eatise\n": {
+  "motCle": [
+   "bonjour", 
+   "je", 
+   "pti", 
+   "souci", 
+   "jai", 
+   "decoller", 
+   "pub", 
+   "sms", 
+   "photo", 
+   "residu", 
+   "brise", 
+   "jai", 
+   "pub", 
+   "\"", 
+   "foi|fois", 
+   "recevoir", 
+   "sms", 
+   "r\u00e9aliser", 
+   "b\u00eatise"
+  ], 
+  "reponse": "Pas de soucis. Nous allons trouver une solution.\nconseiller:photos\n"
+ }, 
+ "Bonjour \ud83d\ude00\nToujours riens de pr\u00e9vues ?\n": {
+  "motCle": [
+   "rien", 
+   "pr\u00e9voir"
+  ], 
+  "reponse": "Bonjour. Nous travaillons chaque jour pour trouver des campagnes. Et nous vous informerons si des campagnes vous concerne. \nA votre service. \n"
+ }, 
+ "H\u00e2te de commencer! A quand la prochaine campagne ?\nCordialement\n": {
+  "motCle": [
+   "h\u00e2te", 
+   "commencer", 
+   "prochain", 
+   "campagne"
+  ], 
+  "reponse": "Quand une campagne sera disponible dans votre zone vous serez notifi\u00e9e par mail et par SMS.\n"
+ }, 
+ "Message envoy\u00e9 par PSEUDO\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx \n\nBonjour,\nJe suis une entreprise transport de personnes sur Orl\u00e9ans,je circule principalement aux heures d'affluence  7H00 9H30.13H00 15 H00 .16H30 19H00.Mon v\u00e9hicule est KIA RIO  gris m\u00e9tal de 6 mois donc tr\u00e8s propre.Vous pouvez me contacter soit par mail soit au 00.00.00.00.00.\nCordialement XXX\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "entreprise", 
+   "personne", 
+   "heure", 
+   "v\u00e9hicule", 
+   "rio", 
+   "gris", 
+   "moi|mois", 
+   "proprevous", 
+   "contacter", 
+   "mail", 
+   "cordialement", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:entreprise\n"
+ }, 
+ "bonjour ci joint mon rib ca je n'arrive pad a le saisir sur votre site.\nCordialement Mlle XXX \n": {
+  "motCle": [
+   "bonjour", 
+   "rib", 
+   "saisir", 
+   "site", 
+   "mademoiselle", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:rib\n"
+ }, 
+ "Bonjour serait t'il possible d avoir plus d'informations sur le syst\u00e8me de fonctionnement svp merci d avance\n11/11/2016 20:45\n": {
+  "motCle": [
+   "possible", 
+   "d", 
+   "de", 
+   "syst\u00e8me", 
+   "fonctionnement", 
+   "svp", 
+   "avance", 
+   "@card@", 
+   "@card@"
+  ], 
+  "reponse": "Il faut vous inscrire (si ce n'est pas d\u00e9j\u00e0 fait) pour avoir acc\u00e8s \u00e0 nos propositions de campagnes. Voici comment fonctionne notre service :\n\nNous proposons aux entreprises de faire des campagnes de publicit\u00e9s ciblent des zones g\u00e9ographiques bien pr\u00e9cises.\nD'autre part, nous proposons \u00e0 des particuliers circulant dans ces zones d'\u00eatre r\u00e9tribu\u00e9s pour mettre ces publicit\u00e9s sur la vitre arri\u00e8re de leur voiture.\nLa publicit\u00e9 est micro-perfor\u00e9e et ne g\u00e8ne pas la visibilit\u00e9.\n\nLe principe est simple : d\u00e8s qu'une entreprise cherche \u00e0 mener une campagne de publicit\u00e9 dans votre r\u00e9gion, nous vous proposons de participer \u00e0 la campagne.\nNous vous indiquons quelle est l'entreprise, \u00e0 quoi ressemble la publicit\u00e9, le temps que dure la campagne et bien s\u00fbr la r\u00e9tribution que vous recevrez.\nVous \u00eates libre d'accepter ou non les propositions de campagne.\n\nUne fois la campagne accept\u00e9e, vous recevez la publicit\u00e9 par la poste et vous la posez sur la vitre arri\u00e8re de votre v\u00e9hicule le nombre de jours convenu.\nDurant la campagne, nous vous demandons simplement de vous connecter sur notre site r\u00e9guli\u00e8rement avec votre smartphone pour :\n- d\u00e9poser des photos de votre v\u00e9hicule avec la publicit\u00e9 en question\n- nous informer de vos d\u00e9placements (g\u00e9olocalisation automatique)\n\n Ces informations sont anonymis\u00e9es et nous servent simplement \u00e0 informer le client sur la visibilit\u00e9 de la campagne.\n\n Enfin, vous pouvez parrainer vos connaissances, ce qui augmente vos chances d'\u00eatre s\u00e9lectionn\u00e9e et vous ouvre droit \u00e0 des bonus sous certaines conditions\nPour plus de d\u00e9tails : http://www.seeyou-pub.fr/faq\n"
+ }, 
+ "Bonjour,\nComment \u00e7a marche pour pouvoir particip\u00e9 a des campagnes?\n": {
+  "motCle": [
+   "pouvoir", 
+   "participer", 
+   "campagne"
+  ], 
+  "reponse": "Bonjour,\n Vous devez d'abord vous inscrire sur notre site"
+ }, 
+ "Bonjour je n arrive pas \u00e0 charger la.photo sur mon compte.\nQuand c marquer photo charger c que vous l avez re\u00e7u?  merci\n": {
+  "motCle": [
+   "charger", 
+   "laphoto", 
+   "compte", 
+   "marquer", 
+   "photo", 
+   "charger", 
+   "recevoir"
+  ], 
+  "reponse": "C'est cela m\u00eame. \n"
+ }, 
+ "Bonjour je me suis inscrit le 29 avril  et je n'ai encore aucun contacte de votre part. Je vous signal que je vais 100 km par jours et ma voiture est stationn\u00e9 toute la journ\u00e9e sur le centre commerciale CARREFOUR a SARAN 45770.\n\nMerci de me tenir au courant\n": {
+  "motCle": [
+   "inscrire", 
+   "@card@", 
+   "avril", 
+   "aucun", 
+   "signal", 
+   "kilom\u00e8tre", 
+   "jour", 
+   "voiture", 
+   "stationner", 
+   "journ\u00e9e", 
+   "centre", 
+   "commercial", 
+   "tenir", 
+   "courant"
+  ], 
+  "reponse": ">conseiller:propositions\n"
+ }, 
+ "Bonjour je suis inscrit sous le pseudo PSEUDO, actuellement je participe \u00e0 la campagne optique 2000. Je charge r\u00e9guli\u00e8rement des photos des lieux ou je me trouve mais il semble que l aplication rame \u00e0 chaque fois pour actualiser mon profil GPS alors que mon t\u00e9l\u00e9phone le fait parfaitement\n": {
+  "motCle": [
+   "inscrire", 
+   "pseudo", 
+   "campagne", 
+   "optique", 
+   "@card@", 
+   "photo", 
+   "lieu", 
+   "aplication", 
+   "rame", 
+   "foi|fois", 
+   "actualiser", 
+   "profil", 
+   "t\u00e9l\u00e9phone", 
+   "faire"
+  ], 
+  "reponse": "conseiller:localisation\n"
+ }, 
+ "bonjour \nje n'arrive pas a me connecter sur mon compte, impossible de changer mon mot de passe et si j'essai de faire un autre compte il refuse car il connais deja mon adresse ... je ne comprend pas parce que jai bien recu le mail de confirmation de cr\u00e9ation de compte \n\nXXX\n": {
+  "motCle": [
+   "bonjour", 
+   "connecter", 
+   "impossible", 
+   "changer", 
+   "faire", 
+   "autre", 
+   "compte", 
+   "adresse", 
+   "recu", 
+   "mail", 
+   "confirmation", 
+   "cr\u00e9ation", 
+   "compte", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:connexion\n"
+ }, 
+ "j'aimerai des renseignements sur votre proposition de publicit\u00e9 sur ma voiture\n": {
+  "motCle": [
+   "je", 
+   "proposition", 
+   "publicit\u00e9", 
+   "voiture"
+  ], 
+  "reponse": ">message:g\u00e9n\u00e9rique\n"
+ }, 
+ "Bonjour \ud83d\ude42\nJe viens de m'inscrire .\n\u00c2 quand j'aurai ma premi\u00e8re pub \u00e2 afficher svp ? \ud83d\ude42\n": {
+  "motCle": [
+   "me", 
+   "je", 
+   "premier", 
+   "pub", 
+   "\u00e2", 
+   "afficher", 
+   "\ud83d\ude42"
+  ], 
+  "reponse": "D\u00e8s que nous aurons une campagne dans votre r\u00e9gion."
+ }, 
+ "Bonjour,\n\nAcceptez vous tous types de smartphone ou faut-il une qualit\u00e9 de photo particuli\u00e8re ?\n": {
+  "motCle": [
+   "tout", 
+   "type", 
+   "smartphone", 
+   "qualit\u00e9", 
+   "photo", 
+   "particulier"
+  ], 
+  "reponse": ""
+ }, 
+ "\nbonjour je suis inscrit sur votre site mais je vois plus d\u2019offres de publicit\u00e9 es ce normal et quand aura t il des offres merci\n": {
+  "motCle": [
+   "bonjour", 
+   "inscrire", 
+   "site", 
+   "d\u2019offres", 
+   "publicit\u00e9", 
+   "\u00eatre", 
+   "normal"
+  ], 
+  "reponse": "Bonjour,\nQuand une campagne sera disponible vous serez inform\u00e9 par SMS et par mail, veillez bien \u00e0 maintenir \u00e0 jour vos informations : adresse mail et num\u00e9ro de t\u00e9l\u00e9phone\n\nCordialement,\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Bonjour nouveau venu dans ce concept , j\u2019aurais quelques questions ,\n\n\u00b7        suis-je oblig\u00e9 d\u2019avoir un smartphone ? j\u2019ai un  t\u00e9l\u00e9phone qui peut accepter internet mais qui n\u2019est pas un smartphone \u2026\n\n\u00b7        le parrainage est-il  \u00ab  r\u00e9compens\u00e9 \u00ab ?\n\n\u00b7        Puis je cumuler plusieurs voitures ? celle de ma femme par exemple \u2026\n\nCordialement\n\nXXX\n": {
+  "motCle": [
+   "nouveau", 
+   "venir", 
+   "concept", 
+   "j\u2019aurais", 
+   "question", 
+   "\u00b7", 
+   "obliger", 
+   "d\u2019avoir", 
+   "smartphone", 
+   "j\u2019ai", 
+   "t\u00e9l\u00e9phone", 
+   "accepter", 
+   "Internet", 
+   "smartphone", 
+   "parrainage", 
+   "r\u00e9compenser", 
+   "\u00ab", 
+   "\u00b7", 
+   "cumuler", 
+   "voiture", 
+   "femme", 
+   "cordialement", 
+   "xxx"
+  ], 
+  "reponse": "Bonjour,\n\nIl est en effet obligatoire de disposer d'un smartphone de mani\u00e8re \u00e0 pouvoir g\u00e9olocaliser vos d\u00e9placements et les photos de votre v\u00e9hicule.\n\nLe parrainage augmente vos chances d'\u00eatre s\u00e9lectionn\u00e9 d'une part et d'autre part vous permet de monter en exp\u00e9rience plus rapidement et donc \u00e0 terme d'\u00eatre encore mieux r\u00e9mun\u00e9r\u00e9.\n\n Le principe est d'avoir un compte par personne. Dans les cas particuliers de v\u00e9hicules d'entreprise, nous consulter.\n\nCordialement,\nC\u00e9lia pour l'\u00e9quipe Seeyou-pub\n"
+ }, 
+ "Bonjour j'ai vu votre pub sur une voiture pour gagner 100 euros par mois en mettant de la pub sur ma voiture pouvez vous me donner des informations\nMerci bonne journ\u00e9e\n\nEnvoy\u00e9 depuis mon Sony Xperia M2 d'Orange\n": {
+  "motCle": [
+   "pub", 
+   "voiture", 
+   "gagner", 
+   "euro", 
+   "moi|mois", 
+   "pub", 
+   "voiture", 
+   "information", 
+   "bon", 
+   "journ\u00e9e", 
+   "envoyer", 
+   "de"
+  ], 
+  "reponse": ">message:g\u00e9n\u00e9rique\n"
+ }, 
+ "Bonjour.\nJ'ai un probl\u00e8me lorsque je dois rentrer mon RIB sur votre site.\nMon code guichet est 05516 sauf que le site enl\u00e8ve le 0 et il n'accepte pas de valider mon RIB.\n": {
+  "motCle": [
+   "probl\u00e8me", 
+   "rentrer", 
+   "rib", 
+   "site", 
+   "code", 
+   "guichet", 
+   "site", 
+   "valider", 
+   "rib"
+  ], 
+  "reponse": "conseiller:rib\n"
+ }, 
+ "Bonjour, je devais recevoir les premi\u00e8re proposition de publicit\u00e9...\nN'ayant toujours rien re\u00e7u je me permet de vous re contactez. \n\nCordialement \n": {
+  "motCle": [
+   "recevoir", 
+   "premier", 
+   "proposition", 
+   "publicit\u00e9", 
+   "recevoir", 
+   "re"
+  ], 
+  "reponse": "Bonjour,\n\nSi vous n'avez pas re\u00e7u de proposition c'est qu'il n'y avait pas de campagne dans votre zone g\u00e9ographique.\n\nD\u00e8s qu'une campagne sera disponible vous serez inform\u00e9 par SMS et par mail, veillez bien \u00e0 mettre \u00e0 jour votre adresse mail et votre num\u00e9ro de t\u00e9l\u00e9phone\n\nBien cordialement,\n\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Message envoy\u00e9 par XXX (PSEUDO)\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n\nBonjour,\n\nJ'aimerai faire la campagne optic 200 mais je ne sais pas comment \"accepter\". Pouvez vous m'aider ?\nDe plus j'ai voulu inscrire mon mari grace au parainage mais il n'est pas dans mes filleuls. Il s'agit de monsieur damien badufle..\n\nPar avance merci pour votre aide\nXXX\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "campagne", 
+   "optic", 
+   "@card@", 
+   "me", 
+   "vouloir", 
+   "inscrire", 
+   "mari", 
+   "grace", 
+   "parainage", 
+   "filleul", 
+   "monsieur", 
+   "damien", 
+   "aide", 
+   "xxx"
+  ], 
+  "reponse": "Bonjour,\n\nPour accepter la campagne, il faut vous rendre dans la partie \"campagnes\" de notre site (l'ic\u00f4ne voiture) et cliquer sur le bouton \"accepter\".\n\nConcernant le parrainage, il suffit que la personne nous envoie elle m\u00eame un mail pr\u00e9cisant votre pseudo et nous r\u00e9tablirons la situation.\n\nC\u00e9lia pour l'\u00e9quipe Seeyou-Pub\n"
+ }, 
+ "bonjour\n\nj'ai vu sur une voiture votre mail , votre proposition de mettre une pub sur ma voiture, m'interesse\n\npouvez vous me donner plus d'explications?\n\nj'habite Orl\u00e9ans \n\nXXX\n": {
+  "motCle": [
+   "bonjour", 
+   "je", 
+   "voir", 
+   "voiture", 
+   "proposition", 
+   "mettre", 
+   "pub", 
+   "voiture", 
+   "me", 
+   "de", 
+   "je"
+  ], 
+  "reponse": ""
+ }, 
+ "J'ai tent\u00e9 de poster une photo samedi, mais celle-ci est toujours en attente de validation.\nJ'ai voulu en poster une autre ce matin de mon lieu de travail (Caen - Universit\u00e9), mais du coup la premi\u00e8re est toujours en attente...\nJe ne voudrais pas passer pour un membre inactif, je ne sais pas si je dois faire quelque chose de plus ?\n\nCordialement,\n\nXXX\n": {
+  "motCle": [
+   "tenter", 
+   "poster", 
+   "photo", 
+   "samedi", 
+   "validation", 
+   "vouloir", 
+   "poster", 
+   "autre", 
+   "matin", 
+   "premier", 
+   "attente", 
+   "passer", 
+   "membre", 
+   "inactif", 
+   "faire", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:photos\n"
+ }, 
+ "quelles sont les conditions et les modalit\u00e9s,  pour poser un visuel voiture ?  Quelle est la r\u00e9mun\u00e9ration ?  D'avance merci.\nCordialement.\n\nXXX\n000 \n": {
+  "motCle": [
+   "condition", 
+   "modalit\u00e9", 
+   "poser", 
+   "visuel", 
+   "voiture", 
+   "r\u00e9mun\u00e9ration", 
+   "xxx", 
+   "@card@"
+  ], 
+  "reponse": ">message:g\u00e9n\u00e9rique\n"
+ }, 
+ "bonjour, jai un souci je viens de poser la banderole mais je n'arrive plus a me connecter a mon compte\n": {
+  "motCle": [
+   "bonjour", 
+   "jai", 
+   "souci", 
+   "poser", 
+   "banderole", 
+   "connecter", 
+   "compte"
+  ], 
+  "reponse": "conseiller:connexion\n"
+ }, 
+ "Bonsoir je prend contact avec vous car j'ai bien re\u00e7u lautocollant pour ma campagne optic 2000 hier mais je n'arrive pas \u00e0 envoyer la foto pour validation comment puis-je faire pour l'envoyer et valid\u00e9 ma campagne\n": {
+  "motCle": [
+   "bonsoir", 
+   "contact", 
+   "recevoir", 
+   "lautocollant", 
+   "campagne", 
+   "optic", 
+   "@card@", 
+   "envoyer", 
+   "foto", 
+   "validation", 
+   "la|le", 
+   "valider", 
+   "campagne"
+  ], 
+  "reponse": "conseiller:photos\n"
+ }, 
+ "Bonjour, \n\nSuite \u00e0 mon inscription le mois dernier, \u00e0 ce jour je n'ai aucun retour de votre part. Mon inscription a-t-elle bien \u00e9t\u00e9 prise en compte?\n\nCordialement \nXXX\n": {
+  "motCle": [
+   "inscription", 
+   "moi|mois", 
+   "dernier", 
+   "jour", 
+   "retour", 
+   "part", 
+   "inscription", 
+   "\u00eatre", 
+   "prise", 
+   "xxx"
+  ], 
+  "reponse": ">action_bdd:verif-inscription\n"
+ }, 
+ "bonjour je suis inscrit chez et je n'ai jusqu'\u00e0 maintenant jamais \u00e9t\u00e9 contact\u00e9 pour travaill\u00e9 avec vous\n": {
+  "motCle": [
+   "bonjour", 
+   "inscrire", 
+   "\u00eatre", 
+   "contacter", 
+   "travailler"
+  ], 
+  "reponse": "Bonjour,\n\nSi vous n'avez pas re\u00e7u de proposition c'est qu'il n'y avait pas de campagne pour laquelle votre zone g\u00e9ographique correspondait. Veillez \u00e0 mettre \u00e0 jour les donn\u00e9es de votre profil pour assurer que vous receviez nos offres futures\n\n\nBien cordialement,\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Bonjour je n'arrive pas \u00e0 enregistr\u00e9 mon RIB comment puis je proc\u00e9der pour recevoir les gains\n": {
+  "motCle": [
+   "enregistrer", 
+   "proc\u00e9der", 
+   "recevoir", 
+   "gain"
+  ], 
+  "reponse": "Bonjour,\n D\u00e8s que votre campagne est termin\u00e9, l'argent est vers\u00e9 sur votre cagnotte. A tout moment, vous pouvez demander le virement de votre argent disponible. Cordialement,\n"
+ }, 
+ "\nBonjour,\n Je viens de me rendre compte que je n'ai pas r\u00e9pondu \u00e0 votre mail concernant les horaires de notre rencontre aujourd'hui.\n Puis je avoir votre tel pour caler un horaire ?\n \u00c0 bient\u00f4t.\n": {
+  "motCle": [
+   "r\u00e9pondre", 
+   "horaire", 
+   "rencontre", 
+   "aujourd'hui", 
+   "tel", 
+   "caler", 
+   "horaire"
+  ], 
+  "reponse": ">conseiller:entreprise\n"
+ }, 
+ "Bonsoir je serai interesser et jorai voulu savoir comment sa se deroule\n": {
+  "motCle": [
+   "interesser", 
+   "jorai", 
+   "vouloir", 
+   "savoir"
+  ], 
+  "reponse": "Bonsoir,\n\nEn ce qui concerne le principe de SYP, nous fournissons des visuels que vous apposez sur votre v\u00e9hicule pendant une dur\u00e9e d\u00e9termin\u00e9e, vous prenez des photos que vous nous envoyez depuis votre smartphone et nous vous r\u00e9mun\u00e9rons en cons\u00e9quence (tout est expliqu\u00e9 sur notre FAQ)\n"
+ }, 
+ "Bonjour,\nJe viens de cr\u00e9er mon compte sur votre site.\nJe suis commerciale et je fais 40 000 kms par an. Sud ouest et France.\nCordialement \n": {
+  "motCle": [
+   "cr\u00e9er", 
+   "compte", 
+   "site", 
+   "commercial", 
+   "an"
+  ], 
+  "reponse": "Bonjour,\nMerci pour ces ifnormations compl\u00e9mentaires, n'h\u00e9sitez pas \u00e0 compl\u00e9ter votre profil pour que nous puissions affiner nos propositions.\n\nNo\u00e9mie pour SeeYou-Pub\n"
+ }, 
+ "Message envoy\u00e9 par XXX\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n\nJe voudrais corriger mon mot de passe pour m inscrire je n y arrive pas car il y a neuf elements sur celui qui est officiel alors que moi il y en a 8 en general et je voudrais l effacer pour avoir le meme a confirmer  merci de m aider\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "corriger", 
+   "mot", 
+   "passe", 
+   "m", 
+   "inscrire", 
+   "elements", 
+   "officiel", 
+   "@card@", 
+   "general", 
+   "l", 
+   "effacer", 
+   "avoir", 
+   "meme", 
+   "confirmer", 
+   "m", 
+   "aider"
+  ], 
+  "reponse": ">conseiller:connexion\n"
+ }, 
+ "Message envoy\u00e9 par XXX (PSEUDO)\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n\nBonjour, \nJe me permet de vous contacter car lorsque je me connecte sur notre site, un message s'affiche : restez sur cette page pour nous permettre d'am\u00e9liorer votre profil GPS. Merci pour votre confiance. Cependant la page ne charge pas. \nMerci\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "contacter", 
+   "site", 
+   "message", 
+   "se", 
+   "page", 
+   "permettre", 
+   "de", 
+   "profil", 
+   "confiance", 
+   "page"
+  ], 
+  "reponse": ">conseiller:localisation\n"
+ }, 
+ "Bonjour\n\n\nJ'ai vu votre annonce sur un vehicule ce jour je viens de lire votre tuto et je souhaiterai savoir si les revenus sont imposables ? \n\n\nDans l'attente de vous lire\n": {
+  "motCle": [
+   "annonce", 
+   "vehicule", 
+   "jour", 
+   "lire", 
+   "tuto", 
+   "savoir", 
+   "revenu", 
+   "imposable", 
+   "lire"
+  ], 
+  "reponse": "Bonjour,\n\nVous devez effectivement d\u00e9clarer les revenus re\u00e7us de notre part. Tant que ceux-ci restent dans votre cagnotte vous n'\u00eates pas imposable, ce n'est que lorsque vous recevez un virement que vous devez d\u00e9clarer.\nCordialement,\nC\u00e9lia pour l'\u00e9quipe Seeyou-Pub\n"
+ }, 
+ "Bonjour je souhaiterais conna\u00eetre les d\u00e9marches pour adh\u00e9rer et coller vos pub sur mon v\u00e9hicule?\n": {
+  "motCle": [
+   "conna\u00eetre", 
+   "d\u00e9marche", 
+   "adh\u00e9rer", 
+   "coller", 
+   "pub", 
+   "v\u00e9hicule"
+  ], 
+  "reponse": ">message:g\u00e9n\u00e9rique\n"
+ }, 
+ "Bonjour j'aimerais savoir si c'est normal que je n'ai plus re\u00e7u de proposition de votre part j'en ai fait une et ensuite plus rien merci d'avance a l'attention que vous porterez \u00e0 ma demande.\n": {
+  "motCle": [
+   "je", 
+   "savoir", 
+   "normal", 
+   "recevoir", 
+   "proposition", 
+   "je", 
+   "faire", 
+   "le", 
+   "demande"
+  ], 
+  "reponse": "Bonjour,\n\nSi vous n'avez pas re\u00e7u de proposition c'est qu'il n'y avait pas de campagne pour laquelle votre profil g\u00e9ographique correspondait.\n\nBonne nouvelle: nous aurons une nouvelle campagne sur le Loiret dans quelques semaines. N'h\u00e9sitez pas \u00e0 parrainer vos amis vivant dans le secteur, les parrains les plus actifs sont prioritaires sur les nouvelles campagnes.\n\nBien cordialement,\n\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Message envoy\u00e9 par XXX (PSEUDO)\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n\nBonjour, \nJe suis d\u00e9j\u00e0 inscrit pour ma premi\u00e8re voiture, serais possible d'\u00eatre inscrit pour une deuxi\u00e8me voiture conduite par ma femme!?\nMerci\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "inscrire", 
+   "premier", 
+   "voiture", 
+   "possible", 
+   "inscrire", 
+   "deuxi\u00e8me", 
+   "voiture", 
+   "conduite", 
+   "femme"
+  ], 
+  "reponse": "Bonjour,\n\n Le principe est d'avoir un compte par personne et par v\u00e9hicule (2 personnes avec 2 v\u00e9hicules cela fait donc deux comptes). Si vous avez tous les deux un smartphone, cela fonctionne donc.\n\nCordialement,\nC\u00e9lia pour Seeyou-pub\n"
+ }, 
+ "Bonjour,\n\n\u00cates-vous toujours en activit\u00e9 car je suis toujours disponible pour des campagnes publicitaires.\n\n\u00c0 bient\u00f4t. \n\nXXX\n": {
+  "motCle": [
+   "activit\u00e9", 
+   "disponible", 
+   "xxx"
+  ], 
+  "reponse": "Bonjour,\n\nDes campagnes dans votre secteur sont planifi\u00e9es pour la rentr\u00e9e. SI votre profil correspond aux demandes de nos clients, vous recevrez nos propositions.\n\nBon \u00e9t\u00e9 et \u00e0 bient\u00f4t,\n\nNo\u00e9mie pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Message envoy\u00e9 par PSEUDO\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n\nBonjour \n\nint\u00e9resser par vos produit, est il n\u00e9cessaire de poss\u00e9dez obligatoirement un smartphone ? \n\ncordialement\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "int\u00e9resser", 
+   "produit", 
+   "n\u00e9cessaire", 
+   "smartphone"
+  ], 
+  "reponse": "Bonjour,\n\nIl est en effet obligatoire de disposer d'un smartphone de mani\u00e8re \u00e0 pouvoir g\u00e9olocaliser vos d\u00e9placements et les photos de votre v\u00e9hicule.\n\nCordialement,\nNo\u00e9mie pour Seeyou-pub\n"
+ }, 
+ "Message envoy\u00e9 par XXX (PSEUDO)\nEnvoy\u00e9 depuis seeyou-pub.fr/contact\nAdresse IP: xxx\n Bonjour, je souhaite modifier mon nombre de kilom\u00e8tres parcourus par semaine mais je n'y arrive pas. Je fais entre 150 et 250km par semaine et non pas 50. \n\n Cordialement\n": {
+  "motCle": [
+   "message", 
+   "envoyer", 
+   "envoyer", 
+   "xxx", 
+   "modifier", 
+   "nombre", 
+   "kilom\u00e8tre", 
+   "parcourir", 
+   "semaine", 
+   "semaine", 
+   "@card@", 
+   "cordialement"
+  ], 
+  "reponse": "Bonjour XXX,\n\nNous avons mis \u00e0 jour votre fiche.\n\nCordialement,\n\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Bonjour je vien de voir une voiture avec votre publicit\u00e9 je voudrais savoir comment cela se passe , en sachant que j'ai ma voiture et que je suis \u00e9tudiante .\n?\n": {
+  "motCle": [
+   "voir", 
+   "voiture", 
+   "publicit\u00e9", 
+   "savoir", 
+   "je", 
+   "voiture", 
+   "\u00e9tudiant"
+  ], 
+  "reponse": "Bonjour,\nVous vous inscrivez sur notre site www.seeyou-pub.fr en pr\u00e9cisant bien les adresses de votre domicile et de votre lieu de parking en journ\u00e9e.\n D\u00e8s que nous aurons des campagnes dans votre zone, vous recevrez nos offres.\n"
+ }, 
+ "Bonsoir,\n\nJ\u2019ai vu votre publicit\u00e9 sur un v\u00e9hicule ce matin.\n\nJe peux \u00e9tudier une proposition si vous le souhaitez\n\nJe poss\u00e8de une Zo\u00e9 (environ 12000 km/an) et un trafic (env 15000 km)\n\nNous sommes une soci\u00e9t\u00e9 de service \u00e0 la personne et faisons beaucoup de trajet autour d\u2019Orl\u00e9ans.\n\nNos v\u00e9hicules sont blancs sans publicit\u00e9 \u00e0 notre nom car nous souhaitons rester discret dans notre activit\u00e9 (confort pour nos clients)\n\nDans l\u2019attente de votre contact (par mail si possible car plus simple)\n\nCordialement\n\nXXX\n": {
+  "motCle": [
+   "publicit\u00e9", 
+   "v\u00e9hicule", 
+   "matin", 
+   "\u00e9tudier", 
+   "proposition", 
+   "kman", 
+   "trafic", 
+   "(", 
+   "kilom\u00e8tre", 
+   "soci\u00e9t\u00e9", 
+   "service", 
+   "personne", 
+   "trajet", 
+   "v\u00e9hicule", 
+   "blanc", 
+   "publicit\u00e9", 
+   "nom", 
+   "rester", 
+   "discret", 
+   "activit\u00e9", 
+   "client", 
+   "l\u2019attente", 
+   "contact", 
+   "(", 
+   "mail", 
+   "possible", 
+   "simple", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:entreprise\n"
+ }, 
+ "J'ai fait une nouvelle demande de MDP mais rien re\u00e7u. J'\u00e9tais inscrite sur votre 1er site et fait la 1ere campagne Darty, peut-\u00eatre que mon compte n'a pas \u00e9t\u00e9 transf\u00e9r\u00e9 sur le nouveau ? Mon pseudo : PSEUDO\n": {
+  "motCle": [
+   "nouveau", 
+   "demande", 
+   "recevoir", 
+   "inscrire", 
+   "1er", 
+   "site", 
+   "1ere", 
+   "campagne", 
+   "compte", 
+   "\u00eatre", 
+   "transf\u00e9rer", 
+   "nouveau", 
+   "mon", 
+   "pseudo"
+  ], 
+  "reponse": "conseiller:connexion\n"
+ }, 
+ "Bonjour! Pourrai je savoir comment fonctionne votre entreprise? Ca m interesserai. Faut il des conditions particuli\u00e8res? Bonne soir\u00e9e.\n": {
+  "motCle": [
+   "entreprise", 
+   "ca", 
+   "m", 
+   "interesserai", 
+   "condition", 
+   "particulier", 
+   "bon", 
+   "soir\u00e9e"
+  ], 
+  "reponse": "Bonsoir,\nNotre soci\u00e9t\u00e9 propose un service de publicit\u00e9 \u00e0 des entreprises qui en ont le besoin.\n\nPour cela, nous recrutons des conducteurs poss\u00e9dant une voiture ainsi qu'un smartphone, nous appelons ces conducteurs des Youpubers.\n\nLe point particulier est que lors d'une campagne de publicit\u00e9, les youpubers doivent nous envoyer des photos de leur v\u00e9hicule portant la publicit\u00e9 depuis leur smartphone, cela nous permettant de r\u00e9cup\u00e9rer les positions GPS de ces photographies que nous pouvons ensuite transmettre \u00e0 l'annonceur qui nous a command\u00e9 la campagne (les donn\u00e9es sont anonymis\u00e9es bien sur)\n\nEn contrepartie, les conducteurs peuvent obtenir une r\u00e9mun\u00e9ration allant jusqu'\u00e0 100 \u20ac pour un mois d'affichage sur leur v\u00e9hicule.\nSi je prends l'exemple de la derni\u00e8re campagne que nous avons faite pour l'enseigne Darty, celle-\u00e7i a \u00e9t\u00e9 d'une dur\u00e9e de 1 semaine et \u00e0 permis aux Youpubers d'empocher chacun au minimum 17 \u20ac pour cette semaine d'affichage.\n\nNous avons besoin de recruter des conducteurs aux 4 coins de la France, ceci afin de pouvoir assurer aux annonceurs que nous pouvons leur fournir un panel de conducteurs cons\u00e9quent.\nJ'esp\u00e8re avoir r\u00e9pondu \u00e0 vos interrogations.\n"
+ }, 
+ "Bonjour je me suis inscrite il y a quelques jours j'ai re\u00e7u un mail en me remercient de m'avoir inscrit et que dans quelques jours vous alliez reprendre contact avec moi et depuis plus rien est-ce normal ??\n": {
+  "motCle": [
+   "inscrire", 
+   "jour", 
+   "je", 
+   "recevoir", 
+   "mail", 
+   "me", 
+   "inscrire", 
+   "jour", 
+   "reprendre", 
+   "normal"
+  ], 
+  "reponse": "Bonjour,\n\nSi vous n'avez pas re\u00e7u de proposition c'est qu'il n'y avait pas de campagne pour laquelle votre zone g\u00e9ographique correspondait. Veillez \u00e0 mettre \u00e0 jour les donn\u00e9es de votre profil pour assurer que vous receviez nos offres futures\n\n\nBien cordialement,\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Bonjour, pouvez vous m'expliquer le fonctionnement de vos pubs ?": {
+  "motCle": [
+   "me", 
+   "fonctionnement", 
+   "pub"
+  ], 
+  "reponse": "Bonjour,\n\nJe vais vous d\u00e9tailler notre fonctionnement ci-dessous dans le cas o\u00f9 vous auriez des questions compl\u00e9mentaires, n'h\u00e9sitez pas \u00e0 me recontacter.\n\nLes campagnes vous sont propos\u00e9es selon votre profil:\n\n- type de v\u00e9hicule\n\n- localisation du parking personnel et professionnel\n\n- nombre de filleuls sur seeyou-pub\n\nVous \u00eates libre d'accepter ou de refuser toute proposition.\n\nQuand vous acceptez une campagne, le visuel vous est envoy\u00e9 par la poste. Vous devez le poser sur votre voiture (nous avons une vid\u00e9o explicative) et le garder pendant une certaine dur\u00e9e (entre 1 semaine et 1 mois g\u00e9n\u00e9ralement). Durant cette p\u00e9riode, nous vous demandons de d\u00e9poser sur le site des photos de votre v\u00e9hicule avec la publicit\u00e9.\n\nLa r\u00e9mun\u00e9ration varie selon le client et votre exp\u00e9rience.\n\nCela commence \u00e0 15\u20ac par semaine et selon votre exp\u00e9rience cela peut monter \u00e0 25\u20ac par semaine.\n\nCordialement,\nC\u00e9lia pour l'\u00e9quipe Seeyou-Pub\n"
+ }, 
+ "Et les pubs en g\u00e9n\u00e9ral sont tr\u00e8s grandes? Ou tiennent \u00e9ventuellement sur la lunette arri\u00e8re?\n": {
+  "motCle": [
+   "pub", 
+   "g\u00e9n\u00e9ral", 
+   "grand", 
+   "lunette", 
+   "arri\u00e8re"
+  ], 
+  "reponse": "Non elles ne sont pas tr\u00e8s grandes (80cm x 25cm). Cela tient sur la lunette arri\u00e8re de tout type de v\u00e9hicules sauf coup\u00e9s sports."
+ }, 
+ "Bonjour,\n\n J'ai une entreprise et plusieurs v\u00e9hicules de soci\u00e9t\u00e9, comment je eput les inscrire tous ?\n\nXXX\n": {
+  "motCle": [
+   "entreprise", 
+   "v\u00e9hicule", 
+   "soci\u00e9t\u00e9", 
+   "inscrire", 
+   "tout", 
+   "xxx"
+  ], 
+  "reponse": ">conseiller:entreprise\n"
+ }, 
+ "BONJOUR JE SUIS INSCRIT CHEZ VOUS DEPUIS QUELQUES MOIS ET VOUS NE M'AVEZ PROPOSE QU'UNE SEULE CAMPAGNE.\nJE SUIS DANS L'ATTENTE D'UNE NOUVELLE  PROPOSITION.\nMERCI DE ME RECONTACTER. \nCORDIALEMENT\n": {
+  "motCle": [
+   "campagne", 
+   "nouveau"
+  ], 
+  "reponse": "Bonjour,\n\nNous n'avons pas propos\u00e9 de campagne sur votre secteur ces derni\u00e8res semaines en effet.\n\nIl y en aura deux \u00e0 la rentr\u00e9e, si votre profil correspond vous recevrez les propositions.\n\nCordialement,\n\nC\u00e9lia pour l'\u00e9quipe SeeYou-Pub\n"
+ }, 
+ "Merci pour votre retour. \u00c7a y est j'ai franchi le pas . Comment puis je commencer une campagne ? Est ce que je re\u00e7ois un mail de votre part ou est ce que je dois regarder et choisir les campagnes que vous proposez?\n": {
+  "motCle": [
+   "merci", 
+   "retour", 
+   "franchir", 
+   "pas", 
+   "mail", 
+   "part", 
+   "regarder", 
+   "choisir", 
+   "campagne"
+  ], 
+  "reponse": "Quand une campagne sera disponible dans votre zone vous serez notifi\u00e9e par mail et par SMS.\nVous \u00eates libre d'accepter ou de refuser les campagnes propos\u00e9es.\n"
+ }
+}
