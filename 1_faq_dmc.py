@@ -203,19 +203,19 @@ words = {}
 if jsonForce:
 	print "*** Enregistrement du dictionnaire dans un fichier json ... "
 	words = createDictionnary(dictionnary)
-	f = open('result_' + nb + ".json", 'w+')
+	f = open('dictionnaire/result_' + nb + ".json", 'w+')
 	f.write(json.dumps(words, indent=1))
 else:
 	print "*** Chargement du dictionnaire si il existe ..."
-	my_file = Path('result_' + nb + ".json")
+	my_file = Path('dictionnaire/result_' + nb + ".json")
 	if my_file.is_file():
-		f = open('result_' + nb + ".json", 'r')
+		f = open('dictionnaire/result_' + nb + ".json", 'r')
 		words = json.load(f)
 		f.close()
 	else:
 		# Creation de dictionnaire avec les mots clés d'une question et sa réponse
 		words = createDictionnary(dictionnary)
-		f = open('result_' + nb + ".json", 'w+')
+		f = open('dictionnaire/result_' + nb + ".json", 'w+')
 		f.write(json.dumps(words, indent=1))
 		f.close()
 

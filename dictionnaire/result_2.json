@@ -1,0 +1,441 @@
+{
+ "J\u2019ai appel\u00e9 le num\u00e9ro de la scolarit\u00e9, il ne r\u00e9pond pas": {
+  "motCle": [
+   "appeler", 
+   "num\u00e9ro", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": " L\u2019accueil t\u00e9l\u00e9phonique de la scolarit\u00e9 traite pr\u00e8s de 200 appels chaque jour\\. Si ce num\u00e9ro ne r\u00e9pond pas, ce n\u2019est pas parce qu\u2019il n\u2019y a personne mais parce que toutes les lignes sont satur\u00e9es\\.  Vous pouvez contacter la scolarit\u00e9 par le formulaire de contact\\. Cette foire aux questions pourra \u00e9galement r\u00e9pondre \u00e0 votre question\\."
+ }, 
+ "Dois-je joindre un ch\u00e8que \u00e0 mon dossier d\u2019inscription/r\u00e9inscription si j\u2019ai d\u00e9j\u00e0 pay\u00e9 en ligne\u00a0": {
+  "motCle": [
+   "joindre", 
+   "ch\u00e8que", 
+   "dossier", 
+   "payer|payer", 
+   "ligne"
+  ], 
+  "reponse": "\nNon, vous devez faire un seul paiement\\."
+ }, 
+ "Comment joindre le service de la scolarit\u00e9\u00a0": {
+  "motCle": [
+   "joindre", 
+   "service", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": " L\u2019accueil t\u00e9l\u00e9phonique de la scolarit\u00e9 est ouvert de 9h \u00e0 17h du lundi au vendredi\\. Tel\\.\u00a0: 01 40 46 21 60"
+ }, 
+ "Je n\u2019arrive pas \u00e0 me pr\u00e9inscrire en ligne": {
+  "motCle": [
+   "pr\u00e9inscrire", 
+   "ligne"
+  ], 
+  "reponse": "Les applications de pr\u00e9inscription (pour les primo-entrants comme pour les \u00e9tudiants qui entendent se r\u00e9inscrire) sont accessibles seulement aux dates des inscriptions administratives en pr\u00e9sentiel (du 7 au 21 juillet\u00a0; du 28 ao\u00fbt au 29 septembre 2017)\\.\nSi des difficult\u00e9s techniques persistent alors que vous disposez d\u2019un produit Apple, veuillez privil\u00e9gier Windows\\."
+ }, 
+ "Je n\u2019ai toujours pas re\u00e7u le mail d\u2019ecandidat pour mon inscriptionSi vous \u00eates toujours en attente d\u2019une r\u00e9ponse au sujet de votre admission, sachez qu\u2019E-Candidat a deux mois pour vous r\u00e9pondre": {
+  "motCle": [
+   "recevoir", 
+   "mail", 
+   "d\u2019ecandidat", 
+   "attente", 
+   "r\u00e9ponse", 
+   "admission", 
+   "savoir", 
+   "moi|mois", 
+   "r\u00e9pondre"
+  ], 
+  "reponse": "\nUne fois admis\\.e, E-Candidat vous envoie un nouveau courriel vous permettant de vous inscrire\\. Vous ne pouvez pas vous inscrire avant d\u2019avoir re\u00e7u ce dernier courriel, car il vous fournit un justificatif obligatoire\\. Si vous ne recevez pas ces messages avant le 21 juillet, vous pourrez vous inscrire lors de la deuxi\u00e8me phase d\u2019inscription se d\u00e9roulant du 24 ao\u00fbt au 29 septembre\\."
+ }, 
+ "La s\u00e9curit\u00e9 sociale est-elle obligatoire\u00a0": {
+  "motCle": [
+   "social", 
+   "obligatoire"
+  ], 
+  "reponse": "Il existe plusieurs cas pour lesquels la s\u00e9curit\u00e9 sociale \u00e9tudiante n\u2019est pas obligatoire (\u00e9tudiant de plus de 28 ans\\.\\.\\.)\\. Tous ces cas sont d\u00e9crits dans le dossier d\u2019inscription\\. Vous pouvez \u00e9galement vous reporter \u00e0 la page du site\u00a0Ameli de l\u2019Assurance maladie\\."
+ }, 
+ "Je suis \u00e9tudiant qui se r\u00e9inscrit en ligne \u00e0 l\u2019universit\u00e9, mais je n\u2019ai pas proc\u00e9d\u00e9 au paiement de mes droits, puis-je r\u00e9aliser mes inscriptions p\u00e9dagogiques par le web\u00a0": {
+  "motCle": [
+   "l\u2019universit\u00e9", 
+   "proc\u00e9d\u00e9", 
+   "droit", 
+   "r\u00e9aliser", 
+   "inscription", 
+   "p\u00e9dagogique", 
+   "web"
+  ], 
+  "reponse": " Oui, un \u00e9tudiant inscrit l\u2019an pass\u00e9 (2016-2017) qui s\u2019est r\u00e9inscrit en ligne pour 2017-2018 mais qui n\u2019a pas encore r\u00e9alis\u00e9 son paiement peut effectuer son IP via le web\\. Il sera n\u00e9anmoins r\u00e9put\u00e9 \u00e9tudiant de l\u2019Universit\u00e9 qu\u2019une fois les documents portant sur la r\u00e9inscription administrative qu\u2019il aura adress\u00e9s au service des inscription auront \u00e9t\u00e9 v\u00e9rifi\u00e9s et le paiement de ses droits universitaires saisi\u00a0par l\u2019agence comptable\\.\nEn revanche, les \u00e9tudiants inscrits avant 2016-2017 sont consid\u00e9r\u00e9s dans l\u2019application Ipweb comme des primo-entrants \u00e0 l\u2019Universit\u00e9\\. Ils doivent avoir r\u00e9alis\u00e9 leur IA, pay\u00e9 leurs droits d\u2019inscription et r\u00e9activer leur compte ENT pour s\u2019inscrire p\u00e9dagogiquement via le web\\."
+ }, 
+ "Puis-je joindre le formulaire de transfert arriv\u00e9e \u00e0 part du dossier d\u2019inscription\u00a0": {
+  "motCle": [
+   "joindre", 
+   "formulaire", 
+   "transfert", 
+   "arriv\u00e9|arriv\u00e9e", 
+   "dossier", 
+   "d\u2019inscription"
+  ], 
+  "reponse": " Non, le formulaire de transfert arriv\u00e9e doit imp\u00e9rativement \u00eatre produit lors de votre inscription administrative, d\u00fbment rempli et sign\u00e9 par votre universit\u00e9 d\u2019origine\\."
+ }, 
+ "Quand puis-je me r\u00e9inscrire si je d\u00e9pends des rattrapages de licence\u00a0": {
+  "motCle": [
+   "r\u00e9inscrire", 
+   "rattrapage", 
+   "licence"
+  ], 
+  "reponse": " Vous pourrez vous r\u00e9inscrire \u00e0 partir du jeudi 7 juillet 2017, si vos r\u00e9sultats sont disponibles dans votre ENT\\. S\u2019ils ne le sont pas, vous devez contacter votre UFR\\. "
+ }, 
+ "Mon admission par E-CandidatLa commission d\u2019E-Candidat examine au \"fil de l\u2019eau\" les dossiers qui lui sont transmis": {
+  "motCle": [
+   "admission", 
+   "commission", 
+   "dossier", 
+   "transmettre"
+  ], 
+  "reponse": " Elle peut cependant prendre jusqu\u2019\u00e0 deux mois pour vous r\u00e9pondre par courriel et vous confirmer votre admission \u00e0 partir du premier message de confirmation de r\u00e9ception de votre dossier\\. Si vous ne recevez pas le courriel d\u2019acceptation avant la fin de la premi\u00e8re phase d\u2019inscription (le 21 juillet), vous pourrez vous inscrire lors de la seconde phase d\u2019inscription (du 24\u00a0ao\u00fbt au 29 septembre)\\."
+ }, 
+ "Quand commenceront les cours\u00a0": {
+  "motCle": [
+   "cour|cours"
+  ], 
+  "reponse": " Vous devez contacter directement votre UFR pour conna\u00eetre votre date de rentr\u00e9e\\.  Tous les contacts des UFR sont en en ligne\u00a0:  /nos-formations/les-ufr/"
+ }, 
+ "Je ne dispose pas de num\u00e9ro INE me permettant de m\u2019inscrire en ligne Vous devrez vous faire conna\u00eetre \u00e0 la rentr\u00e9e, en appelant le 01": {
+  "motCle": [
+   "num\u00e9ro", 
+   "m\u2019inscrire", 
+   "faire", 
+   "conna\u00eetre", 
+   "rentr\u00e9e", 
+   "@card@"
+  ], 
+  "reponse": "40\\.46\\.34\\.08 ou en envoyant un message\u00a0via le formulaire de contact (choisir \"dipl\u00f4mes \u00e9trangers\", en pr\u00e9cisant votre nom, pr\u00e9nom, n\u00b0\u00a0de dossier et la fili\u00e8re que vous avez accept\u00e9e)\\."
+ }, 
+ "Comment prendre rendez-vous pour mon inscription administrative\u00a0": {
+  "motCle": [
+   "prendre", 
+   "inscription", 
+   "administratif"
+  ], 
+  "reponse": "L\u2019inscription administrative sur RDV (en pr\u00e9sentiel) ne s\u2019adresse qu\u2019aux primo-entrants \u00e0 Paris-Sorbonne (quel que soit leur niveau d\u2019inscription)\\.\nVous pourrez prendre rendez-vous \u00e0 partir de d\u00e9but juillet pour la premi\u00e8re session des inscriptions administratives en pr\u00e9sentiel, et \u00e0 compter du 24 ao\u00fbt 2017 pour la seconde session de la campagne\\.\nPrendre rendez-vous pour une 1\u00e8re inscription en licence\\.\nPrendre rendez-vous pour une 1\u00e8re inscription en master\\.\n\u00a0"
+ }, 
+ "Je viens de terminer les rattrapages, \u00e0 quelle date recevrais-je mes relev\u00e9s de notes en licence\u00a0": {
+  "motCle": [
+   "terminer", 
+   "rattrapage", 
+   "date", 
+   "recevoir", 
+   "relever", 
+   "note", 
+   "licence"
+  ], 
+  "reponse": "\u00a0\nLes relev\u00e9s de notes seront \u00e9dit\u00e9s \u00e0 partir du lundi 10\u00a0juillet 2017 pour les licences\\. Les masters doivent en faire la demande aupr\u00e8s du service des examens par mail secretariat\\.examens@paris-sorbonne\\.fr"
+ }, 
+ "Je n\u2019arrive pas \u00e0 saisir mon profil de boursier/boursi\u00e8re lors de ma r\u00e9inscription en ligne Le serveur d\u2019inscription ne peut prendre en compte le statut de boursier des \u00e9tudiants": {
+  "motCle": [
+   "saisir", 
+   "profil", 
+   "boursierboursi\u00e8re", 
+   "r\u00e9inscription", 
+   "ligne", 
+   "serveur", 
+   "d\u2019inscription", 
+   "prendre", 
+   "statut", 
+   "boursier", 
+   "\u00e9tudiant"
+  ], 
+  "reponse": " Merci de ne pas payer en ligne (\u00ab\u00a0paiement diff\u00e9r\u00e9\u00a0\u00bb), et de joindre \u00e0 votre dossier d\u2019inscription vos notifications conditionnelles de bourse en double exemplaire, ainsi qu\u2019un ch\u00e8que de 5\\.10\u20ac \u00e0 l\u2019ordre de l\u2019Agent comptable de Paris Sorbonne, montant correspondant aux frais de m\u00e9decine pr\u00e9ventive, obligatoire pour tous les \u00e9tudiants, m\u00eame boursiers\\."
+ }, 
+ "Puis-je m\u2019abonner au pass Imagine R sans ma carte\u00a0": {
+  "motCle": [
+   "m\u2019abonner", 
+   "pass", 
+   "imaginer", 
+   "carte"
+  ], 
+  "reponse": "Non, malheureusement\\. Vous devez avoir un certificat de scolarit\u00e9 ou une photocopie de votre carte d\u2019\u00e9tudiante, et les deux sont envoy\u00e9s en m\u00eame temps\\.Mais la majorit\u00e9 des cartes seront envoy\u00e9es courant septembre, donc un peu de patience\\.\\.\\."
+ }, 
+ "Combien de temps ai-je pour envoyer les pi\u00e8ces justificatives\u00a0": {
+  "motCle": [
+   "temps", 
+   "envoyer", 
+   "pi\u00e8ce", 
+   "justificatif"
+  ], 
+  "reponse": "Les deux notifications de bourse\u00a0sont \u00e0 envoyer sous 8 jours maximum\\.\nUn dossier incomplet ne sera pas trait\u00e9\\. Nous vous conseillons vivement de l\u2019envoyer une fois toutes les pi\u00e8ces justificatives jointes\\."
+ }, 
+ "Quel montant dois-je payer\u00a0": {
+  "motCle": [
+   "montant", 
+   "payer|payer"
+  ], 
+  "reponse": " Vous trouverez la fiche des tarifs sur le site de l\u2019Universit\u00e9, rubrique \"nos formations-comment s\u2019inscrire\" \u00e0 partir de d\u00e9but juillet, d\u00e8s leur publication au Journal officiel\\.\n\nT\u00e9l\u00e9charger les tarifs 2016/17 \n"
+ }, 
+ "Quelle est la date de ma pr\u00e9-rentr\u00e9e\u00a0": {
+  "motCle": [
+   "date", 
+   "pr\u00e9-rentr\u00e9e"
+  ], 
+  "reponse": "\nLes dates des r\u00e9unions de pr\u00e9-rentr\u00e9e sont mises \u00e0 jour quotidiennement sur le site de l\u2019universit\u00e9\u00a0: Ma rentr\u00e9e \u00e0 la rubrique \"Ma r\u00e9union de pr\u00e9-rentr\u00e9e\"\\. Si la date de votre r\u00e9union n\u2019est pas encore indiqu\u00e9e ou si vous souhaitez des pr\u00e9cisions sur cette r\u00e9union, vous devez contacter votre UFR directement\\. Tous les contacts des UFR sont en en ligne\u00a0:  http://www\\.paris-sorbonne\\.fr/ufr"
+ }, 
+ "Je ne suis pas encore inscrit": {
+  "motCle": [
+   "inscrire"
+  ], 
+  "reponse": "e administrativement et les inscriptions administratives ferment le 29 septembre 2017\\. Que dois-je faire\u00a0\\.\u00a0\nLes dossiers d\u2019inscription doivent \u00eatre envoy\u00e9s (cachet de la poste faisant foi) ou d\u00e9pos\u00e9s au service des inscriptions administratives avant le vendredi 29 septembre 2017 \u00e0 15h30, galerie Richelieu en Sorbonne\\.\nSi vous ne compl\u00e9tez pas votre dossier avant le 21 juillet, vous pourrez toujours vous inscrire lors de la deuxi\u00e8me phase d\u2019inscription, du 24 ao\u00fbt au 29 septembre 2017\\.\nTous les dossiers d\u00e9pos\u00e9s dans les d\u00e9lais seront trait\u00e9s dans un d\u00e9lai d\u2019environ 10 jours\\. Si vous avez joint le r\u00e8glement de vos droits universitaires ou si vous vous en \u00eates d\u00e9j\u00e0 acquitt\u00e9s lors de la pr\u00e9inscription en ligne, la carte d\u2019\u00e9tudiant et le certificat de scolarit\u00e9 seront exp\u00e9di\u00e9s par voie postale \u00e0 votre domicile\\."
+ }, 
+ "Puis-je obtenir mon emploi du temps d\u00e8s juillet\u00a0": {
+  "motCle": [
+   "obtenir", 
+   "emploi", 
+   "temps", 
+   "juillet"
+  ], 
+  "reponse": " Votre UFR mettra en ligne sur l\u2019ENT votre emploi du temps vers le 8 septembre\\. Vous aurez le choix entre plusieurs heures de TD\\. Pr\u00e9parez votre emploi du temps en r\u00e9fl\u00e9chissant \u00e0 plusieurs possibilit\u00e9s afin d\u2019\u00eatre pr\u00eat pour les inscriptions p\u00e9dagogiques en ligne, d\u00e9butant une semaine avant la rentr\u00e9e deseptembre\\."
+ }, 
+ "Quand aurai-je la confirmation de mon inscription\u00a0": {
+  "motCle": [
+   "confirmation", 
+   "inscription"
+  ], 
+  "reponse": "  L\u2019Universit\u00e9 est ferm\u00e9e en ao\u00fbt\\. Les dossiers d\u2019inscription envoy\u00e9s fin juillet ou en ao\u00fbt sont en cours de traitement (ils sont instruits suivant leur ordre de r\u00e9ception)\\.\nnotal \u00a0: le service des inscriptions administratives aura trait\u00e9 tous les courriers re\u00e7us jusqu\u2019au 27 juillet (l\u2019agence comptable, en charge notamment de l\u2019\u00e9dition des certificats de scolarit\u00e9, reprendra ses activit\u00e9s le 28 ao\u00fbt prochain)\\.\nNe vous inqui\u00e9tez pas si vous n\u2019avez encore rien re\u00e7u\u00a0: la plupart des certificats de scolarit\u00e9 (et la carte \u00e9tudiante en ce qui concerne\u00a0les primo-entrants \u00e0 Paris-Sorbonne qui n\u2019ont pas suivi notre recommandation de r\u00e9aliser leur inscription administrative en pr\u00e9sentiel) seront envoy\u00e9s dans le courant du mois de septembre\\.\n Si vous n\u2019avez pas eu de nouvelle \u00e0 la fin du mois de septembre, vous pouvez appeler le 01 40 46 21 60 ou \u00e9crire en utilisant notre\u00a0formulaire de contact (en pr\u00e9cisant \"Inscription licence\"\u00a0\"ou \"Inscription master\", selon votre situation)\\."
+ }, 
+ "Je n\u2019ai pas r\u00e9ussi \u00e0 t\u00e9l\u00e9charger le r\u00e9capitulatif de r\u00e9inscriptionSi vous n\u2019avez pas \u00e9t\u00e9 en mesure d\u2019imprimer la page de \u00ab\u00a0r\u00e9capitulatif\u00a0\u00bb, vous allez devoir t\u00e9l\u00e9charger, compl\u00e9ter puis nous adresser le dossier de r\u00e9inscription (http://www": {
+  "motCle": [
+   "r\u00e9ussir", 
+   "t\u00e9l\u00e9charger", 
+   "r\u00e9capitulatif", 
+   "\u00eatre", 
+   "d\u2019imprimer", 
+   "page", 
+   "r\u00e9capitulatif", 
+   "\u00bb", 
+   "devoir", 
+   "t\u00e9l\u00e9charger", 
+   "compl\u00e9ter", 
+   "adresser", 
+   "dossier", 
+   "r\u00e9inscription", 
+   "("
+  ], 
+  "reponse": "paris-sorbonne\\.fr/reinscription-a-paris-sorbonne ), accompagn\u00e9 des pi\u00e8ces requises, en notifiant sur la premi\u00e8re page que vous avez cependant effectu\u00e9 votre r\u00e9inscription en ligne\\."
+ }, 
+ "Je n\u2019ai pas encore re\u00e7u ma carte d\u2019\u00e9tudiant, est-ce normal\u00a0": {
+  "motCle": [
+   "recevoir", 
+   "carte", 
+   "\u00eatre", 
+   "normal"
+  ], 
+  "reponse": " \u00a0\nLa carte d\u2019\u00e9tudiant est envoy\u00e9e d\u00e8s que votre dossier d\u2019inscription est trait\u00e9\\. Cela d\u00e9pend donc de la date d\u2019envoi de votre dossier\\. L\u2019universit\u00e9 \u00e9tant ferm\u00e9e en ao\u00fbt, la plupart des cartes seront envoy\u00e9es d\u00e9but septembre\\.\n Si vous n\u2019avez pas eu de nouvelles mi-septembre, vous pouvez appeler le 01 40 46 21 60 ou \u00e9crire \u00e0 scolarite@paris-sorbonne\\.fr"
+ }, 
+ "Je suis en alternanceSi vous \u00eates en alternance, vous ne devez pas payer la s\u00e9curit\u00e9 sociale \u00e9tudiante": {
+  "motCle": [
+   "alternance", 
+   "payer|payer", 
+   "social", 
+   "\u00e9tudiant"
+  ], 
+  "reponse": " Vous \u00eates couvert par l\u2019entreprise\\."
+ }, 
+ "Comment savoir si mon dossier d\u2019inscription administrative a bien \u00e9t\u00e9 re\u00e7u et est en cours de traitement\u00a0": {
+  "motCle": [
+   "savoir", 
+   "dossier", 
+   "administratif", 
+   "\u00eatre", 
+   "recevoir", 
+   "traitement"
+  ], 
+  "reponse": "  Malgr\u00e9 les moyens mis en oeuvre pour renforcer notre accueil, il peut arriver que les num\u00e9ros de la scolarit\u00e9 soient satur\u00e9s \u00e0 certains moments\u00a0de la rentr\u00e9e par les demandes de confirmation de r\u00e9ception des dossiers d\u2019inscription\\. Or, la plupart sont en cours de traitement (ils sont instruits par ordre de r\u00e9ception)\\. Appeler ou se d\u00e9placer n\u2019acc\u00e9l\u00e8re pas le processus\\. Il faut patienter jusqu\u2019\u00e0 la fin de la campagne\\."
+ }, 
+ "Je n\u2019arrive pas \u00e0 me r\u00e9inscrire en ligne alors que j\u2019ai le profil \u00ab\u00a0AJAC\u00a0\u00bbLe statut AJAC ne vous permet pas de vous r\u00e9inscrire en ligne": {
+  "motCle": [
+   "r\u00e9inscrire", 
+   "ligne", 
+   "j\u2019ai", 
+   "profil", 
+   "\u00ab", 
+   "statut", 
+   "r\u00e9inscrire", 
+   "ligne"
+  ], 
+  "reponse": "\u00a0Veuillez dans ce cas t\u00e9l\u00e9charger et remplir le dossier \"papier\" de r\u00e9inscription ( http://www\\.paris-sorbonne\\.fr/reinscription-a-paris-sorbonne ) puis l\u2019adresser au service des inscriptions administratives de Paris-Sorbonne, accompagn\u00e9 des pi\u00e8ces justificatives d\u2019actualisation de votre situation qui sont mentionn\u00e9es\\."
+ }, 
+ "Quand recevrai-je mon certificat de scolarit\u00e9 et ma carte \u00e9tudiante\u00a0": {
+  "motCle": [
+   "recevoir", 
+   "certificat", 
+   "scolarit\u00e9", 
+   "carte", 
+   "\u00e9tudiant"
+  ], 
+  "reponse": "Le service des inscriptions administratives aura trait\u00e9 tous les courriers d\u2019inscription r\u00e9ceptionn\u00e9s \u00e0 la date du 27 juillet 2017 (l\u2019agence comptable, qui a notamment en charge l\u2019\u00e9dition des certificats de scolarit\u00e9, est toutefois ferm\u00e9e du 24 juillet au 25 ao\u00fbt inclus)\\.\nLes dossiers complets sont trait\u00e9s dans un d\u00e9lai d\u2019environ 10 jours\\. Cependant, en cons\u00e9quence du grand nombre de dossiers, le d\u00e9lai peut \u00eatre plus long\\.\nSuivez la page Facebook officielle de l\u2019Universit\u00e9 pour conna\u00eetre l\u2019avanc\u00e9e de la prise en charge des dossiers\\."
+ }, 
+ "Je suis boursier et je souhaite me r\u00e9inscrire par internetVous devez aller jusqu\u2019\u00e0 la fin de la proc\u00e9dure et cocher la case \u00ab\u00a0paiement diff\u00e9r\u00e9\u00a0\u00bb": {
+  "motCle": [
+   "boursier", 
+   "r\u00e9inscrire", 
+   "aller", 
+   "fin", 
+   "proc\u00e9dure", 
+   "cocher", 
+   "case", 
+   "diff\u00e9rer"
+  ], 
+  "reponse": "\nLors de l\u2019envoi des pi\u00e8ces justificatives, vous devrez fournir deux exemplaires de votre notification conditionnelle (ou d\u00e9finitive) de bourse\\.\nLe fait de valider votre inscription, m\u00eame en indiquant le paiement diff\u00e9r\u00e9,\u00a0vous permet d\u2019acc\u00e9der aux inscriptions p\u00e9dagogiques en ligne\\."
+ }, 
+ "J\u2019ai envoy\u00e9 une demande \u00e0 la scolarit\u00e9": {
+  "motCle": [
+   "demande", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": " Dans quel d\u00e9lai obtiendrai-je une r\u00e9ponse\u00a0\\.  Les demandes sont trait\u00e9s le plus rapidement possible en fonction des urgences\\. Pour information, 959 mails ont \u00e9t\u00e9 trait\u00e9s la premi\u00e8re semaine de septembre 2014\\."
+ }, 
+ "Je viens d\u2019obtenir le baccalaur\u00e9at mais je ne dispose pas encore de mon dipl\u00f4meLe dipl\u00f4me du baccalaur\u00e9at devra nous \u00eatre pr\u00e9sent\u00e9 au cours de l\u2019ann\u00e9e, pour r\u00e9gularisation du dossier administratif": {
+  "motCle": [
+   "d\u2019obtenir", 
+   "baccalaur\u00e9at", 
+   "dipl\u00f4mele", 
+   "dipl\u00f4me", 
+   "baccalaur\u00e9at", 
+   "\u00eatre", 
+   "pr\u00e9senter", 
+   "r\u00e9gularisation", 
+   "dossier", 
+   "administratif"
+  ], 
+  "reponse": " Ce qui compte dans le cadre de la pr\u00e9sente d\u00e9marche d\u2019inscription administrative, c\u2019est la communication du relev\u00e9 de notes\\."
+ }, 
+ "Je viens de terminer les rattrapages, \u00e0 quelle date aurais-je les r\u00e9sultats dans l\u2019ENT\u00a0": {
+  "motCle": [
+   "terminer", 
+   "rattrapage", 
+   "date", 
+   "r\u00e9sultat"
+  ], 
+  "reponse": " \u00a0\nLes r\u00e9sultats seront affich\u00e9s \u00e0 partir du jeudi 7 juillet 2016 aux environs de 16h00\\. En cas d\u2019erreur ou d\u2019ommission, veuillez contacter votreUFR\\."
+ }, 
+ "Puis-je aller \u00e0 ma r\u00e9union de pr\u00e9-rentr\u00e9e sans ma carte d\u2019\u00e9tudiant\u00a0": {
+  "motCle": [
+   "r\u00e9union", 
+   "pr\u00e9-rentr\u00e9e", 
+   "carte"
+  ], 
+  "reponse": "  Oui, car il s\u2019agit d\u2019une journ\u00e9e d\u2019information\\. Il faudra simplement pr\u00e9ciser que vous \u00eates en cours d\u2019inscription\\."
+ }, 
+ "Je n\u2019arrive pas \u00e0 t\u00e9l\u00e9charger mon dossier de 1\u00e8re inscription sur le site de Paris-Sorbonne (apr\u00e8s avoir re\u00e7u mon affectation via APB)Ecrivez-nous, en recourant \u00e0 notre\u00a0formulaire de contact (choisir \"Inscription licence\", avec pour objet \"APB\", en mentionnant vos nom, pr\u00e9nom, num\u00e9ro APB et votre discipline)": {
+  "motCle": [
+   "t\u00e9l\u00e9charger", 
+   "dossier", 
+   "1er|1\u00e8re", 
+   "inscription", 
+   "site", 
+   "avoir", 
+   "recevoir", 
+   "affectation", 
+   "formulaire", 
+   "contact", 
+   "(", 
+   "objet", 
+   "discipline"
+  ], 
+  "reponse": ""
+ }, 
+ "Puis-je faire mon inscription p\u00e9dagogique, si je me suis r\u00e9inscrit et que je suis en attente de mon certificat de scolarit\u00e9\u00a0": {
+  "motCle": [
+   "inscription", 
+   "p\u00e9dagogique", 
+   "r\u00e9inscrire", 
+   "certificat", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": " Oui, les inscriptions p\u00e9dagogiques par le web sont possibles dans ce cas-l\u00e0 (que vous ayez pay\u00e9 ou non vos frais d\u2019inscription, que vous ayez re\u00e7u ou non votre certificat de scolarit\u00e9 2016-2017)"
+ }, 
+ "Puis-je faire mon inscription p\u00e9dagogique, si je suis nouvel arrivant \u00e0 Paris-Sorbonne et que je suis en attente de mon certificat de scolarit\u00e9\u00a0": {
+  "motCle": [
+   "inscription", 
+   "p\u00e9dagogique", 
+   "nouveau", 
+   "certificat", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": "  Non, les inscriptions p\u00e9dagogiques sont impossibles dans ce cas-l\u00e0\\.\u00a0Vous devez \u00eatre en possession de votre carte d\u2019\u00e9tudiant et de votre certificat de scolarit\u00e9 afin de r\u00e9aliser votre IP par le web\\. Vous devez donc avoir pay\u00e9 vos droits et activ\u00e9 votre compte ENT afin d\u2019avoir acc\u00e8s aux service num\u00e9riques (et donc \u00e0 l\u2019application IPweb dans l\u2019onglet \"scolarit\u00e9\" puis \"IP\")\\."
+ }, 
+ "Autres questions\u00a0\nVous pouvez consulter la FAQ sp\u00e9ciale rentr\u00e9e": {
+  "motCle": [
+   "autre", 
+   "question", 
+   "consulter", 
+   "sp\u00e9cial", 
+   "rentr\u00e9e"
+  ], 
+  "reponse": ""
+ }, 
+ "Paiement en trois foisAfin de r\u00e9gler vos frais de scolarit\u00e9 en trois fois, vous devez vous rendre au bureau de l\u2019agence comptable en Sorbonne pour y remplir un formulaire": {
+  "motCle": [
+   "foisafin", 
+   "r\u00e9gler", 
+   "frais", 
+   "scolarit\u00e9", 
+   "foi|fois", 
+   "rendre", 
+   "bureau", 
+   "l\u2019agence", 
+   "comptable", 
+   "remplir", 
+   "formulaire"
+  ], 
+  "reponse": ""
+ }, 
+ "Pourquoi est-il indiqu\u00e9 \"en attente\" sur mon dossier dans e-candidat\u00a0": {
+  "motCle": [
+   "indiquer", 
+   "attente", 
+   "dossier"
+  ], 
+  "reponse": " Une fois la candidature cr\u00e9\u00e9e, mon dossier aura par d\u00e9faut le statut \u00ab\u00a0En attente\u00a0\u00bb\\. Lorsque j\u2019aurai d\u00e9pos\u00e9 toutes les pi\u00e8ces justificatives et transmis mon dossier, le statut sera \u00ab\u00a0R\u00e9ceptionn\u00e9\u00a0\u00bb\\.\n\nSi une pi\u00e8ce est invalide ou incorrecte, je recevrai un courriel m\u2019indiquant que le statut du dossier est\u00a0\u00ab\u00a0Incomplet\u00a0\u00bb\\. Il me faudra alors me rendre dans mon espace personnel E-Candidat afin de la modifier\\. On trouve dans la case \u00ab\u00a0commentaires\u00a0\u00bb le motif du refus de la pi\u00e8ce\\.\n\n\nQuand mon dossier sera \u00ab\u00a0Complet\u00a0\u00bb, je recevrai un courriel indiquant qu\u2019il sera examin\u00e9 par la commission p\u00e9dagogique\\.\n"
+ }, 
+ "Je n\u2019ai pas re\u00e7u ma nouvelle carte \u00e9tudiant avec mon nouveau certificat de scolarit\u00e9": {
+  "motCle": [
+   "recevoir", 
+   "nouveau", 
+   "carte", 
+   "nouveau", 
+   "certificat", 
+   "scolarit\u00e9"
+  ], 
+  "reponse": "L\u2019actualisation de la carte \u00e9tudiant de Paris-Sorbonne s\u2019effectue en y apposant l\u2019autocollant qui figure sur le nouveau certificat de scolarit\u00e9 remis au terme de la proc\u00e9dure d\u2019inscription administrative\\."
+ }, 
+ "Je souhaite r\u00e9aliser un \u00ab\u00a0transfert d\u00e9part\u00a0\u00bb de l\u2019Universit\u00e9 Paris-Sorbonne La proc\u00e9dure de transfert d\u00e9part implique de t\u00e9l\u00e9charger un formulaire (disponible sur notre site Internet, rubrique \"inscription\"), dont le premier exemplaire sera \u00e0 faire signer par notre service": {
+  "motCle": [
+   "r\u00e9aliser", 
+   "\u00ab", 
+   "transfert", 
+   "d\u00e9part", 
+   "proc\u00e9dure", 
+   "transfert", 
+   "d\u00e9part", 
+   "t\u00e9l\u00e9charger", 
+   "formulaire", 
+   "(", 
+   "site", 
+   "rubrique", 
+   "\"", 
+   "premier", 
+   "exemplaire", 
+   "faire", 
+   "signer", 
+   "service"
+  ], 
+  "reponse": " Il vous permettra d\u2019effectuer vos d\u00e9marches d\u2019inscription dans votre nouvelle universit\u00e9\\.  Les deux autres exemplaires seront \u00e0 faire signer et tamponner par la scolarit\u00e9 de l\u2019universit\u00e9 d\u2019accueil, une fois obtenus votre certificat de scolarit\u00e9 et votre carte d\u2019\u00e9tudiant\\."
+ }, 
+ "Qui dois-je contacter pour mon inscription p\u00e9dagogique\u00a0": {
+  "motCle": [
+   "contacter", 
+   "inscription", 
+   "p\u00e9dagogique"
+  ], 
+  "reponse": "\u00a0\nVotre UFR (et non pas le service des inscriptions administratives) pour tous les choix p\u00e9dagogiques\\. Vous trouverez les contacts de votre UFR sur le site\u00a0: www\\.paris-sorbonne\\.fr/ufr  Pour les probl\u00e8mes techniques de connexion uniquement, vous pouvez envoyer un message \u00e0 ipweb@listes\\.paris-sorbonne\\.fr avec votre NOM, pr\u00e9nom, date de naissance, n\u00b0\u00a0d\u2019\u00e9tudiant, fili\u00e8re d\u2019inscription\\. Merci d\u2019ins\u00e9rer une copie d\u2019\u00e9cran du probl\u00e8me rencontr\u00e9 dans le corps du courriel si besoin\\."
+ }
+}
