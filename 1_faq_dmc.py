@@ -194,7 +194,7 @@ elif nb is '3':
 elif nb is '4':
 	dictionnary = "3_faq_syp.json"
 
-# Creation de dictionnaire avec les mots clé d'une question et sa réponse
+# Creation de dictionnaire avec les mots clés d'une question et sa réponse
 words = createDictionnary(dictionnary)
 
 # Si l'option -v est présente, on affiche le dictionnaire
@@ -241,7 +241,7 @@ else:
 print ""
 print ""
 
-# Si l'option -v est présente, on affiche la totalité des question enregistrer ainsi que le pourcentage
+# Si l'option -v est présente, on affiche la totalité des questions enregistrer ainsi que le pourcentage
 if text:
 	print "*** Liste des résultats : "
 	pprint(result)
