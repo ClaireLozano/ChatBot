@@ -27,8 +27,8 @@ pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8' )
 
 # Construction et configuration du wrapper
 #MacOs's path
-#tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
-tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+# tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 # ==============================
 # =========== SPLIT ============
@@ -86,7 +86,7 @@ def createDictionnary(path):
 			dictionnary[v[0]] = {"reponse": v[1], "motCle": array}
 	return dictionnary
 
-# Suppression des mots de la question qui ferait partie de la liste placé en paramètre
+# Suppression des mots de la question qui ferait partie de la liste placée en paramètre
 # Cela permet de ne garder uniquement les mots "important"
 def createDictionnaryOneQuestion(quest):
     words = splitByWord(quest)
@@ -120,7 +120,7 @@ def lemmatizationWord(w):
 # =========================================
 
 # Trouve une réponse à la quesion posée en analysant les mots
-# Si le pourcentage de similarité le plus haut est inférieur à 0,5, on suppose que cette question ne ressemble à aucune des questions présente dans le dictionnaire 
+# Si le pourcentage de similarité le plus haut est inférieur à 0,5, on suppose que cette question ne ressemble à aucune des questions présentes dans le dictionnaire 
 def compareQuestions(newQuestWords, words):
 
     allQuestions = words.keys()
@@ -144,7 +144,8 @@ def compareQuestions(newQuestWords, words):
 # =========== SYNONYME ===========
 # ================================
 
-# Trouver des synonymes d'un mot, return une list aucun synonyme n'est trouvé
+# Trouver une liste de synonyme du mot place en paramêtre.
+# Retourne une liste vode si aucun synonyme n'est trouvé.
 def synonyme(w):
 	try:
 		return syns()[w]
@@ -155,7 +156,7 @@ def synonyme(w):
 # ============= TAG ==============
 # ================================
 
-# Trouver tout les tags des mots présent dans une phrase sous la forme de dictionnaire :
+# Trouver tous les tags des mots présents dans une phrase sous la forme de dictionnaire :
 # 		[(u'Quel', u'ADJWH'), (u'se', u'CLR'), (u'passe-t-il', u'CLO'), (u'si', u'CS'), (u'je', u'CLS'), (u'ne', u'ADV'), (u'suis', u'V'), (u'pas', u'ADV'), (u'chez', u'P'), (u'moi', u'PRO'), (u'pour', u'P'), (u'r\xe9ceptionner', u'VINF'), (u'ma', u'DET'), (u'commande', u'NC'), (u'?', u'PUNC')]
 def getTag(s):
 	res = pos_tagger.tag(splitByWord(s))
@@ -201,6 +202,7 @@ if jsonForce:
 	f = open('dictionnaire/result_' + nb + ".json", 'w+')
 	f.write(json.dumps(words, indent=1))
 else:
+	# Si le dictionnaire existe déjà, le charger
 	print "*** Chargement du dictionnaire si il existe ..."
 	my_file = Path('dictionnaire/result_' + nb + ".json")
 	if my_file.is_file():
@@ -219,7 +221,7 @@ if text:
 	print ""
 	print "*** Dictionnaire "
 
-	# Affichage du dictionnaire avec les mots clés
+	# Affichage du dictionnaire avec les mots clés + questions + réponses
 	pprint(words)
 
 	print ""
@@ -234,9 +236,8 @@ newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(newQuestion)
 result,reponse = compareQuestions(newQuestWords, words)
 
-# Reponse à la question posé par l'utilisateur
+# Reponse à la question posée par l'utilisateur
 if reponse != '':
-	#theAnswer = words[reponse]
      print "*** Voici la réponse à votre question : ", reponse
      print ""
      print "*** D'autres réponses possibles : "
