@@ -44,7 +44,7 @@ def splitByWord(text):
 					listWord.append(word)
 	return listWord
 ```
-Nous supprimons aussi toutes ponctuations compris dans '[ ?.,!/;]'.
+Nous supprimons aussi toutes ponctuations compris dans `[ ?.,!/;]`.
 
 ### Etape 2 - Recherche de synonymes
 
