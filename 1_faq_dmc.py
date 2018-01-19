@@ -6,14 +6,12 @@ import operator
 import sys 
 import json
 #import codecs
-import nltk
 import treetaggerwrapper
 import re
 
 sys.path.append(os.path.abspath('./dictionnaireSyns'))
 
 from pprint import pprint
-from nltk.tag import StanfordPOSTagger
 from SynFranWord import syns
 
 # Construction et configuration du wrapper
