@@ -5,7 +5,7 @@ import os
 import operator
 import sys 
 import json
-import codecs
+#import codecs
 import nltk
 import treetaggerwrapper
 
