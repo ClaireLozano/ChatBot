@@ -49,6 +49,8 @@ Nous supprimons aussi toutes ponctuations compris dans `[ ?.,!/;]`.
 ### Etape 2 - Recherche de synonymes
 
 Afin d'élargir notre champ de recherche, nous effectuons une recherche de synonymes sur les mots clés de la question posée par l'utilisateur. Si l'utilisateur utilise le mot `emplette`, celui-ci matchera avec le mot `acheter`.
+La recherche de synonymes se fait sur un fichier thésaurus de synonymes téléchargeable à l'adresse suivante: http://www.dicollecte.org/download/fr/thesaurus-v2.3.zip .
+On crée un dictionnaire à partir du thésaurus, donc un dictionnaire contenant tous les mots avec leurs synonymes associés.
 
 ### Etape 3 - Lemmatisation
 
@@ -79,8 +81,11 @@ Le dictionnaire sera stocké dans le dossier `dictionnaire` sous le format json.
 
 ### Etape 5 - Analyse d'une question
 
-Une fois la question posée, le programme va la récupérer, chercher les synonymes, et comparer les mots clé (ainsi que les synonymes) de la question avec les mots clés des questions présentes dans le dictionnaire. Un pourcentage de mots clés trouvé sera alors calculé :
+Une fois la question posée, le programme va la récupérer, chercher les synonymes, et comparer les mots clé (ainsi que les synonymes) de la question avec les mots clés des questions présentes dans le dictionnaire. Un pourcentage de mots clés trouvé sera alors calculé .
 
+### Etape 6 - Affichage des réponses
+La réponse dont le pourcentage est le max sera affiché comme la plus pertinente. Il y aura d'autres réponses possibles qui seront affichés si le pourcentage est supérieur ou égal au seuil.
+Dans le cas où toutes les réponses ont un pourcentage inférieur au seuil, alors on les affichera toutes.
 
 
 ## Installation et lancement
@@ -94,6 +99,7 @@ Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour e
 * re
 * nltk
 * treetaggerwrapper
+* pathlib
 
 
 Dans le fichier `1_faq_dmc.py` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
