@@ -5,19 +5,21 @@ import os
 import operator
 import sys 
 import json
-#import codecs
+import codecs
+import nltk
 import treetaggerwrapper
 import re
 
 sys.path.append(os.path.abspath('./dictionnaireSyns'))
 
 from pprint import pprint
+from nltk.tag import StanfordPOSTagger
 from SynFranWord import syns
 
 # Construction et configuration du wrapper
 #MacOs's path
-tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
-# tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+#tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tree-tagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='fr',TAGDIR=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'treetagger'),TAGINENC='utf-8',TAGOUTENC='utf-8')
 
 # ==============================
 # =========== SPLIT ============
@@ -113,28 +115,33 @@ def lemmatizationWord(w):
 # Si le pourcentage de similarité le plus haut est inférieur à 0,5, on suppose que cette question ne ressemble à aucune des questions présente dans le dictionnaire 
 def compareQuestions(newQuestWords, words):
 
-	allQuestions = words.keys()
-	pourcentQuestion = {}
-	
-	for currentQuestion in allQuestions:
-		nb = 0
-		l = words[currentQuestion]['motCle']
-		for w in newQuestWords:
-			if w in l: 
-				nb += 1
-		if nb is 0:
-			pourcentQuestion[currentQuestion] = 0
-		else:
-			pourcentQuestion[currentQuestion] = float(nb) / len(l) 	
-	reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
-	pourcent = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]
-	
-	if pourcent > float(0.5):
-		return pourcentQuestion, reponse
-	else:
-		print "Cette question ne ressemble à aucune autre question ..."
-		return pourcentQuestion, ''
+    allQuestions = words.keys()
+    pourcentQuestion = {}
+    for currentQuestion in allQuestions:
+        nb = 0
+        l = words[currentQuestion]['motCle']
+        for w in newQuestWords:
+            if w in l: 
+                nb += 1
+        if nb != 0:
+            pourcentQuestion[currentQuestion] = {"pourcentage" : float(nb) / len(newQuestWords), "reponse" : words[currentQuestion]['reponse']} 
+    if pourcentQuestion:         
+        reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]['reponse']
+        #pourcentQuestion = {key: value for key, value in pourcentQuestion.items() if value['reponse'] is not reponse}
+    else : 
+        reponse = ""
+    return pourcentQuestion,reponse
 
+"""            
+            reponse = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[0]
+            pourcent = max(pourcentQuestion.iteritems(), key=operator.itemgetter(1))[1]
+
+    if pourcent > float(0.00):
+        return pourcentQuestion, reponse
+    else:
+        print "Cette question ne ressemble à aucune autre question ..."
+        return pourcentQuestion, ''
+"""
 # ================================
 # =========== SYNONYME ===========
 # ================================
@@ -219,21 +226,30 @@ else:
 questionsList = words.keys()
 newQuestion = raw_input("*** Quelle est votre question : ")
 newQuestWords = createDictionnaryOneQuestion(newQuestion)
-result, reponse = compareQuestions(newQuestWords, words)
+result,reponse = compareQuestions(newQuestWords, words)
 
 # Reponse à la question posé par l'utilisateur
 if reponse != '':
-	theAnswer = words[reponse]
-	print "*** Voici la réponse à votre question : ", theAnswer['reponse']
+	#theAnswer = words[reponse]
+     print "*** Voici la réponse à votre question : ", reponse
+     print ""
+     print "*** D'autres réponses possibles : "
+     for v in result.values():
+         if v['pourcentage'] >= float(0.20) and v['reponse'] != reponse:
+             print "\n",v['reponse']
+             print "\t**************"
+         elif max(result.iteritems(), key=operator.itemgetter(1))[1]['pourcentage'] < float(0.20) and v['reponse'] != reponse:
+             print "\n",v['reponse']
+             print "\t**************"
 
 	# Traitement des réponse du json 3
-	s = theAnswer['reponse'].split(":")
-	if re.findall('(>)?action_bdd$', s[0]):
-		print "*** Un action sera effectué vers la base de donnée : " + str(s[1])
-	elif re.findall('(>)?message$', s[0]):
-		print "Un message générique sera envoyé"
-	elif re.findall('(>)?conseiller$', s[0]): 
-		print "Vous allez être redirigé vers un conseiller : " + str(s[1])
+     s = reponse.split(":")
+     if re.findall('(>)?action_bdd$', s[0]):
+         print "*** Un action sera effectué vers la base de donnée : " + str(s[1])
+     elif re.findall('(>)?message$', s[0]):
+         print "Un message générique sera envoyé"
+     elif re.findall('(>)?conseiller$', s[0]): 
+         print "Vous allez être redirigé vers un conseiller : " + str(s[1])
 else:
 	print "Je ne sais pas."
 print ""
@@ -242,6 +258,5 @@ print ""
 # Si l'option -v est présente, on affiche la totalité des questions enregistrer ainsi que le pourcentage
 if text:
 	print "*** Liste des résultats : "
-	pprint(result)
+	pprint(sorted(result.iteritems(), key=lambda (k,v): (v,k), reverse=True))
 	print ""
-
