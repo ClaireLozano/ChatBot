@@ -54,7 +54,7 @@ On crée un dictionnaire à partir du thésaurus, donc un dictionnaire contenant
 
 ### Etape 3 - Lemmatisation
 
-Dans le but de simplifier la recherche, nous lemmatisions les mots clés. Cela permet par exemple de passer outre le problème de conjugaison des verbes. `Achetais` deviendra alors `acheter`. 
+Dans le but de simplifier la recherche, nous lemmatisons les mots clés. Cela permet par exemple de passer outre le problème de conjugaison des verbes. `Achetais` deviendra alors `acheter`. 
 Nous avons utilisé TreeTagger qui est un outil d'annotation et de tag de texte qui permet de retourner des informations sur la partie du discours et le lemme.
 
 ### Etape 4 - Création d'un dictionnaire
@@ -90,7 +90,7 @@ Dans le cas où toutes les réponses ont un pourcentage inférieur au seuil, alo
 
 ## Installation et lancement
 
-Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour executer le programme. Nous utilisons une liste de librarie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME` :
+Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour exécuter le programme. Nous utilisons une liste de librairie qu'il vous faudra installer à l'aide de la commande `pip install LIBRARY_NAME` :
 * os
 * operator
 * json
@@ -102,19 +102,19 @@ Le projet a été écrit en python 2.7. Il vous faudra donc cette version pour e
 * pathlib
 
 
-Dans le fichier `1_faq_dmc.py` il vous faudra modifier cette ligne en y référencent votre fichier java d'éxecution :
+Dans le fichier `1_faq_dmc.py` il vous faudra modifier cette ligne en y référencent votre fichier java d'exécution :
 
 ```
 java_path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/java.exe"
 ```
 
-Pour lancer le terminal, executez cette ligne de commande :
+Pour lancer le terminal, exécuter cette ligne de commande ci-dessous:
 
 ```
 > python 1_faq_dmc.py [-v] [-f]
 ```
 
-* `-v` permet d'avoir tout les détails du processus 
+* `-v` permet d'avoir tous les détails du processus 
 * `-f` permet d'écraser le fichier dictionnaire enregistrer lors des précédents traitement
 
 
